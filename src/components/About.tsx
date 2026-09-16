@@ -17,8 +17,9 @@ export default function About() {
     const chars = Array.from(aboutDescription);
     const addChar = () => {
       if (indexRef.current < chars.length) {
-        setDisplayText((prev) => prev + (chars[indexRef.current] || ""));
+        const char = chars[indexRef.current];
         indexRef.current += 1;
+        setDisplayText((prev) => prev + char);
         timerRef.current = [...(timerRef.current || []), setTimeout(addChar, 40)];
       } else {
         setPhase("complete");
@@ -29,9 +30,12 @@ export default function About() {
 
   useEffect(() => {
     if (phase !== "typing") return;
+    indexRef.current = 0;
+    setDisplayText("");
     runTypewriter();
     return () => {
       (timerRef.current || []).forEach(clearTimeout);
+      timerRef.current = [];
     };
   }, [phase, runTypewriter]);
 
