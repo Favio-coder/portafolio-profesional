@@ -40,7 +40,7 @@ export default function Contact() {
                   [ EMAIL ]
                 </span>
                 <span className="font-mono text-sm text-[#e6e3d9]/50">
-                  [ADD_EMAIL]
+                  faviusam@gmail.com
                 </span>
               </div>
 
@@ -48,18 +48,18 @@ export default function Contact() {
                 <span className="font-mono text-[9px] uppercase tracking-widest text-[#e6e3d9]/30">
                   [ GITHUB ]
                 </span>
-                <span className="font-mono text-sm text-[#e6e3d9]/50">
-                  [ADD_GITHUB]
-                </span>
+                <a href="https://github.com/Favio-coder" className="font-mono text-sm text-[#e6e3d9]/50 hover:text-[#e6e3d9]">
+                  github.com/Favio-coder
+                </a>
               </div>
 
               <div className="flex items-center gap-4">
                 <span className="font-mono text-[9px] uppercase tracking-widest text-[#e6e3d9]/30">
                   [ LINKEDIN ]
                 </span>
-                <span className="font-mono text-sm text-[#e6e3d9]/50">
-                  [ADD_LINKEDIN]
-                </span>
+                <a href="https://www.linkedin.com/in/favio-asturimac-6b907825b/" className="font-mono text-sm text-[#e6e3d9]/50 hover:text-[#e6e3d9]">
+                  linkedin.com/in/favio-asturimac
+                </a>
               </div>
             </div>
 

@@ -2,7 +2,9 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const aboutDescription = `AQUÍ COLOCARÉ MI DESCRIPCIÓN PERSONAL.`;
+const aboutDescription = `Soy Richard Favio Asturimac Medina, desarrollador full stack e ingeniero de sistemas del IX Ciclo, apasionado por la inteligencia artificial y la computacion en la nube.`;
+
+const additionalInfo = `Especializado en QA, data engineering, cloud computing y desarrollo full stack. Dominio React, Next.js, Vue.js, Spring Boot, Laravel, AWS, Google Cloud y Azure. Actualmente desarrollo Healthtech con Alzhivida y proyectos de IA con aprendizaje no supervisado.`;
 
 export default function About() {
   const [displayText, setDisplayText] = useState("");
@@ -17,7 +19,7 @@ export default function About() {
       if (indexRef.current < chars.length) {
         setDisplayText((prev) => prev + chars[indexRef.current]);
         indexRef.current += 1;
-        timerRef.current = [...(timerRef.current || []), setTimeout(addChar, 50)];
+        timerRef.current = [...(timerRef.current || []), setTimeout(addChar, 40)];
       } else {
         setPhase("complete");
       }
@@ -47,24 +49,24 @@ export default function About() {
     <section id="about" className="relative min-h-screen px-6 py-20 md:px-8">
       <div className="mx-auto max-w-4xl">
         <div className="mb-12">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/40">
+          <p className="font-mono text-sm uppercase tracking-widest text-white">
             01 / ABOUT
           </p>
         </div>
 
         <div className="overflow-hidden border border-[#e6e3d9]/10 bg-[#0a0a0a]/80 p-6 md:p-8">
           <div className="mb-6 flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-[#e6e3d9]/10" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-[#e6e3d9]/30">
-              FAVIO_OS / ABOUT
+            <span className="h-3 w-3 rounded-full bg-white" />
+            <span className="font-mono text-xs uppercase tracking-widest text-white">
+              RICHARD FAVIO ASTURIMAC MEDINA / ABOUT
             </span>
           </div>
 
-          <div className="mb-6 font-mono text-[10px] text-[#0ce642]/80">
+          <div className="mb-6 font-mono text-sm text-[#0ce642]/80">
             {"$ print(\"Descripcion\")"}
           </div>
 
-          <div className="min-h-[100px] font-mono text-sm leading-relaxed text-[#e6e3d9]/70">
+          <div className="min-h-[100px] font-mono text-lg leading-relaxed text-[#e6e3d9]/70">
             {displayText}
             {phase !== "complete" && (
               <span
@@ -80,14 +82,11 @@ export default function About() {
           {phase === "complete" && (
             <>
               <div className="mt-6 space-y-3">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/40">
+                <p className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
                   {`// additional_information`}
                 </p>
-                <p className="font-mono text-xs leading-relaxed text-[#e6e3d9]/50">
-                  [ADD_DESCRIPTION]
-                </p>
-                <p className="font-mono text-xs leading-relaxed text-[#e6e3d9]/40">
-                  [ADD_MORE_INFO]
+                <p className="font-mono text-base leading-relaxed text-[#e6e3d9]/50">
+                  {additionalInfo}
                 </p>
               </div>
             </>
@@ -95,7 +94,7 @@ export default function About() {
 
           <div className="mt-4 flex items-center gap-2">
             <span
-              className={`font-mono text-base text-[#0ce642] transition-opacity duration-100 ${
+              className={`font-mono text-lg text-[#0ce642] transition-opacity duration-100 ${
                 cursorVisible ? "opacity-100" : "opacity-0"
               }`}
             >

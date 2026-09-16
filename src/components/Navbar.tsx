@@ -41,7 +41,7 @@ export default function Navbar() {
             <Link
               key={item.numero}
               href={item.href}
-              className="group relative font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/50 transition-colors hover:text-[#e6e3d9]"
+              className="group relative font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/50 transition-colors hover:text-[#e6e3d9]"
             >
               <span className="mr-2 text-[#e6e3d9]/20">{item.numero}</span>
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">
@@ -53,7 +53,7 @@ export default function Navbar() {
         </div>
 
         {/* Status */}
-        <div className="hidden items-center gap-3 font-mono text-[9px] uppercase tracking-wider md:flex">
+        <div className="hidden items-center gap-3 font-mono text-[10px] uppercase tracking-wider md:flex">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0ce642]" />
           <span className="text-[#e6e3d9]/40">SYSTEM ONLINE</span>
         </div>

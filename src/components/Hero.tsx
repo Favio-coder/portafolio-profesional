@@ -61,20 +61,20 @@ export default function Hero() {
             <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
 
             {/* Label */}
-            <div className="absolute bottom-4 left-4 font-mono text-[9px] uppercase tracking-widest text-white/60">
+            <div className="absolute bottom-4 left-4 font-mono text-[10px] uppercase tracking-widest text-white/60">
               IMG_001 / FAVIO
             </div>
 
           </div>
 
-          <div className="mt-3 flex justify-between font-mono text-[9px] uppercase tracking-widest text-[#e6e3d9]/30">
+          <div className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/30">
             <span>{isPixel ? "PIXEL_MODE" : "PORTRAIT"}</span>
             <span>{isPixel ? "8BIT" : "001"}</span>
           </div>
 
           {/* Transición de modo */}
           {transitionText && (
-            <div className="mt-2 font-mono text-[9px] uppercase tracking-widest text-[#0ce642]">
+            <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-[#0ce642]">
               {transitionText}
             </div>
           )}
@@ -85,7 +85,7 @@ export default function Hero() {
         <div className="order-1 md:order-2">
 
           {/* System information */}
-          <div className="mb-8 flex items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/40">
+          <div className="mb-8 flex items-center gap-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0ce642]" />
             <span>System initialized</span>
             <span className="text-[#e6e3d9]/20">{`//`}</span>
@@ -93,7 +93,7 @@ export default function Hero() {
           </div>
 
           {/* Section */}
-          <p className="font-mono text-[10px] tracking-widest text-[#e6e3d9]/40">
+          <p className="font-mono text-sm tracking-widest text-[#e6e3d9]/40">
             00 / INTRO
           </p>
 
@@ -105,7 +105,7 @@ export default function Hero() {
 
           {/* Role */}
           <div className="mt-8 border-l border-[#e6e3d9]/20 pl-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-[#e6e3d9]/40">
+            <p className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
               Full Stack Developer
             </p>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-[#e6e3d9]/60 md:text-lg">
@@ -116,7 +116,7 @@ export default function Hero() {
           </div>
 
           {/* Terminal */}
-          <div className="mt-10 max-w-lg border border-[#e6e3d9]/10 bg-[#e6e3d9]/2 p-4 font-mono text-[10px] leading-6 text-[#e6e3d9]/40">
+          <div className="mt-10 max-w-lg border border-[#e6e3d9]/10 bg-[#e6e3d9]/2 p-4 font-mono text-sm leading-6 text-[#e6e3d9]/40">
             <p><span className="text-[#e6e3d9]/20">$</span> whoami</p>
             <p className="text-[#e6e3d9]/60">→ full_stack_developer</p>
             <p><span className="text-[#e6e3d9]/20">$</span> status</p>
@@ -127,14 +127,14 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#work"
-              className="group inline-flex items-center gap-4 border border-[#e6e3d9]/30 px-5 py-3 font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9] transition-all duration-300 hover:bg-[#e6e3d9] hover:text-black"
+              className="group inline-flex items-center gap-4 border border-[#e6e3d9]/30 px-5 py-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9] transition-all duration-300 hover:bg-[#e6e3d9] hover:text-black"
             >
               View projects
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center border border-transparent px-5 py-3 font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/40 transition-colors hover:text-[#e6e3d9]"
+              className="inline-flex items-center border border-transparent px-5 py-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40 transition-colors hover:text-[#e6e3d9]"
             >
               Contact me
             </a>
@@ -145,7 +145,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom information */}
-      <div className="mx-auto mt-8 flex max-w-7xl items-center justify-between border-t border-[#e6e3d9]/10 pt-4 font-mono text-[9px] uppercase tracking-widest text-[#e6e3d9]/30">
+      <div className="mx-auto mt-8 flex max-w-7xl items-center justify-between border-t border-[#e6e3d9]/10 pt-4 font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/30">
         <span>PERU / 2026</span>
         <span className="hidden sm:block">SCROLL TO EXPLORE ↓</span>
         <span>01 — 05</span>

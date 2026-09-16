@@ -5,10 +5,10 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           {/* Left */}
           <div className="flex flex-col items-center gap-2 md:items-start">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#e6e3d9]/40">
+            <span className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
               Favio Asturimac
             </span>
-            <div className="flex items-center gap-3 font-mono text-[9px] uppercase tracking-wider text-[#e6e3d9]/20">
+            <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-wider text-[#e6e3d9]/20">
               <span>BUILD: 2026</span>
               <span className="text-[#e6e3d9]/10">|</span>
               <span className="flex items-center gap-1">
@@ -19,12 +19,12 @@ export default function Footer() {
           </div>
 
           {/* Center - Decorative */}
-          <div className="hidden font-mono text-[9px] uppercase tracking-widest text-[#e6e3d9]/10 md:block">
+          <div className="hidden font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/10 md:block">
             —
           </div>
 
           {/* Right */}
-          <div className="font-mono text-[9px] uppercase tracking-wider text-[#e6e3d9]/20">
+          <div className="font-mono text-[10px] uppercase tracking-wider text-[#e6e3d9]/20">
             © 2026 Favio Asturimac
           </div>
         </div>
