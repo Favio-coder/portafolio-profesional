@@ -14,10 +14,10 @@ export default function About() {
   const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const runTypewriter = useCallback(() => {
-    const chars = aboutDescription.split("");
+    const chars = Array.from(aboutDescription);
     const addChar = () => {
       if (indexRef.current < chars.length) {
-        setDisplayText((prev) => prev + chars[indexRef.current]);
+        setDisplayText((prev) => prev + (chars[indexRef.current] || ""));
         indexRef.current += 1;
         timerRef.current = [...(timerRef.current || []), setTimeout(addChar, 40)];
       } else {
