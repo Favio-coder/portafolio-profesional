@@ -52,31 +52,37 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Status */}
-        <div className="hidden items-center gap-3 font-mono text-[10px] uppercase tracking-wider md:flex">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0ce642]" />
-          <span className="text-[#e6e3d9]/40">SYSTEM ONLINE</span>
+        {/* Boton para terminal */}
+        <div className="hidden md:flex items-center">
+          <button
+            type="button"
+            className="relative bg-[#f4f2ea] hover:bg-white px-5 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#0a0a0a] rounded-sm border-2 border-[#f4f2ea] shadow-[0_4px_0_#555] transition-all duration-150 hover:translate-y- hover:shadow-[0_2px_0_#555] active:translate-y- active:shadow-none"
+          >
+            TERMINAL
+          </button>
         </div>
+
+
 
         {/* Mobile Menu Button */}
         <button
-          className="flex flex-col items-center justify-center gap-[5px] md:hidden"
+          className="flex flex-col items-center justify-center gap-1.25 md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
           <span
-            className={`h-[2px] w-6 bg-[#e6e3d9] transition-all duration-300 ${
-              menuOpen ? "rotate-45 translate-y-[7px]" : ""
+            className={`h-0.5 w-6 bg-[#e6e3d9] transition-all duration-300 ${
+              menuOpen ? "rotate-45 translate-y-" : ""
             }`}
           />
           <span
-            className={`h-[2px] w-6 bg-[#e6e3d9] transition-all duration-300 ${
+            className={`h-0.5 w-6 bg-[#e6e3d9] transition-all duration-300 ${
               menuOpen ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`h-[2px] w-6 bg-[#e6e3d9] transition-all duration-300 ${
-              menuOpen ? "-rotate-45 -translate-y-[7px]" : ""
+            className={`h-0.5 w-6 bg-[#e6e3d9] transition-all duration-300 ${
+              menuOpen ? "-rotate-45 -translate-y-" : ""
             }`}
           />
         </button>

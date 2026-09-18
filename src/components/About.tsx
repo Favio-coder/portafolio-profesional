@@ -31,7 +31,7 @@ export default function About() {
   useEffect(() => {
     if (phase !== "typing") return;
     indexRef.current = 0;
-    setDisplayText("");
+
     runTypewriter();
     return () => {
       (timerRef.current || []).forEach(clearTimeout);
@@ -70,7 +70,7 @@ export default function About() {
             {"$ print(\"Descripcion\")"}
           </div>
 
-          <div className="min-h-[100px] font-mono text-lg leading-relaxed text-[#e6e3d9]/70">
+          <div className="min-h-25 font-mono text-lg leading-relaxed text-[#e6e3d9]/70">
             {displayText}
             {phase !== "complete" && (
               <span
