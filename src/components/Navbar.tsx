@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const navegacion = [
-  { numero: "01", label: "ABOUT", href: "#about" },
-  { numero: "02", label: "PROJECTS", href: "#projects" },
-  { numero: "03", label: "GALLERY", href: "#gallery" },
-  { numero: "04", label: "CONTACT", href: "#contact" },
+  { numero: "01", label: "SOBRE MÍ", href: "#about" },
+  { numero: "02", label: "PROYECTOS", href: "#projects" },
+  { numero: "03", label: "GALERÍA", href: "#gallery" },
+  { numero: "04", label: "CONTACTO", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -30,9 +30,9 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-8">
         {/* Logo */}
-        <Link href="/" className="font-mono text-sm font-medium tracking-tight">
-          <span className="text-[#0ce642]">~</span>{" "}
-          <span className="text-[#e6e3d9]">Favio Asturimac</span>
+        <Link href="/" className="font-mono text-md font-medium tracking-tight">
+          {/* <span className="text-[#0ce642]">~</span>{" "} */}
+          <span className="text-[#e6e3d9]">FA</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -43,7 +43,8 @@ export default function Navbar() {
               href={item.href}
               className="group relative font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/50 transition-colors hover:text-[#e6e3d9]"
             >
-              <span className="mr-2 text-[#e6e3d9]/20">{item.numero}</span>
+              {/* Se comenta el número  */}
+              {/* <span className="mr-2 text-[#e6e3d9]/20">{item.numero}</span> */}
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">
                 {item.label}
               </span>

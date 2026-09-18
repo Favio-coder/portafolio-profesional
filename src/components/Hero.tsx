@@ -4,9 +4,20 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const roles = [
+      "full_stack_developer",
+      "cloud_developer",
+      "backend_developer",
+      "data_engineering"
+  ]
+  
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [terminalRestarting, setTerminalRestarting] = useState(false) //Variable de reinicio de terminal
+  
   const [isPixel, setIsPixel] = useState(false);
   const [transitionText, setTransitionText] = useState("");
 
+  /* Efecto */
   useEffect(() => {
     const interval = setInterval(() => {
       setIsPixel((current) => !current);
@@ -15,6 +26,7 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  /* Transición de Imagen */
   useEffect(() => {
     const timer = setTimeout(() => {
       setTransitionText(isPixel ? "PIXEL_MODE: ON" : "RESTORING_IMAGE...");
@@ -23,6 +35,23 @@ export default function Hero() {
     }, 50);
     return () => clearTimeout(timer);
   }, [isPixel]);
+
+  /* Efecto de terminal */
+  useEffect(() => {
+    const interval = setInterval(() =>{
+      setTerminalRestarting(true)
+
+      setTimeout(() => {
+        setRoleIndex((i) => (i + 1) % roles.length)
+        setTerminalRestarting(false)
+      }, 1000)
+    }, 5000)
+
+    return () => {
+      clearInterval(interval);
+    }
+  }, [roles.length])
+
 
   return (
     <section className="relative min-h-screen px-6 pb-16 pt-10">
@@ -109,19 +138,61 @@ export default function Hero() {
               Full Stack Developer
             </p>
             <p className="mt-3 max-w-lg text-base leading-relaxed text-[#e6e3d9]/60 md:text-lg">
-              Construyo aplicaciones web modernas combinando
-              desarrollo, tecnología y creatividad para convertir
-              ideas en productos digitales.
+                Desarrollo soluciones digitales integrando software, cloud, datos e inteligencia artificial, con enfoque en crear productos funcionales, escalables y orientados a resolver problemas reales.
             </p>
           </div>
 
           {/* Terminal */}
-          <div className="mt-10 max-w-lg border border-[#e6e3d9]/10 bg-[#e6e3d9]/2 p-4 font-mono text-sm leading-6 text-[#e6e3d9]/40">
-            <p><span className="text-[#e6e3d9]/20">$</span> whoami</p>
-            <p className="text-[#e6e3d9]/60">→ full_stack_developer</p>
-            <p><span className="text-[#e6e3d9]/20">$</span> status</p>
-            <p className="text-[#e6e3d9]/60">→ disponible_para_proyectos_</p>
+          <div>
+            
+            <div className="mt-10 max-w-lg border border-[#e6e3d9]/10 bg-[#e6e3d9]/2  font-mono text-sm leading-6 text-white">
+              {/* Cabecera del terminal */}
+              <div className="flex items-center border-b gap-1.5 p-2">
+
+                <span className="h-3 w-3 rounded-full bg-red-500"></span>
+                <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
+                <span className="h-3 w-3 rounded-full bg-green-500"></span>
+
+                <span className="text-xs text-gray-300">
+                  favio-terminal
+                </span>
+                
+              </div>
+
+              <div
+                className={`p-3 transition-opacity duration-300 ${
+                  terminalRestarting ? "opacity-30" : "opacity-100"
+                }`}
+              >
+                {terminalRestarting ? (
+                  <p className="text-[#0ce642]/80 animate-pulse">
+                    $ restarting_terminal...
+                  </p>
+                ) : (
+                  <>
+                    <p>
+                      <span className="text-[#0ce642]/80">$</span> whoami
+                    </p>
+
+                    <p className="text-[#e6e3d9]/60">
+                      → {roles[roleIndex]}
+                    </p>
+
+                    <p>
+                      <span className="text-[#0ce642]/80">$</span> status
+                    </p>
+
+                    <p className="text-[#e6e3d9]/60">
+                      → disponible_para_proyectos_
+                    </p>
+                  </>
+                )}
+              </div>
+
+
           </div>
+          </div>
+
 
           {/* CTA */}
           <div className="mt-8 flex flex-wrap gap-3">
@@ -129,7 +200,7 @@ export default function Hero() {
               href="#projects"
               className="group inline-flex items-center gap-4 border border-[#e6e3d9]/30 px-5 py-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9] transition-all duration-300 hover:bg-[#e6e3d9] hover:text-black"
             >
-              Visualizar Proyectos
+              Proyectos
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
             <a
@@ -145,11 +216,11 @@ export default function Hero() {
       </div>
 
       {/* Bottom information */}
-      <div className="mx-auto mt-8 flex max-w-7xl items-center justify-between border-t border-[#e6e3d9]/10 pt-4 font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/30">
+      {/* <div className="mx-auto mt-8 flex max-w-7xl items-center justify-between border-t border-[#e6e3d9]/10 pt-4 font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/30">
         <span>PERU / 2026</span>
         <span className="hidden sm:block">SCROLL TO EXPLORE ↓</span>
         <span>01 — 05</span>
-      </div>
+      </div> */}
 
     </section>
   );
