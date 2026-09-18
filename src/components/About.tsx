@@ -51,10 +51,26 @@ export default function About() {
 
   return (
     <section id="about" className="relative min-h-screen px-6 py-20 md:px-8">
-      <div className="mx-auto max-w-4xl">
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-20 top-20 whitespace-nowrap font-mono text-[180px] font-black uppercase leading-none tracking-tight text-[#e6e3d9]/[0.035]">
+          FAVIO OS&nbsp;&nbsp;&nbsp; FAVIO OS&nbsp;&nbsp;&nbsp; FAVIO OS
+        </div>
+
+        <div className="absolute -left-40 top-80 whitespace-nowrap font-mono text-[180px] font-black uppercase leading-none tracking-tight text-[#e6e3d9]/[0.025]">
+          ASTURIMAC&nbsp;&nbsp;&nbsp; ASTURIMAC&nbsp;&nbsp;&nbsp; ASTURIMAC
+        </div>
+
+        <div className="absolute -left-20 top-[600px] whitespace-nowrap font-mono text-[180px] font-black uppercase leading-none tracking-tight text-[#e6e3d9]/[0.035]">
+          FAVIO OS&nbsp;&nbsp;&nbsp; FAVIO OS&nbsp;&nbsp;&nbsp; FAVIO OS
+        </div>
+      </div>
+      
+      {/* Contenido sobre mí */}
+      <div className="relative z-10 mx-auto max-w-4xl">
         <div className="mb-12">
           <p className="font-mono text-sm uppercase tracking-widest text-white">
-            01 / ABOUT
+            01 / SOBRE MÍ
           </p>
         </div>
 
