@@ -126,17 +126,17 @@ export default function Hero() {
           {/* CTA */}
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="#work"
+              href="#projects"
               className="group inline-flex items-center gap-4 border border-[#e6e3d9]/30 px-5 py-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9] transition-all duration-300 hover:bg-[#e6e3d9] hover:text-black"
             >
-              View projects
+              Visualizar Proyectos
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
             <a
               href="#contact"
               className="inline-flex items-center border border-transparent px-5 py-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40 transition-colors hover:text-[#e6e3d9]"
             >
-              Contact me
+              Contactame
             </a>
           </div>
 
