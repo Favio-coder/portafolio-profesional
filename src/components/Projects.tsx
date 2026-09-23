@@ -1,18 +1,26 @@
 "use client";
 
+import { motion } from "motion/react";
+import Marquee from "@/components/Marquee";
 import { projects } from "@/data/project";
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative min-h-screen px-6 py-20 md:px-8">
+    <section id="projects" className="relative min-h-[85vh] px-6 py-16 md:px-8 overflow-hidden">
       <div className="mx-auto max-w-5xl">
-        <div className="mb-12">
+        <div className="mb-8">
           <p className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
             02 / PROJECTS
           </p>
         </div>
 
-        <div className="mb-8 font-mono text-sm text-[#0ce642]/60">
+        <Marquee speed="slow">
+          <span className="font-mono text-base uppercase tracking-[0.3em] text-[#e6e3d9]/10 mx-6">
+            PROJECTS ✦ PROJECTS ✦ PROJECTS ✦ PROJECTS ✦ PROJECTS ✦
+          </span>
+        </Marquee>
+
+        <div className="mb-12 mt-4 font-mono text-sm text-[#0ce642]/60">
           $ tree ./projects
         </div>
 
@@ -25,8 +33,15 @@ export default function Projects() {
             <div className="font-mono text-sm text-[#e6e3d9]/40">
               projects/
             </div>
-            {projects.map((project) => (
-              <div key={project.id} className="group">
+            {projects.map((project, i) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="group"
+              >
                 <div className="pl-4">
                   <div className="font-mono text-sm text-[#e6e3d9]/50">
                     └── {project.name.toLowerCase()}/
@@ -43,18 +58,22 @@ export default function Projects() {
                     └── preview.png
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <div
+        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, i) => (
+            <motion.div
               key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+              viewport={{ once: true, amount: 0.3 }}
               className="group relative overflow-hidden border border-[#e6e3d9]/10 bg-[#0a0a0a]/80 transition-all duration-300 hover:border-[#e6e3d9]/25 hover:-translate-y-1"
             >
-              <div className="relative aspect-video overflow-hidden bg-[#111]">
+              <div className="relative overflow-hidden bg-[#111]">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/10">
                     {project.name}
@@ -67,18 +86,13 @@ export default function Projects() {
                     OPEN →
                   </span>
                 </div>
+
+                <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest text-[#0ce642]/60">
+                  {project.year}
+                </div>
               </div>
 
               <div className="p-5">
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/30">
-                    {project.year}
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#0ce642]/50">
-                    [OPEN]
-                  </span>
-                </div>
-
                 <h3 className="font-mono text-base font-medium text-[#e6e3d9] mb-2">
                   {project.name}
                 </h3>
@@ -98,7 +112,7 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

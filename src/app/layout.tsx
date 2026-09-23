@@ -19,7 +19,7 @@ const pixelFont = Press_Start_2P({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${pixelFont.variable} min-h-full flex flex-col bg-[#1a1a1a] text-[#e6e3d9]`}>
+      <body className={`${pixelFont.variable} min-h-full flex flex-col bg-[#1a1a1a] text-[#e6e3d9] overflow-x-hidden`}>
         <Navbar />
         {children}
       </body>
