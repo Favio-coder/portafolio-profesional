@@ -146,6 +146,25 @@ body {
   font-family: var(--font-sans), Arial, sans-serif;
 }
 
+/* Mejora de Scroll */
+/* Minimal dark scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #242424;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
+
 /* Animación */
 @keyframes marquee {
   from {
