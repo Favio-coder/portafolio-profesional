@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const navegacion = [
   { numero: "01", label: "SOBRE MÍ", href: "#about" },
   { numero: "02", label: "PROYECTOS", href: "#projects" },
-  { numero: "03", label: "STACK", href: "#stack" },
+  /* { numero: "03", label: "STACK", href: "#stack" }, */
   { numero: "04", label: "GALERÍA", href: "#gallery" },
   { numero: "05", label: "CONTACTO", href: "#contact" },
 ];
@@ -83,7 +83,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <button
             type="button"
-            className="relative bg-[#f4f2ea] hover:bg-white px-5 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#0a0a0a] rounded-sm border-2 border-[#f4f2ea] shadow-[0_4px_0_#555] transition-all duration-150 hover:translate-y-px hover:shadow-[0_2px_0_#555] active:translate-y active:shadow-none"
+            className="pixel-font relative bg-[#f4f2ea] hover:bg-white px-5 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#0a0a0a] rounded-sm border-2 border-[#f4f2ea] shadow-[0_4px_0_#555] transition-all duration-150 hover:translate-y-px hover:shadow-[0_2px_0_#555] active:translate-y active:shadow-none"
           >
             TERMINAL
           </button>
@@ -96,7 +96,7 @@ export default function Navbar() {
         >
           <span
             className={`h-0.5 w-6 bg-[#e6e3d9] transition-all duration-300 ${
-              menuOpen ? "rotate-45 translate-y-[6px]" : ""
+              menuOpen ? "rotate-45 translate-y-" : ""
             }`}
           />
           <span
@@ -106,7 +106,7 @@ export default function Navbar() {
           />
           <span
             className={`h-0.5 w-6 bg-[#e6e3d9] transition-all duration-300 ${
-              menuOpen ? "-rotate-45 -translate-y-[6px]" : ""
+              menuOpen ? "-rotate-45 -translate-y-" : ""
             }`}
           />
         </button>
@@ -114,7 +114,7 @@ export default function Navbar() {
 
       <div
         className={`md:hidden overflow-hidden transition-all duration-500 ${
-          menuOpen ? "max-h-[220px] opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? "max-h-55 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="border-t border-[#e6e3d9]/10 bg-[#0a0a0a] px-6 py-4">
