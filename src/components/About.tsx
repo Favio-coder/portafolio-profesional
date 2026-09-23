@@ -54,7 +54,8 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="relative min-h-screen px-6 py-20 md:px-8">
+    // Se quito el min-h-screen
+    <section id="about" className="relative  px-6 py-10 md:px-8"> 
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden select-none">
         <div className="pixel-font absolute top-20 left-[10%] whitespace-nowrap">

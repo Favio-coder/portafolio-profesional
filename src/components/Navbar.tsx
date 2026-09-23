@@ -24,11 +24,19 @@ export default function Navbar() {
 
   return (
     <header
-      className={`w-full border-b border-[#e6e3d9]/10 bg-[#1a1a1a] text-[#e6e3d9] transition-all duration-300 ${
-        isScrolled ? "border-[#e6e3d9]/20 bg-[#0a0a0a]/95" : ""
+      className={`fixed top-0 left-0 z-50 w-full border-b border-[#e6e3d9]/10 
+    bg-[#1a1a1a]/95 text-[#e6e3d9] backdrop-blur-sm 
+      transition-all duration-300 ${
+        isScrolled
+          ? "border-[#e6e3d9]/20 bg-[#0a0a0a]/95 shadow-[0_4px_20px_rgba(0,0,0,0.25)]"
+          : ""
       }`}
-    >
-      <nav className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-8">
+      >
+      <nav
+        className={`mx-auto flex w-full max-w-7xl items-center justify-between
+          px-6 transition-all duration-300 md:px-8
+          ${isScrolled ? "py-3" : "py-4"}`}
+      >
         {/* Logo */}
         <Link href="/" className="font-mono text-md font-medium tracking-tight">
           {/* <span className="text-[#0ce642]">~</span>{" "} */}
@@ -62,8 +70,6 @@ export default function Navbar() {
             TERMINAL
           </button>
         </div>
-
-
 
         {/* Mobile Menu Button */}
         <button
