@@ -101,12 +101,15 @@ export default function Hero() {
             <span>{isPixel ? "8BIT" : "001"}</span>
           </div>
 
-          {/* Transición de modo */}
-          {transitionText && (
-            <div className="mt-2 font-mono text-[10px] uppercase tracking-widest text-[#0ce642]">
-              {transitionText}
-            </div>
-          )}
+          {/* Transición de modo: el espacio se mantiene reservado para evitar saltos de layout. */}
+          <div
+            className={`mt-2 h-3 font-mono text-[10px] uppercase tracking-widest text-[#0ce642] transition-opacity duration-300 ${
+              transitionText ? "opacity-100" : "opacity-0"
+            }`}
+            aria-live="polite"
+          >
+            {transitionText || "\u00a0"}
+          </div>
 
         </div>
 
@@ -160,7 +163,7 @@ export default function Hero() {
               </div>
 
               <div
-                className={`p-3 transition-opacity duration-300 ${
+                className={`min-h-24 p-3 transition-opacity duration-300 ${
                   terminalRestarting ? "opacity-30" : "opacity-100"
                 }`}
               >
