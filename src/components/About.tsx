@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 
+
 const aboutDescription = `Soy Richard Favio Asturimac Medina, desarrollador full stack e ingeniero de sistemas del IX Ciclo, apasionado por la inteligencia artificial y la computacion en la nube.`;
 
 const additionalInfo = `Especializado en QA, data engineering, cloud computing y desarrollo full stack. Dominio React, Next.js, Vue.js, Spring Boot, Laravel, AWS, Google Cloud y Azure. Actualmente desarrollo Healthtech con Alzhivida y proyectos de IA con aprendizaje no supervisado.`;
@@ -20,7 +21,10 @@ export default function About() {
         const char = chars[indexRef.current];
         indexRef.current += 1;
         setDisplayText((prev) => prev + char);
-        timerRef.current = [...(timerRef.current || []), setTimeout(addChar, 40)];
+        timerRef.current = [
+          ...(timerRef.current || []),
+          setTimeout(addChar, 40),
+        ];
       } else {
         setPhase("complete");
       }
@@ -52,38 +56,48 @@ export default function About() {
   return (
     <section id="about" className="relative min-h-screen px-6 py-20 md:px-8">
       {/* Background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-20 top-20 whitespace-nowrap font-mono text-[180px] font-black uppercase leading-none tracking-tight text-[#e6e3d9]/[0.035]">
-          FAVIO OS&nbsp;&nbsp;&nbsp; FAVIO OS&nbsp;&nbsp;&nbsp; FAVIO OS
+      <div className="pointer-events-none absolute inset-0 overflow-hidden select-none">
+        <div className="pixel-font absolute top-20 left-[10%] whitespace-nowrap">
+          <div className="animate-marquee font-mono text-[140px] font-black uppercase leading-none tracking-tight text-[#21221e]">
+            FAVIO&nbsp;&nbsp;✦&nbsp;&nbsp;FAVIO
+            &nbsp;&nbsp;✦&nbsp;&nbsp;FAVIO&nbsp;&nbsp;✦&nbsp;&nbsp;FAVIO
+            &nbsp;&nbsp;✦
+          </div>
         </div>
 
-        <div className="absolute -left-40 top-80 whitespace-nowrap font-mono text-[180px] font-black uppercase leading-none tracking-tight text-[#e6e3d9]/[0.025]">
-          ASTURIMAC&nbsp;&nbsp;&nbsp; ASTURIMAC&nbsp;&nbsp;&nbsp; ASTURIMAC
+        <div className="pixel-font absolute top-64 left-[30%] whitespace-nowrap">
+          <div className="animate-marquee-reverse font-mono text-[140px] font-black uppercase leading-none tracking-tight text-[#f4f2ea]">
+            ASTURIMAC&nbsp;&nbsp;✦&nbsp;&nbsp;ASTURIMAC&nbsp;&nbsp;✦&nbsp;&nbsp;ASTURIMAC&nbsp;&nbsp;✦&nbsp;&nbsp;ASTURIMAC&nbsp;&nbsp;✦&nbsp;&nbsp;ASTURIMAC&nbsp;&nbsp;✦
+          </div>
         </div>
 
-        <div className="absolute -left-20 top-[600px] whitespace-nowrap font-mono text-[180px] font-black uppercase leading-none tracking-tight text-[#e6e3d9]/[0.035]">
-          FAVIO OS&nbsp;&nbsp;&nbsp; FAVIO OS&nbsp;&nbsp;&nbsp; FAVIO OS
+        <div className="pixel-font not-visited:absolute top-105 left-[10%] whitespace-nowrap">
+          <div className="animate-marquee font-mono text-[140px] font-black uppercase leading-none tracking-tight text-[#21221e]">
+            FAVIO&nbsp;&nbsp;✦&nbsp;&nbsp;FAVIO
+            &nbsp;&nbsp;✦&nbsp;&nbsp;FAVIO&nbsp;&nbsp;✦&nbsp;&nbsp;FAVIO
+            &nbsp;&nbsp;✦
+          </div>
         </div>
       </div>
-      
+
       {/* Contenido sobre mí */}
-      <div className="relative z-10 mx-auto max-w-4xl">
+      <div className="relative z-10 mx-auto max-w-4xl mb-3">
         <div className="mb-12">
           <p className="font-mono text-sm uppercase tracking-widest text-white">
             01 / SOBRE MÍ
           </p>
         </div>
 
-        <div className="overflow-hidden border border-[#e6e3d9]/10 bg-[#0a0a0a]/80 p-6 md:p-8">
+        <div className="overflow-hidden border-4 border-[#e6e3d9]/10 bg-[#24231f] p-6 md:p-8 rounded-sm">
           <div className="mb-6 flex items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-white" />
+            <span className="h-2 w-2 rounded-full bg-white" />
             <span className="font-mono text-xs uppercase tracking-widest text-white">
-              RICHARD FAVIO ASTURIMAC MEDINA / ABOUT
+              RICHARD FAVIO ASTURIMAC MEDINA / SOBRE MÍ
             </span>
           </div>
 
           <div className="mb-6 font-mono text-sm text-[#0ce642]/80">
-            {"$ print(\"Descripcion\")"}
+            {'$ print("Descripcion")'}
           </div>
 
           <div className="min-h-25 font-mono text-lg leading-relaxed text-[#e6e3d9]/70">
@@ -103,7 +117,7 @@ export default function About() {
             <>
               <div className="mt-6 space-y-3">
                 <p className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
-                  {`// additional_information`}
+                  {`// adicional_informacion`}
                 </p>
                 <p className="font-mono text-base leading-relaxed text-[#e6e3d9]/50">
                   {additionalInfo}
