@@ -24,7 +24,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`w-full border-b border-[#e6e3d9]/10 bg-[#0a0a0a] text-[#e6e3d9] transition-all duration-300 ${
+      className={`w-full border-b border-[#e6e3d9]/10 bg-[#1a1a1a] text-[#e6e3d9] transition-all duration-300 ${
         isScrolled ? "border-[#e6e3d9]/20 bg-[#0a0a0a]/95" : ""
       }`}
     >
@@ -32,7 +32,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="font-mono text-md font-medium tracking-tight">
           {/* <span className="text-[#0ce642]">~</span>{" "} */}
-          <span className="text-[#e6e3d9]">FA</span>
+          <span className="text-[#e6e3d9]">Favio Asturimac</span>
         </Link>
 
         {/* Desktop Navigation */}
