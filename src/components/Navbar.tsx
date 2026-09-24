@@ -85,7 +85,16 @@ export default function Navbar() {
         "clear      → Limpiar terminal",
         "",
       ]);
-    } else {
+    } 
+    else if (comando == "whoami") {
+      setTerminalOutput((prev) => [
+        ...prev,
+        `favio@portfolio:~$ ${terminalInput}`,
+        "",
+        "RICHARD FAVIO ASTURIMAC MEDINA"
+      ])
+    }
+    else {
       setTerminalOutput((prev) => [
         ...prev,
         `favio@portfolio:~$ ${terminalInput}`,
@@ -153,12 +162,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setTerminalOpen(true)}
-              className="pixel-font relative rounded-sm border-2 border-[#f4f2ea]
-              bg-[#f4f2ea] px-5 py-1.5 font-mono text-[11px]
-              font-bold uppercase tracking-[0.15em] text-[#0a0a0a]
-              shadow-[0_4px_0_#555] transition-all duration-150
-              hover:bg-white hover:translate-y-px hover:shadow-[0_2px_0_#555]
-              active:translate-y-1 active:shadow-none"
+              className="pixel-font relative rounded-sm border-2 border-[#f4f2ea] bg-[#f4f2ea] px-5 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#0a0a0a] shadow-[0_4px_0_#555] transition-all duration-150 hover:bg-white hover:translate-y-px hover:shadow-[0_2px_0_#555] active:translate-y-1 active:shadow-none"
             >
               TERMINAL
             </button>
@@ -204,9 +208,7 @@ export default function Navbar() {
                 key={item.numero}
                 href={item.href}
                 onClick={handleLinkClick}
-                className="flex items-center gap-3 py-3 font-mono text-[11px]
-                uppercase tracking-widest text-[#e6e3d9]/60
-                transition-colors hover:pl-2 hover:text-[#e6e3d9]"
+                className="flex items-center gap-3 py-3 font-mono text-[11px] uppercase tracking-widest text-[#e6e3d9]/60 transition-colors hover:pl-2 hover:text-[#e6e3d9]"
               >
                 <span className="text-[#e6e3d9]/20">{item.numero}</span>
                 <span className="text-[#e6e3d9]/30">/</span>
@@ -306,13 +308,13 @@ export default function Navbar() {
             <div className="flex-1 overflow-y-auto p-6">
               <div className="font-mono text-sm leading-relaxed">
                 <p className="text-[#e6e3d9]/40">
-                  FAVIO OS — PORTFOLIO TERMINAL
+                  FAVIO ASTURIMAC — PORTFOLIO TERMINAL
                 </p>
 
                 <p className="mt-2 text-[#0ce642]">System online.</p>
 
-                <p className="mt-1 text-[#e6e3d9]/30">
-                  Type "help" to see available commands.
+                <p className="mt-1 text-white">
+                  Type <span className="font-bold">help</span> to see available commands.
                 </p>
 
                 {/* OUTPUT */}
