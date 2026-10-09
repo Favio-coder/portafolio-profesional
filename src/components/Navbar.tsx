@@ -2,14 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion, AnimatePresence } from "motion/react";
+import { Terminal } from "lucide-react";
 
 const navegacion = [
   { numero: "01", label: "SOBRE MÍ", href: "#about" },
-  { numero: "02", label: "PROYECTOS", href: "#projects" },
+  { numero: "02", label: "EXPERIENCIA", href: "#experience" },
+  { numero: "03", label: "PROYECTOS", href: "#projects" },
   { numero: "04", label: "GALERÍA", href: "#gallery" },
   { numero: "05", label: "CONTACTO", href: "#contact" },
 ];
@@ -18,88 +17,130 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
-
-  // Lógica de terminal
   const [terminalInput, setTerminalInput] = useState("");
   const [terminalOutput, setTerminalOutput] = useState<string[]>([]);
 
-  const navRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
-    window.addEventListener("scroll", handleScroll);
-
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    if (navRef.current && isScrolled) {
-      gsap.to(navRef.current, {
-        backgroundColor: "rgba(10,10,10,0.95)",
-        borderColor: "rgba(230,227,217,0.2)",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
-  }, [isScrolled]);
-
-  // Bloquear scroll cuando el terminal está abierto
-  useEffect(() => {
-    if (terminalOpen) {
+    if (terminalOpen || menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-
     return () => {
       document.body.style.overflow = "";
     };
-  }, [terminalOpen]);
+  }, [terminalOpen, menuOpen]);
 
   const handleLinkClick = () => {
     setMenuOpen(false);
   };
 
   const ejecutarComando = () => {
-    const comando = terminalInput.trim().toLocaleLowerCase();
+    const comando = terminalInput.trim().toLowerCase();
 
     if (!comando) return;
 
-    if (comando == "help") {
+    if (comando === "help") {
       setTerminalOutput((prev) => [
         ...prev,
         `favio@portfolio:~$ ${terminalInput}`,
         "",
-        "AVAILABLE COMMANDS",
+        "COMANDOS DISPONIBLES",
         "",
-        "help       → Mostrar comandos disponibles",
+        "help       → Mostrar comandos",
         "about      → Sobre mí",
-        "projects   → Mis proyectos",
-        "stack      → Tecnologías",
+        "experience → Experiencia",
+        "projects   → Proyectos",
         "gallery    → Galería",
         "contact    → Contacto",
-        "whoami     → Información sobre Favio",
+        "whoami     → Info personal",
         "clear      → Limpiar terminal",
         "",
       ]);
-    } 
-    else if (comando == "whoami") {
+    } else if (comando === "whoami") {
       setTerminalOutput((prev) => [
         ...prev,
         `favio@portfolio:~$ ${terminalInput}`,
         "",
-        "RICHARD FAVIO ASTURIMAC MEDINA"
-      ])
-    }
-    else {
+        "RICHARD FAVIO ASTURIMAC MEDINA",
+        "Full Stack Developer",
+        "IX Ciclo - Ingeniería de Sistemas",
+        "Cloud | Data | AI",
+        "",
+      ]);
+    } else if (comando === "about") {
+      setTerminalOutput((prev) => [
+        ...prev,
+        `favio@portfolio:~$ ${terminalInput}`,
+        "",
+        "Navegando a #about...",
+        "",
+      ]);
+      setMenuOpen(false);
+      setTerminalOpen(false);
+      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+    } else if (comando === "experience") {
+      setTerminalOutput((prev) => [
+        ...prev,
+        `favio@portfolio:~$ ${terminalInput}`,
+        "",
+        "Navegando a #experience...",
+        "",
+      ]);
+      setMenuOpen(false);
+      setTerminalOpen(false);
+      document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
+    } else if (comando === "projects") {
+      setTerminalOutput((prev) => [
+        ...prev,
+        `favio@portfolio:~$ ${terminalInput}`,
+        "",
+        "Navegando a #projects...",
+        "",
+      ]);
+      setMenuOpen(false);
+      setTerminalOpen(false);
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    } else if (comando === "gallery") {
+      setTerminalOutput((prev) => [
+        ...prev,
+        `favio@portfolio:~$ ${terminalInput}`,
+        "",
+        "Navegando a #gallery...",
+        "",
+      ]);
+      setMenuOpen(false);
+      setTerminalOpen(false);
+      document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" });
+    } else if (comando === "contact") {
+      setTerminalOutput((prev) => [
+        ...prev,
+        `favio@portfolio:~$ ${terminalInput}`,
+        "",
+        "Navegando a #contact...",
+        "",
+      ]);
+      setMenuOpen(false);
+      setTerminalOpen(false);
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    } else if (comando === "clear") {
+      setTerminalOutput([]);
+    } else {
       setTerminalOutput((prev) => [
         ...prev,
         `favio@portfolio:~$ ${terminalInput}`,
         `command not found: ${comando}`,
-        `Escribe "help" para ver los comandos disponibles.`
+        `Escribe "help" para ver comandos.`,
       ]);
     }
 
@@ -108,36 +149,20 @@ export default function Navbar() {
 
   return (
     <>
-      {/* =========================
-          NAVBAR
-      ========================= */}
-
       <header
         ref={navRef}
-        className={`fixed top-0 left-0 z-50 w-full border-b border-[#e6e3d9]/10
-        bg-[#1a1a1a]/95 text-[#e6e3d9] backdrop-blur-sm
-        transition-all duration-300`}
-        style={{
-          backgroundColor: isScrolled
-            ? "rgba(10,10,10,0.95)"
-            : "rgba(26,26,26,0.95)",
-        }}
+        className={`fixed top-0 left-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur-md transition-all duration-300 ${
+          isScrolled ? "shadow-sm" : ""
+        }`}
       >
-        <nav
-          className={`mx-auto flex w-full max-w-7xl items-center justify-between
-          px-6 transition-all duration-300 md:px-8
-          ${isScrolled ? "py-3" : "py-4"}`}
-        >
-          {/* LOGO */}
-
+        <nav className="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-4 md:px-8 lg:px-12">
           <Link
             href="/"
-            className="font-mono text-md font-medium tracking-tight"
+            className="font-heading font-black text-xl tracking-tight text-[var(--foreground)]"
+            aria-label="Favio Asturimac - Inicio"
           >
-            <span className="text-[#e6e3d9]">Favio Asturimac</span>
+            FAVIO.DEV
           </Link>
-
-          {/* NAVEGACIÓN */}
 
           <div className="hidden items-center gap-8 md:flex">
             {navegacion.map((item) => (
@@ -145,251 +170,223 @@ export default function Navbar() {
                 key={item.numero}
                 href={item.href}
                 onClick={handleLinkClick}
-                className="group relative font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/50 transition-colors hover:text-[#e6e3d9]"
+                className="group relative font-mono text-sm uppercase tracking-widest text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]"
               >
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5">
-                  {item.label}
+                <span className="flex items-center gap-2">
+                  <span className="text-[var(--primary)]">{item.numero}</span>
+                  <span>{item.label}</span>
                 </span>
-
-                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#0ce642] transition-all duration-300 group-hover:w-full" />
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--primary)]"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
               </Link>
             ))}
           </div>
-
-          {/* TERMINAL */}
 
           <div className="hidden items-center gap-4 md:flex">
             <button
               type="button"
               onClick={() => setTerminalOpen(true)}
-              className="pixel-font relative rounded-sm border-2 border-[#f4f2ea] bg-[#f4f2ea] px-5 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#0a0a0a] shadow-[0_4px_0_#555] transition-all duration-150 hover:bg-white hover:translate-y-px hover:shadow-[0_2px_0_#555] active:translate-y-1 active:shadow-none"
+              className="group inline-flex items-center gap-2 px-4 py-2 font-mono text-sm uppercase tracking-wider text-[var(--foreground)] bg-[var(--muted)] border border-[var(--border)] rounded-sm hover:bg-[var(--secondary)] hover:border-[var(--primary)] transition-all"
             >
-              TERMINAL
+              <Terminal className="size-4" aria-hidden="true" />
+              <span>TERMINAL</span>
             </button>
           </div>
 
-          {/* MOBILE MENU */}
-
           <button
-            className="flex flex-col items-center justify-center gap-1.5 md:hidden"
+            className="flex flex-col items-center justify-center gap-4 md:hidden p-2"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={menuOpen}
           >
-            <span
-              className={`h-0.5 w-6 bg-[#e6e3d9] transition-all duration-300 ${
-                menuOpen ? "translate-y-2 rotate-45" : ""
-              }`}
+            <motion.span
+              className="h-0.5 w-7 bg-[var(--foreground)] origin-center"
+              animate={{
+                rotate: menuOpen ? 45 : 0,
+                y: menuOpen ? 5 : 0,
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
             />
-
-            <span
-              className={`h-0.5 w-6 bg-[#e6e3d9] transition-all duration-300 ${
-                menuOpen ? "opacity-0" : ""
-              }`}
+            <motion.span
+              className="h-0.5 w-7 bg-[var(--foreground)] origin-center"
+              animate={{
+                opacity: menuOpen ? 0 : 1,
+                rotate: menuOpen ? -45 : 0,
+                y: menuOpen ? -5 : 0,
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
             />
-
-            <span
-              className={`h-0.5 w-6 bg-[#e6e3d9] transition-all duration-300 ${
-                menuOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
+            <motion.span
+              className="h-0.5 w-7 bg-[var(--foreground)] origin-center"
+              animate={{
+                rotate: menuOpen ? -45 : 0,
+                y: menuOpen ? -5 : 0,
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
             />
           </button>
         </nav>
 
-        {/* MOBILE NAV */}
-
-        <div
-          className={`overflow-hidden transition-all duration-500 md:hidden ${
-            menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="border-t border-[#e6e3d9]/10 bg-[#0a0a0a] px-6 py-4">
-            {navegacion.map((item) => (
-              <Link
-                key={item.numero}
-                href={item.href}
-                onClick={handleLinkClick}
-                className="flex items-center gap-3 py-3 font-mono text-[11px] uppercase tracking-widest text-[#e6e3d9]/60 transition-colors hover:pl-2 hover:text-[#e6e3d9]"
-              >
-                <span className="text-[#e6e3d9]/20">{item.numero}</span>
-                <span className="text-[#e6e3d9]/30">/</span>
-                <span>{item.label}</span>
-              </Link>
-            ))}
-
-            <div className="mt-4 flex items-center gap-3 border-t border-[#e6e3d9]/10 pt-4">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#0ce642]" />
-
-              <span className="font-mono text-[9px] uppercase tracking-wider text-[#e6e3d9]/40">
-                SYSTEM ONLINE
-              </span>
-            </div>
-          </div>
-        </div>
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden border-t border-[var(--border)] bg-[var(--background)] px-6 py-4 md:hidden"
+            >
+              <div className="space-y-1">
+                {navegacion.map((item) => (
+                  <Link
+                    key={item.numero}
+                    href={item.href}
+                    onClick={handleLinkClick}
+                    className="flex items-center gap-3 py-3 font-mono text-sm uppercase tracking-widest text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                  >
+                    <span className="text-[var(--primary)]">{item.numero}</span>
+                    <span className="text-[var(--border)]">/</span>
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-4 pt-4 border-t border-[var(--border)] flex items-center gap-3">
+                <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
+                <span className="font-mono text-xs uppercase tracking-wider text-[var(--muted-foreground)]">
+                  SYSTEM ONLINE
+                </span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
-      {/* =========================
-          TERMINAL OVERLAY
-      ========================= */}
-
-      {terminalOpen && (
-        <div
-          className="fixed inset-0 z-100 flex items-center justify-center
-          bg-black/80 px-4 backdrop-blur-sm"
-          onClick={() => setTerminalOpen(false)}
-        >
-          {/* =========================
-              TERMINAL WINDOW
-          ========================= */}
-
-          <div
-            className="relative flex h-[70vh] w-full max-w-4xl flex-col
-            overflow-hidden border border-[#e6e3d9]/15
-            bg-[#0c0c0c] shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {terminalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-100 flex items-center justify-center bg-[var(--background)]/90 backdrop-blur-sm px-4"
+            onClick={() => setTerminalOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Terminal FAVIO.DEV"
           >
-            {/* TERMINAL HEADER */}
-
-            <div
-              className="flex h-11 shrink-0 items-center
-              border-b border-[#e6e3d9]/10 bg-[#151515] px-4"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative flex h-[75vh] w-full max-w-4xl flex-col overflow-hidden border border-[var(--border)] bg-[var(--card)] shadow-2xl"
             >
-              {/* MAC / LINUX BUTTONS */}
-
-              <div className="flex items-center gap-2">
-                {/* CERRAR */}
-
-                <button
-                  type="button"
-                  onClick={() => setTerminalOpen(false)}
-                  aria-label="Cerrar terminal"
-                  className="group flex h-3 w-3 items-center justify-center
-                  rounded-full bg-[#ff5f57]"
-                >
-                  <span className="text-[8px] leading-none text-black opacity-0 group-hover:opacity-70">
-                    ×
+              <div className="flex h-11 shrink-0 items-center justify-between border-b border-[var(--border)] bg-[var(--muted)] px-4">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setTerminalOpen(false)}
+                    aria-label="Cerrar terminal"
+                    className="group flex h-3 w-3 items-center justify-center rounded-full bg-red-500/80 hover:bg-red-500 transition-colors"
+                  >
+                    <span className="text-[8px] leading-none text-white/0 group-hover:text-white/70">×</span>
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Minimizar terminal"
+                    className="group flex h-3 w-3 items-center justify-center rounded-full bg-amber-500/80 hover:bg-amber-500 transition-colors"
+                  >
+                    <span className="h-px w-1.5 bg-white/0 group-hover:bg-white/70" />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Maximizar terminal"
+                    className="group flex h-3 w-3 items-center justify-center rounded-full bg-green-500/80 hover:bg-green-500 transition-colors"
+                  >
+                    <span className="text-[7px] leading-none text-white/0 group-hover:text-white/70">+</span>
+                  </button>
+                </div>
+                <div className="pointer-events-none absolute left-1/2 -translate-x-1/2">
+                  <span className="font-mono text-[0.625rem] uppercase tracking-widest text-[var(--muted-foreground)]">
+                    FAVIO TERMINAL v0.1
                   </span>
-                </button>
-
-                {/* MINIMIZAR */}
-
-                <button
-                  type="button"
-                  aria-label="Minimizar terminal"
-                  className="group flex h-3 w-3 items-center justify-center
-                  rounded-full bg-[#febc2e]"
-                >
-                  <span className="h-px w-1.5 bg-black opacity-0 group-hover:opacity-70" />
-                </button>
-
-                {/* AGRANDAR */}
-
-                <button
-                  type="button"
-                  aria-label="Agrandar terminal"
-                  className="group flex h-3 w-3 items-center justify-center
-                  rounded-full bg-[#28c840]"
-                >
-                  <span className="text-[7px] leading-none text-black opacity-0 group-hover:opacity-70">
-                    +
-                  </span>
-                </button>
+                </div>
+                <div className="w-12" />
               </div>
 
-              {/* TITLE */}
+              <div className="flex-1 overflow-y-auto p-6">
+                <div className="font-mono text-sm leading-relaxed">
+                  <p className="text-[var(--muted-foreground)]">
+                    FAVIO ASTURIMAC — PORTFOLIO TERMINAL
+                  </p>
+                  <p className="mt-2 text-[var(--primary)]">System online.</p>
+                  <p className="mt-1 text-[var(--foreground)]">
+                    Type <span className="font-bold">help</span> to see available commands.
+                  </p>
 
-              <div className="pointer-events-none absolute left-1/2 -translate-x-1/2">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/35">
-                  FAVIO TERMINAL
-                </span>
-              </div>
-            </div>
-
-            {/* TERMINAL BODY */}
-            <div className="flex-1 overflow-y-auto p-6">
-              <div className="font-mono text-sm leading-relaxed">
-                <p className="text-[#e6e3d9]/40">
-                  FAVIO ASTURIMAC — PORTFOLIO TERMINAL
-                </p>
-
-                <p className="mt-2 text-[#0ce642]">System online.</p>
-
-                <p className="mt-1 text-white">
-                  Type <span className="font-bold">help</span> to see available commands.
-                </p>
-
-                {/* OUTPUT */}
-
-                <div className="mt-6 whitespace-pre-wrap">
-                  {terminalOutput.map((line, index) => (
-                    <div
-                      key={index}
-                      className={
-                        line.includes("AVAILABLE COMMANDS")
-                          ? "text-[#0ce642]"
-                          : line.includes("command not found")
+                  <div className="mt-6 whitespace-pre-wrap font-mono text-sm">
+                    {terminalOutput.map((line, index) => (
+                      <div
+                        key={index}
+                        className={
+                          line.includes("COMANDOS DISPONIBLES")
+                            ? "text-[var(--primary)]"
+                            : line.includes("command not found")
                             ? "text-red-400"
-                            : "text-[#e6e3d9]/70"
-                      }
-                    >
-                      {line || "\u00A0"}
-                    </div>
-                  ))}
-                </div>
+                            : "text-[var(--muted-foreground)]"
+                        }
+                      >
+                        {line || "\u00A0"}
+                      </div>
+                    ))}
+                  </div>
 
-                {/* INPUT */}
-
-                <div className="mt-2 flex items-center">
-                  <span className="shrink-0">
-                    <span className="text-[#0ce642]">favio@portfolio</span>
-
-                    <span className="text-[#e6e3d9]/30">:</span>
-
-                    <span className="text-[#4da6ff]">~</span>
-
-                    <span className="text-[#e6e3d9]/50">$</span>
-                  </span>
-
-                  <input
-                    autoFocus
-                    type="text"
-                    value={terminalInput}
-                    onChange={(e) => setTerminalInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        ejecutarComando();
-                      }
-                    }}
-                    className="ml-2 w-full bg-transparent text-[#e6e3d9]
-        outline-none caret-[#0ce642]"
-                    spellCheck={false}
-                    autoComplete="off"
-                  />
+                  <div className="mt-4 flex items-center">
+                    <span className="shrink-0 font-mono text-sm">
+                      <span className="text-[var(--primary)]">favio@portfolio</span>
+                      <span className="text-[var(--muted-foreground)]">:</span>
+                      <span className="text-sky-500">~</span>
+                      <span className="text-[var(--muted-foreground)]">$</span>
+                    </span>
+                    <input
+                      autoFocus
+                      type="text"
+                      value={terminalInput}
+                      onChange={(e) => setTerminalInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          ejecutarComando();
+                        }
+                      }}
+                      className="ml-3 w-full bg-transparent text-[var(--foreground)] outline-none caret-[var(--primary)] font-mono text-sm"
+                      spellCheck={false}
+                      autoComplete="off"
+                      placeholder="Escribe un comando..."
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* STATUS BAR */}
-
-            <div
-              className="flex h-7 shrink-0 items-center justify-between
-              border-t border-[#e6e3d9]/10 bg-[#111]
-              px-4"
-            >
-              <span className="font-mono text-[9px] uppercase tracking-widest text-[#e6e3d9]/25">
-                TERMINAL
-              </span>
-
-              <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#0ce642]" />
-
-                <span className="font-mono text-[9px] uppercase tracking-widest text-[#e6e3d9]/25">
-                  ONLINE - v0.1
+              <div className="flex h-8 shrink-0 items-center justify-between border-t border-[var(--border)] bg-[var(--muted)] px-4">
+                <span className="font-mono text-[0.625rem] uppercase tracking-widest text-[var(--muted-foreground)]">
+                  TERMINAL
                 </span>
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
+                  <span className="font-mono text-[0.625rem] uppercase tracking-widest text-[var(--muted-foreground)]">
+                    ONLINE
+                  </span>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

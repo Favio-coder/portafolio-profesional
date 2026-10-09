@@ -2,32 +2,25 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Marquee from "@/components/Marquee";
+import { motion } from "motion/react";
+import Link from "next/link";
+import { ArrowRight, Download } from "lucide-react";
 
 export default function Hero() {
-  const roles = [
-      "full_stack_developer",
-      "cloud_developer",
-      "backend_developer",
-      "data_engineering"
-  ]
-  
-  const [roleIndex, setRoleIndex] = useState(0)
-  const [terminalRestarting, setTerminalRestarting] = useState(false)
-  
   const [isPixel, setIsPixel] = useState(false);
   const [transitionText, setTransitionText] = useState("");
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIsPixel((current) => !current);
-    }, 5000);
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setTransitionText(isPixel ? "PIXEL_MODE: ON" : "RESTORING_IMAGE...");
+      setTransitionText(isPixel ? "SWITCHING_RENDER_MODE..." : "RESTORING_IMAGE...");
       const cleanup = setTimeout(() => setTransitionText(""), 1500);
       return () => clearTimeout(cleanup);
     }, 50);
@@ -35,186 +28,202 @@ export default function Hero() {
   }, [isPixel]);
 
   useEffect(() => {
-    const interval = setInterval(() =>{
-      setTerminalRestarting(true)
-      setTimeout(() => {
-        setRoleIndex((i) => (i + 1) % roles.length)
-        setTerminalRestarting(false)
-      }, 1000)
-    }, 5000)
-    return () => {
-      clearInterval(interval);
-    }
-  }, [roles.length])
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <section className="relative min-h-screen px-6 pb-16 pt-10">
-      {/* Top marquee decorative */}
-      <div className="mb-8 overflow-hidden">
-        <Marquee speed="slow">
-          <span className="font-mono text-sm uppercase tracking-[0.3em] text-[#e6e3d9]/10 mx-6">
-            FAVIO ASTURIMAC
-          </span>
-          <span className="text-[#0ce642]/30 mx-2">✦</span>
-          <span className="font-mono text-sm uppercase tracking-[0.3em] text-[#e6e3d9]/10 mx-6">
-            FULL STACK DEVELOPER
-          </span>
-          <span className="text-[#0ce642]/30 mx-2">✦</span>
-          <span className="font-mono text-sm uppercase tracking-[0.3em] text-[#e6e3d9]/10 mx-6">
-            AI / CLOUD / DATA
-          </span>
-          <span className="text-[#0ce642]/30 mx-2">✦</span>
-        </Marquee>
-      </div>
-
-      <div className="mx-auto grid min-h-[calc(100vh-8rem)] max-w-7xl items-center gap-16 md:grid-cols-[0.8fr_1.2fr]">
-
-        {/* FOTO */}
-        <div className="order-2 md:order-1">
-          <div className="relative aspect-4/5 w-full max-w-sm overflow-hidden border border-[#e6e3d9]/10">
-            <Image
-              src="/assets/images/FavioAsturimac.png"
-              alt="Favio Asturimac"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 400px"
-              className={`object-cover transition-all duration-700 ${
-                isPixel ? "scale-105 opacity-0" : "scale-100 opacity-100"
-              }`}
-            />
-            <Image
-              src="/assets/images/PixelFavio.png"
-              alt="Favio Asturimac pixel art"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 400px"
-              className={`object-cover transition-all duration-700 ${
-                isPixel ? "scale-100 opacity-100" : "scale-95 opacity-0"
-              }`}
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
-            <div className="absolute bottom-4 left-4 font-mono text-[10px] uppercase tracking-widest text-white/60">
-              IMG_001 / FAVIO
-            </div>
+    <section className="relative min-h-screen px-6 pt-20 pb-16 md:px-8 lg:px-12">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="mb-12 flex items-center justify-between">
+          <div className="font-mono text-sm uppercase tracking-widest text-[var(--muted-foreground)]">
+            <span className="text-[var(--primary)]">FAVIO.DEV</span>
+            <span className="mx-2">/</span>
+            <span>HOME</span>
           </div>
-
-          <div className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/30">
-            <span>{isPixel ? "PIXEL_MODE" : "PORTRAIT"}</span>
-            <span>{isPixel ? "8BIT" : "001"}</span>
-          </div>
-
-          <div
-            className={`mt-2 h-3 font-mono text-[10px] uppercase tracking-widest text-[#0ce642] transition-opacity duration-300 ${
-              transitionText ? "opacity-100" : "opacity-0"
-            }`}
-            aria-live="polite"
-          >
-            {transitionText || "\u00a0"}
+          <div className="flex items-center gap-4 font-mono text-sm">
+            <span className="relative flex h-2 w-2 items-center">
+              <span className={`absolute h-2 w-2 rounded-full bg-[var(--primary)] ${hasScrolled ? "animate-pulse" : ""}`} />
+            </span>
+            <span className="text-[var(--muted-foreground)] uppercase tracking-wider">
+              {hasScrolled ? "SCROLLING" : "READY"}
+            </span>
           </div>
         </div>
 
-        {/* TEXTO */}
-        <div className="order-1 md:order-2">
-          <div className="mb-8 flex items-center gap-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#0ce642]" />
-            <span>System initialized</span>
-            <span className="text-[#e6e3d9]/20">{`//`}</span>
-            <span>v1.0.0</span>
+        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] items-start">
+          <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-6"
+            >
+              <div className="flex items-center gap-3">
+                <span className="terminal-prompt">$</span>
+                <span className="text-[var(--muted-foreground)]">whoami</span>
+              </div>
+
+              <motion.h1
+                className="font-heading font-black uppercase tracking-tight text-[var(--foreground)] leading-[0.95]"
+                style={{
+                  fontSize: "clamp(3.5rem, 10vw, 8.5rem)",
+                  lineHeight: "clamp(3.5rem, 10vw, 8.5rem)",
+                }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <span className="block">FAVIO</span>
+                <span className="block text-[var(--muted-foreground)]">ASTURIMAC</span>
+              </motion.h1>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-wrap items-center gap-3 text-sm font-mono uppercase tracking-wider"
+              >
+                <span className="badge badge-primary">FULL STACK</span>
+                <span className="badge badge-accent">CLOUD</span>
+                <span className="badge">DATA ENG</span>
+                <span className="badge">AI / ML</span>
+              </motion.div>
+
+              <motion.p
+                className="max-w-md text-base leading-relaxed text-[var(--muted-foreground)]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Desarrollo soluciones digitales integrando software, cloud, datos e inteligencia artificial.
+                Enfoque en productos funcionales, escalables y orientados a resolver problemas reales.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-wrap gap-4"
+              >
+                <Link
+                  href="#projects"
+                  className="group inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider text-[var(--accent-foreground)] bg-[var(--accent)] rounded-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(255,99,62,0.4)] hover:-translate-y-0.5"
+                >
+                  Ver Proyectos
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                </Link>
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider text-[var(--foreground)] border border-[var(--border)] rounded-sm hover:bg-[var(--muted)] transition-all duration-300"
+                >
+                  <Download className="size-4" aria-hidden="true" />
+                  Contacto
+                </Link>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center gap-4 font-mono text-xs uppercase tracking-wider text-[var(--muted-foreground)]"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute h-1.5 w-1.5 rounded-full bg-[var(--primary)] animate-pulse" />
+                  </span>
+                  <span>DISPONIBLE PARA PROYECTOS</span>
+                </div>
+                <div className="hidden md:flex items-center gap-1 px-3 py-1 bg-[var(--muted)] rounded-full">
+                  <span className="text-[var(--primary)]">●</span>
+                  <span>ONLINE</span>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
 
-          <p className="font-mono text-sm tracking-widest text-[#e6e3d9]/40">
-            00 / INTRO
-          </p>
-
-          <h1 className="mt-6 text-6xl font-medium leading-[0.9] tracking-tighter text-[#e6e3d9] sm:text-7xl md:text-8xl lg:text-[9rem]">
-            Favio<br />
-            <span className="text-[#e6e3d9]/30">Asturimac</span>
-          </h1>
-
-          <div className="mt-8 border-l border-[#e6e3d9]/20 pl-4">
-            <p className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
-              Full Stack Developer
-            </p>
-            <p className="mt-3 max-w-lg text-base leading-relaxed text-[#e6e3d9]/60 md:text-lg">
-                Desarrollo soluciones digitales integrando software, cloud, datos e inteligencia artificial, con enfoque en crear productos funcionales, escalables y orientados a resolver problemas reales.
-            </p>
-          </div>
-
-          <div>
-            <div className="mt-10 max-w-lg border border-[#e6e3d9]/10 bg-[#e6e3d9]/2 font-mono text-sm leading-6 text-white">
-              <div className="flex items-center border-b gap-1.5 p-2">
-                <span className="h-3 w-3 rounded-full bg-red-500"></span>
-                <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
-                <span className="h-3 w-3 rounded-full bg-green-500"></span>
-                <span className="text-xs text-gray-300">
-                  favio-terminal
-                </span>
+          <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="relative max-w-md mx-auto lg:mx-0"
+              style={{ aspectRatio: "3/4" }}
+            >
+              <div className="relative w-full h-full overflow-hidden border border-[var(--border)] bg-[var(--muted)]">
+                <Image
+                  src="/assets/images/FavioAsturimac.png"
+                  alt="Favio Asturimac - Full Stack Developer"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                  className={`object-cover transition-all duration-1000 ease-out ${
+                    isPixel ? "scale-105 opacity-0" : "scale-100 opacity-100"
+                  }`}
+                />
+                <Image
+                  src="/assets/images/PixelFavio.png"
+                  alt="Favio Asturimac - Pixel Art Version"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                  className={`object-cover transition-all duration-1000 ease-out ${
+                    isPixel ? "scale-100 opacity-100" : "scale-95 opacity-0"
+                  }`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)]/60 via-transparent to-transparent pointer-events-none" />
+                
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <div className="font-mono text-[0.625rem] uppercase tracking-widest text-[var(--foreground)]/60">
+                    IMG_001 / FAVIO_ASTURIMAC
+                  </div>
+                  <div className="font-mono text-[0.625rem] uppercase tracking-widest text-[var(--primary)]">
+                    {isPixel ? "PIXEL_MODE" : "PORTRAIT_MODE"}
+                  </div>
+                </div>
               </div>
 
               <div
-                className={`min-h-24 p-3 transition-opacity duration-300 ${
-                  terminalRestarting ? "opacity-30" : "opacity-100"
+                className={`absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-2 font-mono text-[0.625rem] uppercase tracking-widest text-[var(--primary)] transition-all duration-500 ${
+                  transitionText ? "opacity-100" : "opacity-0"
                 }`}
+                aria-live="polite"
+                aria-atomic="true"
               >
-                {terminalRestarting ? (
-                  <p className="text-[#0ce642]/80 animate-pulse">
-                    $ restarting_terminal...
-                  </p>
-                ) : (
+                {transitionText || (
                   <>
-                    <p>
-                      <span className="text-[#0ce642]/80">$</span> whoami
-                    </p>
-                    <p className="text-[#e6e3d9]/60">
-                      → {roles[roleIndex]}
-                    </p>
-                    <p>
-                      <span className="text-[#0ce642]/80">$</span> status
-                    </p>
-                    <p className="text-[#e6e3d9]/60">
-                      → disponible_para_proyectos_
-                    </p>
+                    <span className="inline-block animate-pulse">PROCESSING_IMAGE...</span>
                   </>
                 )}
               </div>
-            </div>
-          </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#projects"
-              className="group inline-flex items-center gap-4 border border-[#e6e3d9]/30 px-5 py-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9] transition-all duration-300 hover:bg-[#e6e3d9] hover:text-black"
-            >
-              Proyectos
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center border border-transparent px-5 py-3 font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40 transition-colors hover:text-[#e6e3d9]"
-            >
-              Contactame
-            </a>
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-6 font-mono text-[0.625rem] uppercase tracking-widest text-[var(--muted-foreground)]">
+                <span>{isPixel ? "8BIT_RENDER" : "HIGH_RES"}</span>
+                <span className="text-[var(--border)]">|</span>
+                <span>FRAME_{isPixel ? "001" : "002"}</span>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom decorative marquee */}
-      {/* <div className="mt-16 overflow-hidden">
-        <Marquee direction="right" speed="slow">
-          <span className="font-mono text-sm uppercase tracking-[0.3em] text-[#e6e3d9]/10 mx-6">
-            RETRO · TERMINAL · TECH
-          </span>
-          <span className="text-[#0ce642]/30 mx-2">✦</span>
-          <span className="font-mono text-sm uppercase tracking-[0.3em] text-[#e6e3d9]/10 mx-6">
-            FAVIO.DEV
-          </span>
-          <span className="text-[#0ce642]/30 mx-2">✦</span>
-          <span className="font-mono text-sm uppercase tracking-[0.3em] text-[#e6e3d9]/10 mx-6">
-            PERU · 2026
-          </span>
-          <span className="text-[#0ce642]/30 mx-2">✦</span>
-        </Marquee>
-      </div> */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 font-mono text-[0.625rem] uppercase tracking-widest text-[var(--muted-foreground)]"
+        >
+          <span>SCROLL TO EXPLORE</span>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-px h-6 bg-[var(--muted-foreground)]"
+            aria-hidden="true"
+          />
+        </motion.div>
+      </div>
     </section>
   );
 }
