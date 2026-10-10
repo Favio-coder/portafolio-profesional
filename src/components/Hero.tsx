@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Download } from "lucide-react";
+import { scrollToSection } from "@/lib/section-navigation";
 
 export default function Hero() {
   const [isPixel, setIsPixel] = useState(false);
@@ -112,7 +113,7 @@ export default function Hero() {
               >
                 <button
                   type="button"
-                  onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onClick={() => scrollToSection("projects")}
                   className="group inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider text-accent-foreground bg-accent rounded-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(255,99,62,0.4)] hover:-translate-y-0.5"
                 >
                   Ver Proyectos
@@ -120,7 +121,7 @@ export default function Hero() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  onClick={() => scrollToSection("contact")}
                   className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider text-foreground border border-border rounded-sm hover:bg-muted transition-all duration-300"
                 >
                   <Download className="size-4" aria-hidden="true" />
