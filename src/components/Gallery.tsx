@@ -18,22 +18,27 @@ export default function Gallery() {
   const move = (direction: number) => setSelected((current) => current === null ? null : (current + direction + visible.length) % visible.length);
 
   return (
-    <section id="gallery" className="relative px-6 py-20 md:px-8 lg:px-12">
+    <section id="gallery" className="gallery-section relative px-4 py-10 sm:px-6 md:py-14 lg:px-12">
       <div className="mx-auto max-w-350">
         <SectionHeading number="04" title="GALERÍA" subtitle="Colección visual — trabajo, vida, experimentos" />
-        <SectionDivider className="my-12" label="LS_GALLERY" thick />
-        <div className="mb-10 flex flex-wrap gap-2" role="group" aria-label="Filtrar galería">
-          {categories.map((value) => <button key={value} type="button" aria-pressed={category === value} onClick={() => setCategory(value)} className={`px-4 py-2 font-mono text-xs ${category === value ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground hover:text-foreground"}`}>{value}</button>)}
+        <SectionDivider className="my-6 md:my-8" label="LS_GALLERY" thick />
+        <div className="mb-4 flex flex-wrap gap-2" role="group" aria-label="Filtrar galería">
+          {categories.map((value) => <button key={value} type="button" aria-pressed={category === value} onClick={() => setCategory(value)} className={`px-3 py-1.5 font-mono text-[0.65rem] sm:px-4 sm:py-2 sm:text-xs ${category === value ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground hover:text-foreground"}`}>{value}</button>)}
         </div>
         <div className="gallery-grid">
           {visible.map((photo, index) => (
-            <button key={photo.id} type="button" className="gallery-file group" aria-label={`Ampliar ${photo.title}`}
-              onClick={(event) => { opener.current = event.currentTarget; setSelected(index); }}>
-              <span className="flex justify-between gap-3 p-3 font-mono text-xs"><span>{photo.id.toUpperCase()}</span><span aria-hidden="true">↗ OPEN</span></span>
-              <span className="gallery-image">
-                <Image src={photo.image} alt={photo.title} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" className="object-contain transition-transform duration-300 motion-safe:group-hover:scale-[1.02]" />
+            <button
+              key={photo.id}
+              type="button"
+              className="gallery-file group"
+              aria-label={`Ampliar ${photo.title}`}
+              onClick={(event) => { opener.current = event.currentTarget; setSelected(index); }}
+            >
+              <span className="flex justify-between gap-2 px-2 py-2 font-mono text-[0.6rem] sm:gap-3 sm:p-3 sm:text-xs"><span>{photo.id.toUpperCase()}</span><span aria-hidden="true">↗ OPEN</span></span>
+              <span className="gallery-image" style={{ aspectRatio: `${photo.width} / ${photo.height}` }}>
+                <Image src={photo.image} alt={photo.title} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 46vw" className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.02]" />
               </span>
-              <span className="flex flex-wrap justify-between gap-2 p-3 text-left text-xs text-muted-foreground"><span>{photo.title}</span><span>{photo.category} / {photo.year}</span></span>
+              <span className="flex flex-wrap justify-between gap-1 px-2 py-2 text-left text-[0.6rem] text-muted-foreground sm:gap-2 sm:p-3 sm:text-xs"><span>{photo.title}</span><span>{photo.category} / {photo.year}</span></span>
             </button>
           ))}
         </div>

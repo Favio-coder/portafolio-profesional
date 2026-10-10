@@ -68,6 +68,8 @@ export default function Tracks({
           const words = text.split(" ").filter(Boolean);
           const duplicatedWords = [...words, ...words];
 
+          const animationClass = direction === "left" ? "animate-marquee" : "animate-marquee-reverse";
+
           return (
             <div
               key={bandIndex}
@@ -80,11 +82,9 @@ export default function Tracks({
               }}
             >
               <div
-                className="flex whitespace-nowrap will-change-transform items-center gap-6"
+                className={`flex whitespace-nowrap will-change-transform items-center gap-6 ${isVisible ? animationClass : ""}`}
                 style={{
-                  animation: isVisible
-                    ? `${direction === "left" ? "tracks-marquee" : "tracks-marquee-reverse"} ${speed}s linear infinite`
-                    : "none",
+                  animationDuration: `${speed}s`,
                 }}
               >
                 {duplicatedWords.map((word, i) => (
@@ -98,16 +98,6 @@ export default function Tracks({
           );
         })}
       </div>
-      <style jsx global>{`
-        @keyframes tracks-marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        @keyframes tracks-marquee-reverse {
-          from { transform: translateX(-50%); }
-          to { transform: translateX(0); }
-        }
-      `}</style>
     </div>
   );
 }
