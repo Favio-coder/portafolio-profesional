@@ -55,9 +55,6 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="es" className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){var theme;try{theme=localStorage.getItem("favio-theme")}catch(e){}document.documentElement.classList.toggle("dark",theme==="dark"||(theme!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches))})();` }} />
-      </head>
       <body className="min-h-full flex flex-col antialiased">
         <MotionProvider>
           <Navbar />

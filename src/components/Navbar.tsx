@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import ThemeToggle from "@/components/ThemeToggle";
-import { Terminal } from "lucide-react";
+import { Terminal, Menu, X } from "lucide-react";
 
 const navegacion = [
   { numero: "01", label: "SOBRE MÍ", id: "about" },
@@ -214,7 +213,6 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <ThemeToggle />
             <button
               type="button"
               onClick={() => setTerminalOpen(true)}
@@ -223,40 +221,21 @@ export default function Navbar() {
               <Terminal className="size-4" aria-hidden="true" />
               <span>TERMINAL</span>
             </button>
-          </div>
 
-          <button
-            className="flex flex-col items-center justify-center gap-4 xl:hidden p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-            aria-expanded={menuOpen}
-          >
-            <motion.span
-              className="h-0.5 w-7 bg-foreground origin-center"
-              animate={{
-                rotate: menuOpen ? 45 : 0,
-                y: menuOpen ? 5 : 0,
-              }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            />
-            <motion.span
-              className="h-0.5 w-7 bg-foreground origin-center"
-              animate={{
-                opacity: menuOpen ? 0 : 1,
-                rotate: menuOpen ? -45 : 0,
-                y: menuOpen ? -5 : 0,
-              }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            />
-            <motion.span
-              className="h-0.5 w-7 bg-foreground origin-center"
-              animate={{
-                rotate: menuOpen ? -45 : 0,
-                y: menuOpen ? -5 : 0,
-              }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            />
-          </button>
+            <button
+              type="button"
+              className="xl:hidden p-2"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? (
+                <X className="size-6 text-foreground" aria-hidden="true" />
+              ) : (
+                <Menu className="size-6 text-foreground" aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </nav>
 
         <AnimatePresence>
@@ -281,6 +260,15 @@ export default function Navbar() {
                     <span>{item.label}</span>
                   </a>
                 ))}
+                <button
+                  type="button"
+                  onClick={() => { setMenuOpen(false); setTerminalOpen(true); }}
+                  className="w-full flex items-center gap-3 py-3 font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <span className="text-primary-ink">06</span>
+                  <span className="text-border">/</span>
+                  <span>TERMINAL</span>
+                </button>
               </div>
               <div className="mt-4 pt-4 border-t border-border flex items-center gap-3">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
