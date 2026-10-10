@@ -61,7 +61,7 @@ const hackathons = [
 export default function Experience() {
   return (
     <section id="experience" className="relative px-6 py-20 md:px-8 lg:px-12">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-350">
         <SectionHeading
           number="02"
           title="EXPERIENCIA"
@@ -80,27 +80,27 @@ export default function Experience() {
               transition={{ duration: 0.6, delay: expIndex * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
-              <div className="absolute left-8 top-0 bottom-0 w-px bg-[var(--border)] lg:left-[200px]" />
+              <div className="absolute left-8 top-0 bottom-0 w-px bg-border lg:left-[200px]" />
               
               <div className="relative pl-20 lg:pl-[220px]">
-                <div className="absolute left-8 top-1 w-4 h-4 rounded-full bg-[var(--primary)] border-4 border-[var(--background)] lg:left-[200px] -translate-x-1/2" aria-hidden="true" />
+                <div className="absolute left-8 top-1 w-4 h-4 rounded-full bg-primary border-4 border-background lg:left-[200px] -translate-x-1/2" aria-hidden="true" />
                 
                 <div className="mb-2 flex items-center gap-3 font-mono text-xs uppercase tracking-wider">
                   <span className="badge badge-primary">{exp.type}</span>
-                  <span className="text-[var(--muted-foreground)]">{exp.period}</span>
-                  <span className="text-[var(--border)]">·</span>
-                  <span className="text-[var(--muted-foreground)]">{exp.location}</span>
+                  <span className="text-muted-foreground">{exp.period}</span>
+                  <span className="text-border">·</span>
+                  <span className="text-muted-foreground">{exp.location}</span>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-heading text-2xl font-semibold text-[var(--foreground)]">
+                    <h3 className="font-heading text-2xl font-semibold text-foreground">
                       {exp.role}
                     </h3>
-                    <p className="mt-1 font-medium text-[var(--accent)]">{exp.company}</p>
+                    <p className="mt-1 font-medium text-accent-ink">{exp.company}</p>
                   </div>
 
-                  <p className="text-[var(--muted-foreground)] leading-relaxed max-w-2xl">
+                  <p className="text-muted-foreground leading-relaxed max-w-2xl">
                     {exp.description}
                   </p>
 
@@ -113,12 +113,12 @@ export default function Experience() {
                   </div>
 
                   <div className="space-y-2">
-                    <h4 className="font-mono text-xs uppercase tracking-widest text-[var(--muted-foreground)]">
+                    <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                       LOGROS DESTACADOS
                     </h4>
                     <ul className="space-y-1.5 pl-4">
                       {exp.achievements.map((achievement, i) => (
-                        <li key={i} className="relative flex items-start gap-2 text-sm text-[var(--muted-foreground)] before:content-['→'] before:text-[var(--primary)] before:font-mono before:text-xs">
+                        <li key={i} className="relative flex items-start gap-2 text-sm text-muted-foreground before:content-['→'] before:text-primary-ink before:font-mono before:text-xs">
                           {achievement}
                         </li>
                       ))}
@@ -139,14 +139,14 @@ export default function Experience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="p-5 border border-[var(--border)] bg-[var(--card)] transition-all hover:border-[var(--accent)] hover:shadow-lg"
+                className="p-5 border border-border bg-card transition-all hover:border-accent hover:shadow-lg"
               >
                 <div className="flex items-center justify-between mb-3">
                   <span className="badge badge-accent">{hack.year}</span>
                   <span className="badge badge-primary">{hack.position}</span>
                 </div>
-                <h4 className="font-medium text-[var(--foreground)] mb-1">{hack.name}</h4>
-                <p className="font-mono text-xs text-[var(--muted-foreground)]">{hack.focus}</p>
+                <h4 className="font-medium text-foreground mb-1">{hack.name}</h4>
+                <p className="font-mono text-xs text-muted-foreground">{hack.focus}</p>
               </motion.div>
             ))}
           </div>

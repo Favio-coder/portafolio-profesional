@@ -46,8 +46,8 @@ export default function TerminalLabel({
   animated = false,
 }: TerminalLabelProps) {
   const variantColors = {
-    default: "text-[var(--primary)]",
-    success: "text-[var(--primary)]",
+    default: "text-primary-ink",
+    success: "text-primary-ink",
     warning: "text-amber-500",
     error: "text-red-500",
     info: "text-sky-500",
@@ -58,7 +58,7 @@ export default function TerminalLabel({
       <span className={`font-medium ${variantColors[variant]}`} aria-hidden="true">
         {prompt}
       </span>
-      <span className="ml-2 text-[var(--foreground)]">
+      <span className="ml-2 text-foreground">
         {typeof children === "string" && animated ? (
           <TypewriterText text={children} />
         ) : (

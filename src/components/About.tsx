@@ -70,7 +70,7 @@ export default function About() {
 
   return (
     <section id="about" className="relative px-6 py-20 md:px-8 lg:px-12">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-350">
         <SectionHeading
           number="01"
           title="SOBRE MÍ"
@@ -86,11 +86,11 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border border-[var(--border)] bg-[var(--card)] p-6 md:p-8"
+              className="overflow-hidden border border-border bg-card p-6 md:p-8"
             >
               <div className="mb-6 flex items-center gap-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-[var(--primary)]" />
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--muted-foreground)]">
+                <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   FAVIO_ASTURIMAC / ABOUT.MD
                 </span>
               </div>
@@ -99,7 +99,7 @@ export default function About() {
                 {`print("Descripcion")`}
               </TerminalLabel>
 
-              <div className="mt-6 min-h-[200px] font-mono text-base leading-relaxed text-[var(--foreground)]">
+              <div className="mt-6 min-h-50 font-mono text-base leading-relaxed text-foreground">
                 {displayText}
                 {phase !== "complete" && (
                   <span
@@ -121,7 +121,7 @@ export default function About() {
                   className="mt-8 space-y-4"
                 >
                   <SectionDivider label="ADICIONAL" />
-                  <p className="font-mono text-sm leading-relaxed text-[var(--muted-foreground)]">
+                  <p className="font-mono text-sm leading-relaxed text-muted-foreground">
                     {additionalInfo}
                   </p>
                 </motion.div>
@@ -129,7 +129,7 @@ export default function About() {
 
               <div className="mt-6 flex items-center gap-2">
                 <span
-                  className={`font-mono text-lg text-[var(--primary)] ${
+                  className={`font-mono text-lg text-primary-ink ${
                     cursorVisible ? "opacity-100 animate-pulse" : "opacity-0"
                   }`}
                   aria-hidden="true"
@@ -149,12 +149,12 @@ export default function About() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="p-5 border border-[var(--border)] bg-[var(--card)] transition-all hover:border-[var(--primary)] hover:shadow-lg"
+                  className="p-5 border border-border bg-card transition-all hover:border-primary hover:shadow-lg"
                 >
-                  <p className="font-heading font-black text-3xl md:text-4xl text-[var(--foreground)]">
+                  <p className="font-heading font-black text-3xl md:text-4xl text-foreground">
                     {stat.value}
                   </p>
-                  <p className="mt-1 font-mono text-xs uppercase tracking-widest text-[var(--muted-foreground)]">
+                  <p className="mt-1 font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     {stat.label}
                   </p>
                 </div>
@@ -168,11 +168,11 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border border-[var(--border)] bg-[var(--card)] p-6 md:p-8"
+              className="overflow-hidden border border-border bg-card p-6 md:p-8"
             >
               <div className="mb-6 flex items-center gap-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--muted-foreground)]">
+                <span className="h-2.5 w-2.5 rounded-full bg-accent" />
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   STACK_TECNOLÓGICO
                 </span>
               </div>
@@ -207,11 +207,11 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border border-[var(--border)] bg-[var(--card)] p-6 md:p-8"
+              className="overflow-hidden border border-border bg-card p-6 md:p-8"
             >
               <div className="mb-6 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-sky-500" />
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--muted-foreground)]">
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   ENFOQUE ACTUAL
                 </span>
               </div>
@@ -226,10 +226,10 @@ export default function About() {
                 ].map((focus, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 p-3 bg-[var(--muted)] rounded-sm transition-all hover:bg-[var(--secondary)]"
+                    className="flex items-center gap-3 p-3 bg-muted rounded-sm transition-all hover:bg-secondary"
                   >
-                    <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
-                    <span className="font-mono text-sm text-[var(--foreground)]">{focus}</span>
+                    <span className="h-2 w-2 rounded-full bg-primary" />
+                    <span className="font-mono text-sm text-foreground">{focus}</span>
                   </div>
                 ))}
               </div>
@@ -240,11 +240,11 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border border-[var(--border)] bg-[var(--card)] p-6 md:p-8"
+              className="overflow-hidden border border-border bg-card p-6 md:p-8"
             >
               <div className="mb-6 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--muted-foreground)]">
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   CERTIFICACIONES
                 </span>
               </div>
@@ -257,11 +257,11 @@ export default function About() {
                 ].map((cert, i) => (
                   <div
                     key={i}
-                    className="flex items-center justify-between p-3 bg-[var(--muted)] rounded-sm"
+                    className="flex items-center justify-between p-3 bg-muted rounded-sm"
                   >
                     <div>
-                      <p className="font-medium text-[var(--foreground)]">{cert.name}</p>
-                      <p className="font-mono text-xs text-[var(--muted-foreground)]">{cert.issuer}</p>
+                      <p className="font-medium text-foreground">{cert.name}</p>
+                      <p className="font-mono text-xs text-muted-foreground">{cert.issuer}</p>
                     </div>
                     <span className="badge badge-primary">{cert.year}</span>
                   </div>

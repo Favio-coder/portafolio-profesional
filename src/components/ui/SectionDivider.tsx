@@ -24,18 +24,18 @@ export default function SectionDivider({
   if (label) {
     return (
       <div className={`flex gap-4 ${alignClasses[labelPosition]} ${className}`}>
-        <div className={`flex-1 h-px bg-[var(--border)] ${thick ? "h-[3px] rounded-full" : ""}`} />
-        <span className="font-mono text-[0.625rem] uppercase tracking-widest text-[var(--muted-foreground)] whitespace-nowrap shrink-0">
+        <div className={`flex-1 h-px bg-border ${thick ? "h-0.75 rounded-full" : ""}`} />
+        <span className="font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground whitespace-nowrap shrink-0">
           {label}
         </span>
-        <div className={`flex-1 h-px bg-[var(--border)] ${thick ? "h-[3px] rounded-full" : ""}`} />
+        <div className={`flex-1 h-px bg-border ${thick ? "h-0.75 rounded-full" : ""}`} />
       </div>
     );
   }
 
   return (
     <div className={`w-full ${className}`}>
-      <div className={`h-px bg-[var(--border)] ${thick ? "h-[3px] rounded-full" : ""}`} />
+      <div className={`h-px bg-border ${thick ? "h-0.75 rounded-full" : ""}`} />
     </div>
   );
 }

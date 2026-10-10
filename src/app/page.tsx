@@ -49,7 +49,7 @@ export default function Home() {
               weight: 700,
             },
           ]}
-          className="py-12 border-y border-[var(--border)]"
+          className="py-12 border-y border-border"
         />
         <About />
         <Experience />
