@@ -1,104 +1,62 @@
 "use client";
 
-import { motion } from "motion/react";
-import Marquee from "@/components/Marquee";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { gallery } from "@/data/gallery";
+import SectionHeading from "@/components/ui/SectionHeading";
+import SectionDivider from "@/components/ui/SectionDivider";
+
+const categories = ["TODOS", ...new Set(gallery.flatMap((item) => item.category ? [item.category] : []))];
 
 export default function Gallery() {
+  const [category, setCategory] = useState("TODOS");
+  const [selected, setSelected] = useState<number | null>(null);
+  const opener = useRef<HTMLButtonElement | null>(null);
+  const visible = gallery.filter((item) => category === "TODOS" || item.category === category);
+  const item = selected === null ? null : visible[selected];
+  const move = (direction: number) => setSelected((current) => current === null ? null : (current + direction + visible.length) % visible.length);
+
   return (
-    <section id="gallery" className="relative min-h-[85vh] px-6 py-16 md:px-8 overflow-hidden">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-8">
-          <p className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
-            03 / GALLERY
-          </p>
+    <section id="gallery" className="relative px-6 py-20 md:px-8 lg:px-12">
+      <div className="mx-auto max-w-350">
+        <SectionHeading number="04" title="GALERÍA" subtitle="Colección visual — trabajo, vida, experimentos" />
+        <SectionDivider className="my-12" label="LS_GALLERY" thick />
+        <div className="mb-10 flex flex-wrap gap-2" role="group" aria-label="Filtrar galería">
+          {categories.map((value) => <button key={value} type="button" aria-pressed={category === value} onClick={() => setCategory(value)} className={`px-4 py-2 font-mono text-xs ${category === value ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground hover:text-foreground"}`}>{value}</button>)}
         </div>
-
-        <Marquee speed="slow">
-          <span className="font-mono text-base uppercase tracking-[0.3em] text-[#e6e3d9]/10 mx-6">
-            GALLERY ✦ GALLERY ✦ GALLERY ✦ GALLERY ✦ GALLERY ✦
-          </span>
-        </Marquee>
-
-        <div className="mb-8 mt-4 font-mono text-sm text-[#0ce642]/60">
-          $ ls ./gallery
+        <div className="gallery-grid">
+          {visible.map((photo, index) => (
+            <button key={photo.id} type="button" className="gallery-file group" aria-label={`Ampliar ${photo.title}`}
+              onClick={(event) => { opener.current = event.currentTarget; setSelected(index); }}>
+              <span className="flex justify-between gap-3 p-3 font-mono text-xs"><span>{photo.id.toUpperCase()}</span><span aria-hidden="true">↗ OPEN</span></span>
+              <span className="gallery-image">
+                <Image src={photo.image} alt={photo.title} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" className="object-contain transition-transform duration-300 motion-safe:group-hover:scale-[1.02]" />
+              </span>
+              <span className="flex flex-wrap justify-between gap-2 p-3 text-left text-xs text-muted-foreground"><span>{photo.title}</span><span>{photo.category} / {photo.year}</span></span>
+            </button>
+          ))}
         </div>
-
-        <div className="columns-2 gap-4 sm:columns-3 lg:columns-4">
-          {gallery.map((item, i) => {
-            const isTall = i % 2 === 1;
-            return (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                viewport={{ once: true, amount: 0.3 }}
-              >
-                <Dialog key={item.id}>
-                  <DialogTrigger>
-                    <div
-                      className={`group relative overflow-hidden border border-[#e6e3d9]/10 bg-[#0a0a0a]/80 transition-all duration-500 hover:border-[#e6e3d9]/25 hover:-translate-y-0.5 mb-4 ${
-                        isTall ? "break-inside-avoid" : ""
-                      }`}
-                      style={isTall ? { minHeight: "300px" } : {}}
-                    >
-                      <div className="relative overflow-hidden">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          width={400}
-                          height={isTall ? 600 : 400}
-                          className="object-cover transition-all duration-500 group-hover:scale-102 w-full"
-                          style={{ aspectRatio: isTall ? "3/4" : "4/3" }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                      </div>
-
-                      <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-[#0a0a0a]/90 p-4 transition-transform duration-300 group-hover:translate-y-0">
-                        <div className="flex items-center justify-between">
-                          <span className="font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/60">
-                            {item.title}
-                          </span>
-                          <span className="font-mono text-[10px] uppercase tracking-widest text-[#0ce642]">
-                            → OPEN
-                          </span>
-                        </div>
-                        {item.category && (
-                          <span className="mt-1 block font-mono text-[9px] uppercase tracking-wider text-[#e6e3d9]/30">
-                            {item.category} · {item.year}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </DialogTrigger>
-
-                  <DialogContent className="max-w-4xl bg-[#0a0a0a] border border-[#e6e3d9]/10">
-                    <div className="flex items-center justify-center">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        width={600}
-                        height={400}
-                        className="object-cover w-full max-h-[60vh]"
-                      />
-                    </div>
-                    <div className="mt-4 flex items-center justify-between">
-                      <span className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/60">
-                        {item.title}
-                      </span>
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-[#0ce642]">
-                        {item.category} · {item.year}
-                      </span>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </motion.div>
-            );
-          })}
-        </div>
+        <Dialog open={item !== null} onOpenChange={(open) => { if (!open) setSelected(null); }}>
+          <DialogContent className="gallery-lightbox" showCloseButton={false} finalFocus={opener}
+            onKeyDown={(event) => {
+              if (event.key === "ArrowRight") { event.preventDefault(); move(1); }
+              if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); }
+            }}>
+            {item && <>
+              <div className="flex items-center justify-between gap-4">
+                <DialogTitle>{item.title}</DialogTitle>
+                <DialogClose className="lightbox-control" aria-label="Cerrar imagen">Cerrar ×</DialogClose>
+              </div>
+              <div className="lightbox-image"><Image src={item.image} alt={item.title} fill sizes="(min-width: 1024px) 960px, 95vw" className="object-contain" /></div>
+              <div className="flex items-center justify-between gap-2">
+                <button type="button" className="lightbox-control" onClick={() => move(-1)} aria-label="Imagen anterior">←</button>
+                <DialogDescription aria-live="polite">{(selected ?? 0) + 1} / {visible.length} · {item.category} · {item.year}</DialogDescription>
+                <button type="button" className="lightbox-control" onClick={() => move(1)} aria-label="Imagen siguiente">→</button>
+              </div>
+            </>}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

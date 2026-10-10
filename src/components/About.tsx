@@ -1,12 +1,27 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import Marquee from "@/components/Marquee";
-import Reveal from "@/components/Reveal";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+import SectionHeading from "@/components/ui/SectionHeading";
+import SectionDivider from "@/components/ui/SectionDivider";
+import TerminalLabel from "@/components/ui/TerminalLabel";
+import Tag from "@/components/ui/Tag";
 
-const aboutDescription = `Soy Richard Favio Asturimac Medina, desarrollador full stack e ingeniero de sistemas del IX Ciclo, apasionado por la inteligencia artificial y la computacion en la nube.`;
+const aboutDescription = `AQUÍ COLOCARÉ MI DESCRIPCIÓN PERSONAL.
+Estudiante de IX Ciclo de Ingeniería de Sistemas.
+Desarrollador Full Stack con interés en Cloud, Data Engineering e IA.
+Experiencia en hackathons, startups y productos reales.`;
 
-const additionalInfo = `Especializado en QA, data engineering, cloud computing y desarrollo full stack. Dominio React, Next.js, Vue.js, Spring Boot, Laravel, AWS, Google Cloud y Azure. Actualmente desarrollo Healthtech con Alzhivida y proyectos de IA con aprendizaje no supervisado.`;
+const additionalInfo = `Especializado en QA, data engineering, cloud computing y desarrollo full stack.
+Dominio: React, Next.js, TypeScript, Python, Spring Boot, Laravel, AWS, Google Cloud, Azure.
+Actualmente desarrollando Healthtech con Alzhivida y proyectos de IA con aprendizaje no supervisado.`;
+
+const stats = [
+  { label: "AÑOS EXPERIENCIA", value: "3+" },
+  { label: "PROYECTOS ENTREGADOS", value: "15+" },
+  { label: "TECNOLOGÍAS DOMINADAS", value: "20+" },
+  { label: "HACKATHONS", value: "8+" },
+];
 
 export default function About() {
   const [displayText, setDisplayText] = useState("");
@@ -15,7 +30,7 @@ export default function About() {
   const indexRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-  const runTypewriter = useCallback(() => {
+  const runTypewriter = () => {
     const chars = Array.from(aboutDescription);
     const addChar = () => {
       if (indexRef.current < chars.length) {
@@ -24,14 +39,14 @@ export default function About() {
         setDisplayText((prev) => prev + char);
         timerRef.current = [
           ...(timerRef.current || []),
-          setTimeout(addChar, 40),
+          setTimeout(addChar, 25),
         ];
       } else {
         setPhase("complete");
       }
     };
     addChar();
-  }, []);
+  };
 
   useEffect(() => {
     if (phase !== "typing") return;
@@ -41,10 +56,10 @@ export default function About() {
       (timerRef.current || []).forEach(clearTimeout);
       timerRef.current = [];
     };
-  }, [phase, runTypewriter]);
+  }, [phase]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setPhase("typing"), 500);
+    const timer = setTimeout(() => setPhase("typing"), 800);
     return () => clearTimeout(timer);
   }, []);
 
@@ -54,97 +69,207 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="relative min-h-[85vh] px-6 py-10 md:px-8 overflow-hidden">
-      {/* Background typographic */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden select-none">
-        <div className="absolute top-[clamp(80px,15vh,180px)] left-1/2 -translate-x-1/2 w-full overflow-hidden">
-          <Marquee speed="fast">
-            <span className="pixel-font font-mono font-black text-[clamp(32px,6vw,80px)] uppercase text-[#21221e] mx-4">
-              FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO
-            </span>
-          </Marquee>
-        </div>
-        <div className="absolute top-[clamp(160px,30vh,300px)] left-1/2 -translate-x-1/2 w-full overflow-hidden">
-          <Marquee direction="right" speed="fast">
-            <span className="pixel-font font-mono font-black text-[clamp(32px,6vw,80px)] uppercase text-[#f4f2ea]/15 mx-4">
-              ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC
-            </span>
-          </Marquee>
-        </div>
-        <div className="absolute top-[clamp(320px,60vh,420px)] left-1/2 -translate-x-1/2 w-full overflow-hidden">
-          <Marquee speed="fast">
-            <span className="pixel-font font-mono font-black text-[clamp(32px,6vw,80px)] uppercase text-[#21221e] mx-4">
-              FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO ✦ FAVIO
-            </span>
-          </Marquee>
-        </div>
-        <div className="absolute top-[clamp(6px,120vh,540px)] left-1/2 -translate-x-1/2 w-full overflow-hidden">
-          <Marquee direction="right" speed="fast">
-            <span className="pixel-font font-mono font-black text-[clamp(32px,6vw,80px)] uppercase text-[#f4f2ea]/15 mx-4">
-              ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC ✦ ASTURIMAC
-            </span>
-          </Marquee>
-        </div>
-      </div>
+    <section id="about" className="relative px-6 py-20 md:px-8 lg:px-12">
+      <div className="mx-auto max-w-350">
+        <SectionHeading
+          number="01"
+          title="SOBRE MÍ"
+          subtitle="Perfil técnico y trayectoria profesional"
+        />
 
-      {/* Contenido sobre mí */}
-      <div className="relative z-10 mx-auto max-w-4xl pb-8">
-        <Reveal delay={0.1}>
-          <div className="mb-12">
-            <p className="font-mono text-sm uppercase tracking-widest text-white">
-              01 / SOBRE MÍ
-            </p>
-          </div>
+        <SectionDivider className="my-12" label="MANIFIESTO" thick />
 
-          <div className="overflow-hidden border-4 border-[#e6e3d9]/10 bg-[#24231f] p-6 md:p-8 rounded-sm">
-            <div className="mb-6 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-white" />
-              <span className="font-mono text-xs uppercase tracking-widest text-white">
-                RICHARD FAVIO ASTURIMAC MEDINA / SOBRE MÍ
-              </span>
-            </div>
+        <div className="grid gap-12 lg:grid-cols-[2fr_1fr]">
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden border border-border bg-card p-6 md:p-8"
+            >
+              <div className="mb-6 flex items-center gap-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  FAVIO_ASTURIMAC / ABOUT.MD
+                </span>
+              </div>
 
-            <div className="mb-6 font-mono text-sm text-[#0ce642]/80">
-              {'$ print("Descripcion")'}
-            </div>
+              <TerminalLabel prompt="$" animated variant="default" className="text-sm">
+                {`print("Descripcion")`}
+              </TerminalLabel>
 
-            <div className="min-h-25 font-mono text-lg leading-relaxed text-[#e6e3d9]/70">
-              {displayText}
-              {phase !== "complete" && (
+              <div className="mt-6 min-h-50 font-mono text-base leading-relaxed text-foreground">
+                {displayText}
+                {phase !== "complete" && (
+                  <span
+                    className={`inline-block ml-1 animate-pulse ${
+                      cursorVisible ? "opacity-100" : "opacity-0"
+                    }`}
+                    aria-hidden="true"
+                  >
+                    █
+                  </span>
+                )}
+              </div>
+
+              {phase === "complete" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="mt-8 space-y-4"
+                >
+                  <SectionDivider label="ADICIONAL" />
+                  <p className="font-mono text-sm leading-relaxed text-muted-foreground">
+                    {additionalInfo}
+                  </p>
+                </motion.div>
+              )}
+
+              <div className="mt-6 flex items-center gap-2">
                 <span
-                  className={`text-[#e6e3d9] transition-opacity duration-100 ${
-                    cursorVisible ? "opacity-100" : "opacity-0"
+                  className={`font-mono text-lg text-primary-ink ${
+                    cursorVisible ? "opacity-100 animate-pulse" : "opacity-0"
                   }`}
+                  aria-hidden="true"
                 >
                   _
                 </span>
-              )}
-            </div>
+              </div>
+            </motion.div>
 
-            {phase === "complete" && (
-              <>
-                <div className="mt-6 space-y-3">
-                  <p className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
-                    {`// adicional_informacion`}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            >
+              {stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="p-5 border border-border bg-card transition-all hover:border-primary hover:shadow-lg"
+                >
+                  <p className="font-heading font-black text-3xl md:text-4xl text-foreground">
+                    {stat.value}
                   </p>
-                  <p className="font-mono text-base leading-relaxed text-[#e6e3d9]/50">
-                    {additionalInfo}
+                  <p className="mt-1 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                    {stat.label}
                   </p>
                 </div>
-              </>
-            )}
-
-            <div className="mt-4 flex items-center gap-2">
-              <span
-                className={`font-mono text-lg text-[#0ce642] transition-opacity duration-100 ${
-                  cursorVisible ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                _
-              </span>
-            </div>
+              ))}
+            </motion.div>
           </div>
-        </Reveal>
+
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden border border-border bg-card p-6 md:p-8"
+            >
+              <div className="mb-6 flex items-center gap-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-accent" />
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  STACK_TECNOLÓGICO
+                </span>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "React",
+                  "Next.js",
+                  "TypeScript",
+                  "Tailwind CSS",
+                  "Node.js",
+                  "Python",
+                  "Spring Boot",
+                  "Laravel",
+                  "AWS",
+                  "Google Cloud",
+                  "TensorFlow",
+                  "Rasa",
+                  "PostgreSQL",
+                  "Docker",
+                  "Git",
+                ].map((tech) => (
+                  <Tag key={tech} variant="outline" size="sm">
+                    {tech}
+                  </Tag>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden border border-border bg-card p-6 md:p-8"
+            >
+              <div className="mb-6 flex items-center gap-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-sky-500" />
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  ENFOQUE ACTUAL
+                </span>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  "Cloud Architecture & Serverless",
+                  "Data Pipelines & Engineering",
+                  "MLOps & Model Deployment",
+                  "Full Stack Product Development",
+                  "Developer Experience & Tooling",
+                ].map((focus, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 p-3 bg-muted rounded-sm transition-all hover:bg-secondary"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-primary" />
+                    <span className="font-mono text-sm text-foreground">{focus}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden border border-border bg-card p-6 md:p-8"
+            >
+              <div className="mb-6 flex items-center gap-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
+                <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  CERTIFICACIONES
+                </span>
+              </div>
+
+              <div className="space-y-3">
+                {[
+                  { name: "CAPM®", issuer: "PMI", year: "2024" },
+                  { name: "AWS Cloud Practitioner", issuer: "Amazon", year: "2023" },
+                  { name: "Google Cloud Fundamentals", issuer: "Google", year: "2023" },
+                ].map((cert, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-between p-3 bg-muted rounded-sm"
+                  >
+                    <div>
+                      <p className="font-medium text-foreground">{cert.name}</p>
+                      <p className="font-mono text-xs text-muted-foreground">{cert.issuer}</p>
+                    </div>
+                    <span className="badge badge-primary">{cert.year}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

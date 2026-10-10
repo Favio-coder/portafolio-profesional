@@ -1,89 +1,70 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import SectionHeading from "@/components/ui/SectionHeading";
+import SectionDivider from "@/components/ui/SectionDivider";
+import ProjectCard from "@/components/ui/ProjectCard";
 import { projects } from "@/data/project";
 
+// Only offer filters backed by the existing project data.
+const filters = ["Todos", ...new Set(projects.flatMap((project) => project.technologies))];
+
 export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState("Todos");
+  const stackRef = useRef<HTMLDivElement>(null);
+  const filtered = projects.filter((project) =>
+    activeFilter === "Todos" || project.technologies.includes(activeFilter)
+  );
+
+  useEffect(() => {
+    const stack = stackRef.current;
+    if (!stack) return;
+
+    // Use the actual card heights, including wrapped text and the sticky offsets.
+    const updateStack = () => {
+      const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-height"));
+      const fits = Array.from(stack.children).every((item, index) =>
+        item.getBoundingClientRect().height + navHeight + 16 + index * 18 + 16 <= window.innerHeight
+      );
+      stack.dataset.stackFits = String(fits);
+    };
+    const observer = new ResizeObserver(updateStack);
+    Array.from(stack.children).forEach((item) => observer.observe(item));
+    observer.observe(document.documentElement);
+    window.addEventListener("resize", updateStack);
+    updateStack();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateStack);
+    };
+  }, [activeFilter]);
   return (
-    <section
-      id="projects"
-      className="relative min-h-[85vh] px-6 py-16 md:px-8 overflow-hidden"
-    >
-      {/* Background */}
-
-      {/* <div className="mx-auto max-w-5xl"> */}
-      <div className="relative z-10 mx-auto max-w-5xl">
-        {/* <div className="mb-8">
-          <p className="font-mono text-sm uppercase tracking-widest text-[#e6e3d9]/40">
-            02 / PROJECTS
-          </p>
-        </div> */}
-        <div className="mb-16">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#0ce642]/70">
-            02 / PROJECTS
-          </p>
-
-          <h2 className="mt-4 text-4xl font-semibold uppercase tracking-tight text-[#e6e3d9] md:text-6xl">
-            Selected Work
-          </h2>
-
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#e6e3d9]/40 md:text-base">
-            Proyectos construidos entre software, inteligencia artificial, cloud
-            computing y data engineering.
-          </p>
-        </div>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="group relative overflow-hidden border border-[#e6e3d9]/10 bg-[#0a0a0a]/80 transition-all duration-300 hover:border-[#e6e3d9]/25 hover:-translate-y-1"
-            >
-              <div className="relative overflow-hidden bg-[#111]">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#e6e3d9]/10">
-                    {project.name}
-                  </span>
-                </div>
-                <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-transparent to-transparent" />
-
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="font-mono text-sm uppercase tracking-widest text-[#0ce642]">
-                    OPEN →
-                  </span>
-                </div>
-
-                <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest text-[#0ce642]/60">
-                  {project.year}
-                </div>
-              </div>
-
-              <div className="p-5">
-                <h3 className="font-mono text-base font-medium text-[#e6e3d9] mb-2">
-                  {project.name}
-                </h3>
-
-                <p className="text-sm leading-relaxed text-[#e6e3d9]/40">
-                  {project.description}
-                </p>
-
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded border border-[#e6e3d9]/10 px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-[#e6e3d9]/40"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+    <section id="projects" className="relative px-6 py-20 md:px-8 lg:px-12">
+      <div className="mx-auto max-w-350">
+        <SectionHeading number="03" title="PROYECTOS" subtitle="Trabajos seleccionados — software, cloud, data e IA" />
+        <SectionDivider className="my-12" label="FILE_SYSTEM" thick />
+        <div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filtrar proyectos por tecnología">
+          {filters.map((filter) => (
+            <button key={filter} type="button" onClick={() => setActiveFilter(filter)}
+              aria-pressed={activeFilter === filter}
+              className={`rounded-sm px-3 py-2 font-mono text-xs transition-colors ${activeFilter === filter ? "bg-accent text-accent-foreground" : "bg-muted text-muted-foreground hover:bg-secondary hover:text-foreground"}`}>
+              {filter}
+            </button>
           ))}
+        </div>
+        <p className="mb-6 font-mono text-xs text-muted-foreground" role="status">{filtered.length} archivos / {projects.length} proyectos</p>
+        <div ref={stackRef} className="project-stack">
+          {filtered.map((project, index) => (
+            <div key={project.id} className="project-stack-item" style={{ "--stack-index": index } as CSSProperties}>
+              <ProjectCard project={project} index={index} />
+            </div>
+          ))}
+        </div>
+        <div className="mt-12 text-center">
+          <a href="https://github.com/Favio-coder" target="_blank" rel="noopener noreferrer"
+            className="inline-flex border border-border px-6 py-3 font-mono text-sm hover:bg-muted">
+            Más proyectos en GitHub ↗
+          </a>
         </div>
       </div>
     </section>
