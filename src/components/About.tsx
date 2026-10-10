@@ -69,7 +69,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="relative px-6 py-20 md:px-8 lg:px-12">
+    <section id="about" className="about-section relative px-4 pb-6 pt-10 sm:px-6 md:pb-10 md:pt-14 lg:px-12">
       <div className="mx-auto max-w-350">
         <SectionHeading
           number="01"
@@ -77,18 +77,18 @@ export default function About() {
           subtitle="Perfil técnico y trayectoria profesional"
         />
 
-        <SectionDivider className="my-12" label="MANIFIESTO" thick />
+        <SectionDivider className="my-6 md:my-8" label="MANIFIESTO" thick />
 
-        <div className="grid gap-12 lg:grid-cols-[2fr_1fr]">
-          <div className="space-y-8">
+        <div className="about-layout grid gap-4 md:grid-cols-[1.1fr_.9fr] lg:gap-8">
+          <div className="space-y-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border border-border bg-card p-6 md:p-8"
+              className="overflow-hidden border border-border bg-card p-4 md:p-5"
             >
-              <div className="mb-6 flex items-center gap-3">
+              <div className="mb-3 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-primary" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   FAVIO_ASTURIMAC / ABOUT.MD
@@ -99,7 +99,7 @@ export default function About() {
                 {`print("Descripcion")`}
               </TerminalLabel>
 
-              <div className="mt-6 min-h-50 font-mono text-base leading-relaxed text-foreground">
+              <div className="mt-3 font-mono text-sm leading-relaxed text-foreground sm:text-base">
                 {displayText}
                 {phase !== "complete" && (
                   <span
@@ -118,7 +118,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="mt-8 space-y-4"
+                  className="mt-4 space-y-3"
                 >
                   <SectionDivider label="ADICIONAL" />
                   <p className="font-mono text-sm leading-relaxed text-muted-foreground">
@@ -127,7 +127,7 @@ export default function About() {
                 </motion.div>
               )}
 
-              <div className="mt-6 flex items-center gap-2">
+              <div className="mt-2 flex items-center gap-2">
                 <span
                   className={`font-mono text-lg text-primary-ink ${
                     cursorVisible ? "opacity-100 animate-pulse" : "opacity-0"
@@ -144,14 +144,14 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+              className="grid grid-cols-2 gap-2 lg:grid-cols-4"
             >
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="p-5 border border-border bg-card transition-all hover:border-primary hover:shadow-lg"
+                  className="border border-border bg-card p-3 transition-all hover:border-primary hover:shadow-lg sm:p-4"
                 >
-                  <p className="font-heading font-black text-3xl md:text-4xl text-foreground">
+                  <p className="font-heading font-black text-2xl text-foreground sm:text-3xl">
                     {stat.value}
                   </p>
                   <p className="mt-1 font-mono text-xs uppercase tracking-widest text-muted-foreground">
@@ -162,15 +162,15 @@ export default function About() {
             </motion.div>
           </div>
 
-          <div className="space-y-8">
+          <div className="about-details grid grid-cols-2 gap-3 md:grid-cols-1 lg:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border border-border bg-card p-6 md:p-8"
+              className="about-stack col-span-2 overflow-hidden border border-border bg-card p-4 md:col-span-1 md:p-5 lg:col-span-2"
             >
-              <div className="mb-6 flex items-center gap-3">
+              <div className="mb-3 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   STACK_TECNOLÓGICO
@@ -207,16 +207,16 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border border-border bg-card p-6 md:p-8"
+              className="overflow-hidden border border-border bg-card p-3 md:p-4"
             >
-              <div className="mb-6 flex items-center gap-3">
+              <div className="mb-3 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-sky-500" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   ENFOQUE ACTUAL
                 </span>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {[
                   "Cloud Architecture & Serverless",
                   "Data Pipelines & Engineering",
@@ -226,10 +226,10 @@ export default function About() {
                 ].map((focus, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 p-3 bg-muted rounded-sm transition-all hover:bg-secondary"
+                    className="flex items-start gap-2 rounded-sm bg-muted p-2 transition-all hover:bg-secondary sm:items-center sm:gap-3 sm:p-3"
                   >
                     <span className="h-2 w-2 rounded-full bg-primary" />
-                    <span className="font-mono text-sm text-foreground">{focus}</span>
+                    <span className="font-mono text-xs leading-snug text-foreground sm:text-sm">{focus}</span>
                   </div>
                 ))}
               </div>
@@ -240,16 +240,16 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden border border-border bg-card p-6 md:p-8"
+              className="overflow-hidden border border-border bg-card p-3 md:p-4"
             >
-              <div className="mb-6 flex items-center gap-3">
+              <div className="mb-3 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                   CERTIFICACIONES
                 </span>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {[
                   { name: "CAPM®", issuer: "PMI", year: "2024" },
                   { name: "AWS Cloud Practitioner", issuer: "Amazon", year: "2023" },
@@ -257,7 +257,7 @@ export default function About() {
                 ].map((cert, i) => (
                   <div
                     key={i}
-                    className="flex items-center justify-between p-3 bg-muted rounded-sm"
+                    className="flex min-w-0 flex-col items-start gap-1 rounded-sm bg-muted p-2 sm:flex-row sm:items-center sm:justify-between"
                   >
                     <div>
                       <p className="font-medium text-foreground">{cert.name}</p>

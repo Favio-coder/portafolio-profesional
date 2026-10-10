@@ -22,9 +22,14 @@ export default function Projects() {
 
     // Use the actual card heights, including wrapped text and the sticky offsets.
     const updateStack = () => {
-      const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-height"));
+      const rootStyles = getComputedStyle(document.documentElement);
+      const stackStyles = getComputedStyle(stack);
+      const navHeight = parseFloat(rootStyles.getPropertyValue("--nav-height")) || 80;
+      const edge = parseFloat(stackStyles.getPropertyValue("--stack-edge")) || 8;
+      const step = parseFloat(stackStyles.getPropertyValue("--stack-step")) || 8;
+      const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
       const fits = Array.from(stack.children).every((item, index) =>
-        item.getBoundingClientRect().height + navHeight + 16 + index * 18 + 16 <= window.innerHeight
+        item.getBoundingClientRect().height + navHeight + edge + index * step + 16 <= viewportHeight
       );
       stack.dataset.stackFits = String(fits);
     };
@@ -32,10 +37,12 @@ export default function Projects() {
     Array.from(stack.children).forEach((item) => observer.observe(item));
     observer.observe(document.documentElement);
     window.addEventListener("resize", updateStack);
+    window.visualViewport?.addEventListener("resize", updateStack);
     updateStack();
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", updateStack);
+      window.visualViewport?.removeEventListener("resize", updateStack);
     };
   }, [activeFilter]);
   return (
