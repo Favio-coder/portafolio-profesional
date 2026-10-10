@@ -199,7 +199,7 @@ export default function Navbar() {
                 className="group relative font-mono text-sm uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
               >
                 <span className="flex items-center gap-2">
-                  <span className="text-primary-ink">{item.numero}</span>
+                  <span className="text-primary">{item.numero}</span>
                   <span>{item.label}</span>
                 </span>
                 <motion.span

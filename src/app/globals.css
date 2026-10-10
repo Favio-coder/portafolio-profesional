@@ -331,8 +331,8 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 24px); }
   background: transparent;
 }
 .badge-primary {
-  border-color: var(--primary-ink);
-  color: var(--primary-ink);
+  border-color: var(--primary);
+  color: var(--primary);
   background: transparent;
 }
 .badge-frontend {
