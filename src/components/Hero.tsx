@@ -177,7 +177,7 @@ export default function Hero() {
                     isPixel ? "scale-100 opacity-100" : "scale-95 opacity-0"
                   }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to- from-background/60 via-transparent to-transparent pointer-events-none" />
                 
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                   <div className="font-mono text-[0.625rem] uppercase tracking-widest text-foreground/60">
