@@ -1,0 +1,114 @@
+[
+  {
+    "id": "semana-01",
+    "number": 1,
+    "title": "Fundamentos de Desarrollo Web",
+    "description": "Introducción a las tecnologías base: HTML semántico, CSS moderno y JavaScript ES6+. Configuración del entorno de desarrollo y primeros pasos con control de versiones.",
+    "activities": [
+      {
+        "id": "act-01-01",
+        "title": "Configuración del entorno y Git",
+        "description": "Instalación y configuración de VS Code, Node.js, Git y GitHub. Creación del primer repositorio y flujo de trabajo básico con commits semánticos.",
+        "learnedTopics": [
+          "HTML semántico: estructura accesible y SEO-friendly",
+          "CSS Custom Properties para theming consistente",
+          "JavaScript ES6+: let/const, arrow functions, destructuring, modules",
+          "Git: init, add, commit, push, pull, branch, merge",
+          "Convenciones de commits (Conventional Commits)"
+        ],
+        "procedures": [
+          "Instalar VS Code con extensiones esenciales (ESLint, Prettier, GitLens)",
+          "Configurar Git con user.name y user.email global",
+          "Crear repositorio en GitHub y clonar localmente",
+          "Establecer rama main y rama develop",
+          "Ejecutar primer commit con mensaje semántico: 'feat: initial project setup'"
+        ],
+        "labExercises": [
+          "Crear página HTML5 válida con header, main, footer, nav, article, section",
+          "Aplicar CSS Grid y Flexbox para layout responsive de 3 breakpoints",
+          "Implementar módulo JS que calcule factorial recursivo e iterativo"
+        ],
+        "labDevelopment": "Desarrollé una landing page estática 'Mi Primer Portfolio' aplicando HTML semántico, CSS con custom properties para modo oscuro/claro, y JavaScript modular para navegación suave y animaciones de scroll. Utilicé BEM para nombrar clases CSS.",
+        "labResults": "Página funcional en GitHub Pages. Validación W3C sin errores. Lighthouse: Performance 98, Accessibility 100, Best Practices 96, SEO 100. Repository: https://github.com/usuario/primer-portfolio",
+        "reflection": {
+          "whatLearned": "La semántica HTML no es opcional: mejora accesibilidad, SEO y mantenibilidad. CSS Custom Properties eliminan duplicación de valores y facilitan theming. Los módulos ES6 organizan código sin bundlers.",
+          "howLearned": "Práctica guiada: seguí tutoriales MDN y freeCodeCamp, luego repliqué sin copiar. Depuré errores de layout con DevTools. Revisé commits de proyectos open source para entender convención semántica."
+        },
+        "references": [
+          "MDN Web Docs - HTML Semántico: https://developer.mozilla.org/es/docs/Glossary/Semantics",
+          "MDN - CSS Custom Properties: https://developer.mozilla.org/es/docs/Web/CSS/Using_CSS_custom_properties",
+          "JavaScript.info - ES6 Modules: https://javascript.info/modules-intro",
+          "Conventional Commits: https://www.conventionalcommits.org/es/v1.0.0/",
+          "GitHub Guides - Git Handbook: https://guides.github.com/introduction/git-handbook/"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Captura Lighthouse Semana 1",
+            "url": "/assets/images/cuaderno/semana-01/lighthouse.png",
+            "description": "Reporte de rendimiento y accesibilidad"
+          },
+          {
+            "type": "link",
+            "title": "Repositorio GitHub",
+            "url": "https://github.com/usuario/primer-portfolio",
+            "description": "Código fuente completo de la landing page"
+          }
+        ]
+      }
+    ],
+    "date": "",
+    "status": "pendiente",
+    "summary": "Introducción a las tecnologías base: HTML semántico, CSS moderno y JavaScript ES6+. Configuración del entorno de desarrollo y primeros pasos con control de versiones.",
+    "objectives": [],
+    "topics": [],
+    "reflection": {
+      "whatLearned": "",
+      "howLearned": "",
+      "difficulties": "",
+      "solutions": "",
+      "improvements": ""
+    },
+    "bibliography": []
+  },
+  {
+    "id": "semana-02",
+    "number": 2,
+    "title": "React Fundamentals & TypeScript",
+    "description": "Componentes funcionales, hooks básicos, gestión de estado, props, TypeScript estricto y herramienta de build Vite.",
+    "activities": [],
+    "date": "",
+    "status": "pendiente",
+    "summary": "Componentes funcionales, hooks básicos, gestión de estado, props, TypeScript estricto y herramienta de build Vite.",
+    "objectives": [],
+    "topics": [],
+    "reflection": {
+      "whatLearned": "",
+      "howLearned": "",
+      "difficulties": "",
+      "solutions": "",
+      "improvements": ""
+    },
+    "bibliography": []
+  },
+  {
+    "id": "semana-03",
+    "number": 3,
+    "title": "Next.js App Router & Tailwind CSS",
+    "description": "Server Components, Server Actions, routing anidado, layouts, streaming, Tailwind CSS utility-first y shadcn/ui.",
+    "activities": [],
+    "date": "",
+    "status": "pendiente",
+    "summary": "Server Components, Server Actions, routing anidado, layouts, streaming, Tailwind CSS utility-first y shadcn/ui.",
+    "objectives": [],
+    "topics": [],
+    "reflection": {
+      "whatLearned": "",
+      "howLearned": "",
+      "difficulties": "",
+      "solutions": "",
+      "improvements": ""
+    },
+    "bibliography": []
+  }
+]

@@ -7,8 +7,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import TerminalLabel from "@/components/ui/TerminalLabel";
 import Tag from "@/components/ui/Tag";
 
-const aboutDescription = `AQUÍ COLOCARÉ MI DESCRIPCIÓN PERSONAL.
-Estudiante de IX Ciclo de Ingeniería de Sistemas.
+const aboutDescription = `Estudiante de IX Ciclo de Ingeniería de Sistemas.
 Desarrollador Full Stack con interés en Cloud, Data Engineering e IA.
 Experiencia en hackathons, startups y productos reales.`;
 
@@ -69,7 +68,10 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="about-section relative px-4 pb-6 pt-10 sm:px-6 md:pb-10 md:pt-14 lg:px-12">
+    <section
+      id="about"
+      className="about-section relative px-4 pb-6 pt-10 sm:px-6 md:pb-10 md:pt-14 lg:px-12"
+    >
       <div className="mx-auto max-w-350">
         <SectionHeading
           number="01"
@@ -95,7 +97,12 @@ export default function About() {
                 </span>
               </div>
 
-              <TerminalLabel prompt="$" animated variant="default" className="text-sm">
+              <TerminalLabel
+                prompt="$"
+                animated
+                variant="default"
+                className="text-sm"
+              >
                 {`print("Descripcion")`}
               </TerminalLabel>
 
@@ -143,7 +150,11 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.2,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="grid grid-cols-2 gap-2 lg:grid-cols-4"
             >
               {stats.map((stat) => (
@@ -167,7 +178,11 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.3,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="about-stack col-span-2 overflow-hidden border border-border bg-card p-4 md:col-span-1 md:p-5 lg:col-span-2"
             >
               <div className="mb-3 flex items-center gap-3">
@@ -206,7 +221,11 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.4,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="overflow-hidden border border-border bg-card p-3 md:p-4"
             >
               <div className="mb-3 flex items-center gap-3">
@@ -229,7 +248,9 @@ export default function About() {
                     className="flex items-start gap-2 rounded-sm bg-muted p-2 transition-all hover:bg-secondary sm:items-center sm:gap-3 sm:p-3"
                   >
                     <span className="h-2 w-2 rounded-full bg-primary" />
-                    <span className="font-mono text-xs leading-snug text-foreground sm:text-sm">{focus}</span>
+                    <span className="font-mono text-xs leading-snug text-foreground sm:text-sm">
+                      {focus}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -239,7 +260,11 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.5,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="overflow-hidden border border-border bg-card p-3 md:p-4"
             >
               <div className="mb-3 flex items-center gap-3">
@@ -251,21 +276,52 @@ export default function About() {
 
               <div className="space-y-2">
                 {[
-                  { name: "CAPM®", issuer: "PMI", year: "2024" },
-                  { name: "AWS Cloud Practitioner", issuer: "Amazon", year: "2023" },
-                  { name: "Google Cloud Fundamentals", issuer: "Google", year: "2023" },
-                ].map((cert, i) => (
-                  <div
-                    key={i}
-                    className="flex min-w-0 flex-col items-start gap-1 rounded-sm bg-muted p-2 sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    <div>
-                      <p className="font-medium text-foreground">{cert.name}</p>
-                      <p className="font-mono text-xs text-muted-foreground">{cert.issuer}</p>
-                    </div>
-                    <span className="badge badge-primary">{cert.year}</span>
-                  </div>
-                ))}
+                  { name: "CAPM®", issuer: "PMI", year: "2024", url: "https://www.credly.com/badges/f8d055a3-4669-4916-b677-ee2bbf5b5536/public_url" },
+                  {
+                    name: "AWS Cloud Practitioner",
+                    issuer: "Amazon",
+                    year: "2023",
+                    url: "",
+                  },
+                  {
+                    name: "Google Cloud Fundamentals",
+                    issuer: "Google",
+                    year: "2023",
+                    url: "",
+                  },
+                ].map((cert) => {
+                  const url = cert.url?.trim();
+                  const Tag = url ? "a" : "div";
+
+                  return (
+                    <Tag
+                      key={`${cert.name}-${cert.issuer}`}
+                      {...(url
+                        ? {
+                            href: url,
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                            "aria-label": `Ver certificación ${cert.name} (abre en otra pestaña)`,
+                          }
+                        : {})}
+                      className={`flex min-w-0 flex-col items-start gap-1 rounded-sm bg-muted p-2 sm:flex-row sm:items-center sm:justify-between ${
+                        url
+                          ? "cursor-pointer transition-colors hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                          : ""
+                      }`}
+                    >
+                      <div className="min-w-0">
+                        <p className="font-medium text-foreground">
+                          {cert.name}
+                        </p>
+                        <p className="font-mono text-xs text-muted-foreground">
+                          {cert.issuer}
+                        </p>
+                      </div>
+                      <span className="badge badge-primary">{cert.year}</span>
+                    </Tag>
+                  );
+                })}
               </div>
             </motion.div>
           </div>

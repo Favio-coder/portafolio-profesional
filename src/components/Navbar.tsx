@@ -2,15 +2,17 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Terminal, Menu, X } from "lucide-react";
 
 const navegacion = [
-  { numero: "01", label: "SOBRE MÍ", id: "about" },
-  { numero: "02", label: "EXPERIENCIA", id: "experience" },
-  { numero: "03", label: "PROYECTOS", id: "projects" },
-  { numero: "04", label: "GALERÍA", id: "gallery" },
-  { numero: "05", label: "CONTACTO", id: "contact" },
+  { numero: "01", label: "SOBRE MÍ", href: "#about", isAnchor: true },
+  { numero: "02", label: "EXPERIENCIA", href: "#experience", isAnchor: true },
+  { numero: "03", label: "PROYECTOS", href: "#projects", isAnchor: true },
+  { numero: "04", label: "CUADERNO", href: "/cuaderno", isAnchor: false },
+  { numero: "05", label: "GALERÍA", href: "#gallery", isAnchor: true },
+  { numero: "06", label: "CONTACTO", href: "#contact", isAnchor: true },
 ];
 
 function scrollToSection(sectionId: string) {
@@ -25,6 +27,7 @@ function scrollToSection(sectionId: string) {
 }
 
 export default function Navbar() {
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
@@ -87,6 +90,7 @@ export default function Navbar() {
         "about      → Sobre mí",
         "experience → Experiencia",
         "projects   → Proyectos",
+        "cuaderno   → Cuaderno semanal",
         "gallery    → Galería",
         "contact    → Contacto",
         "whoami     → Info personal",
@@ -148,6 +152,17 @@ export default function Navbar() {
       setMenuOpen(false);
       setTerminalOpen(false);
       scrollToSection("gallery");
+    } else if (comando === "cuaderno") {
+      setTerminalOutput((prev) => [
+        ...prev,
+        `favio@portfolio:~$ ${terminalInput}`,
+        "",
+        "Abriendo cuaderno semanal...",
+        "",
+      ]);
+      setMenuOpen(false);
+      setTerminalOpen(false);
+      router.push("/cuaderno");
     } else if (comando === "contact") {
       setTerminalOutput((prev) => [
         ...prev,
@@ -192,8 +207,8 @@ export default function Navbar() {
 
           <div className="hidden items-center gap-5 xl:flex">
             {navegacion.map((item) => (
-              <a
-                href={`#${item.id}`}
+              <Link
+                href={item.href}
                 key={item.numero}
                 onClick={() => setMenuOpen(false)}
                 className="group relative font-mono text-sm uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
@@ -208,7 +223,7 @@ export default function Navbar() {
                   whileHover={{ width: "100%" }}
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -249,8 +264,8 @@ export default function Navbar() {
             >
               <div className="space-y-1">
                 {navegacion.map((item) => (
-                  <a
-                    href={`#${item.id}`}
+                  <Link
+                    href={item.href}
                     key={item.numero}
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-3 py-3 font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
@@ -258,14 +273,14 @@ export default function Navbar() {
                     <span className="text-primary-ink">{item.numero}</span>
                     <span className="text-border">/</span>
                     <span>{item.label}</span>
-                  </a>
+                  </Link>
                 ))}
                 <button
                   type="button"
                   onClick={() => { setMenuOpen(false); setTerminalOpen(true); }}
                   className="w-full flex items-center gap-3 py-3 font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  <span className="text-primary-ink">06</span>
+                  <span className="text-primary-ink">07</span>
                   <span className="text-border">/</span>
                   <span>TERMINAL</span>
                 </button>

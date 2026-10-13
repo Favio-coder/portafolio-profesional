@@ -1,0 +1,7 @@
+import { unassignedReflection } from "@/data/unassigned-reflection";
+import { bibliography } from "@/data/bibliography";
+
+export default function FinalReflection() {
+  const unassigned = bibliography.filter((entry) => !entry.weekNumbers?.length);
+  return <section aria-label="Contenido pendiente de asignación" className="px-6 pb-20 md:px-8 lg:px-12"><details className="mx-auto max-w-350 border border-border bg-card p-6"><summary className="cursor-pointer font-mono text-sm text-muted-foreground">CONTENIDO SIN SEMANA ASIGNADA · Archivo original</summary><p className="my-4 font-mono text-xs text-muted-foreground">Esta reflexión no indica una semana. Se conserva sin asignarla automáticamente.</p><div className="space-y-4 font-mono text-sm leading-relaxed"><h3 className="text-primary-ink">Qué aprendí</h3><p>{unassignedReflection.whatLearned}</p><h3 className="text-primary-ink">Cómo aprendí</h3><p>{unassignedReflection.howLearned}</p><h3 className="text-primary-ink">Aprendizajes clave</h3><ul className="list-inside list-disc">{unassignedReflection.keyTakeaways.map((item) => <li key={item}>{item}</li>)}</ul><h3 className="text-primary-ink">Próximos pasos</h3><ul className="list-inside list-disc">{unassignedReflection.futureGoals.map((item) => <li key={item}>{item}</li>)}</ul>{unassigned.map((entry) => <p key={entry.id}>{entry.title}{entry.url && <> · <a href={entry.url} target="_blank" rel="noopener noreferrer" className="text-primary-ink underline">Ver recurso</a></>}</p>)}</div></details></section>;
+}
