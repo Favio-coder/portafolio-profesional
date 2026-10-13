@@ -1,5 +1,4 @@
 import Cuaderno from "@/components/Cuaderno";
-import FinalReflection from "@/components/FinalReflection";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
@@ -13,7 +12,7 @@ export default function CuadernoPage() {
       <ScrollProgress />
       <main className="relative min-h-screen">
         <Cuaderno />
-        <FinalReflection />
+        {/* <FinalReflection /> */}
       </main>
     </>
   );

@@ -54,21 +54,37 @@ export interface Week {
   summary?: string;
   status?: WeekStatus;
   objectives?: string[];
-  topics?: Topic[];
+  topics?: string[];
   evidence?: Evidence[];
   reflection?: Reflection;
-  bibliography?: BibliographyEntry[];
+  bibliography?: string[];
 }
 
 export const cuaderno: Week[] = weekData as Week[];
 
 // Compatibilidad: fuentes antiguas con asociación explícita de semana.
 export function getWeekBibliography(week: Week): BibliographyEntry[] {
-  const legacy = week.activities.flatMap((activity) => activity.references.map((reference, index) => {
-    const url = reference.match(/https?:\/\/\S+/)?.[0];
-    return { id: `${activity.id}-ref-${index}`, type: "web" as const,
-      title: url ? reference.replace(url, "").replace(/:\s*$/, "") : reference, url };
+  const legacy = week.activities.flatMap((activity) =>
+    activity.references.map((reference, index) => {
+      const url = reference.match(/https?:\/\/\S+/)?.[0];
+      return {
+        id: `${activity.id}-ref-${index}`,
+        type: "web" as const,
+        title: url ? reference.replace(url, "").replace(/:\s*$/, "") : reference,
+        url,
+      };
+    }),
+  );
+
+  const weekBib = (week.bibliography ?? []).map((citation, index) => ({
+    id: `${week.id}-bib-${index}`,
+    type: "web" as const,
+    title: citation,
+    url: citation.match(/https?:\/\/\S+/)?.[0],
   }));
-  return [...(week.bibliography ?? []), ...bibliography.filter((entry) => entry.weekNumbers?.includes(week.number)), ...legacy]
-    .filter((entry, index, entries) => entries.findIndex((other) => (other.url ?? other.id) === (entry.url ?? entry.id)) === index);
+
+  return [...weekBib, ...bibliography.filter((entry) => entry.weekNumbers?.includes(week.number)), ...legacy].filter(
+    (entry, index, entries) =>
+      entries.findIndex((other) => (other.url ?? other.id) === (entry.url ?? entry.id)) === index,
+  );
 }

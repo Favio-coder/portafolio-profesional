@@ -15,8 +15,8 @@ export default function Cuaderno() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<WeekStatus | "">("");
-  const filtered = weeks.filter((week) => (!status || (week.status ?? "pendiente") === status) && normalize([
-    week.title, week.summary ?? week.description, ...(week.topics ?? []).map((topic) => topic.title),
+const filtered = weeks.filter((week) => (!status || (week.status ?? "pendiente") === status) && normalize([
+    week.title, week.summary ?? week.description, ...(week.topics ?? []),
     ...week.activities.flatMap((activity) => [activity.title, ...activity.learnedTopics]),
   ].join(" ")).includes(normalize(query.trim())));
   const index = filtered.findIndex((week) => week.id === selectedId);
