@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import MotionProvider from "@/components/MotionProvider";
+import AssetBoot from "@/components/AssetBoot";
+import { getBootAssets } from "@/lib/boot-assets";
 
 export const metadata: Metadata = {
   title: "Favio Asturimac — Full Stack Developer",
@@ -57,8 +59,10 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="es" className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
       <body className="min-h-full flex flex-col antialiased">
         <MotionProvider>
+          <AssetBoot assets={getBootAssets()}>
           <Navbar />
           <div className="flex-1">{children}</div>
+          </AssetBoot>
         </MotionProvider>
       </body>
     </html>

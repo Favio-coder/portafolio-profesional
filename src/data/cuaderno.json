@@ -3,73 +3,171 @@
     "id": "semana-01",
     "number": 1,
     "title": "Fundamentos de Desarrollo Web",
-    "description": "Introducción a las tecnologías base: HTML semántico, CSS moderno y JavaScript ES6+. Configuración del entorno de desarrollo y primeros pasos con control de versiones.",
+    "description": "Exploración de los conceptos básicos de la web, las herramientas de desarrollo y las alternativas de alojamiento. Aplicación mediante infografías, una presentación personal y la publicación del primer proyecto.",
     "activities": [
       {
         "id": "act-01-01",
-        "title": "Configuración del entorno y Git",
-        "description": "Instalación y configuración de VS Code, Node.js, Git y GitHub. Creación del primer repositorio y flujo de trabajo básico con commits semánticos.",
+        "title": "Análisis de alternativas de alojamiento web",
+        "description": "Organización de una comparación visual de servicios de hosting para comprender qué aspectos considerar antes de publicar un proyecto.",
         "learnedTopics": [
-          "HTML semántico: estructura accesible y SEO-friendly",
-          "CSS Custom Properties para theming consistente",
-          "JavaScript ES6+: let/const, arrow functions, destructuring, modules",
-          "Git: init, add, commit, push, pull, branch, merge",
-          "Convenciones de commits (Conventional Commits)"
+          "El hosting proporciona los recursos donde se aloja un proyecto web; el dominio permite identificarlo mediante un nombre.",
+          "El frontend, el backend y la base de datos pueden necesitar servicios de alojamiento diferentes.",
+          "La elección de hosting depende de los requisitos del proyecto y de las condiciones del servicio."
         ],
         "procedures": [
-          "Instalar VS Code con extensiones esenciales (ESLint, Prettier, GitLens)",
-          "Configurar Git con user.name y user.email global",
-          "Crear repositorio en GitHub y clonar localmente",
-          "Establecer rama main y rama develop",
-          "Ejecutar primer commit con mensaje semántico: 'feat: initial project setup'"
+          "Identificar las necesidades de alojamiento de un proyecto web.",
+          "Comparar opciones gratuitas y de pago según sus recursos, restricciones y posibilidades de crecimiento.",
+          "Organizar la información en infografías para facilitar su comparación."
         ],
         "labExercises": [
-          "Crear página HTML5 válida con header, main, footer, nav, article, section",
-          "Aplicar CSS Grid y Flexbox para layout responsive de 3 breakpoints",
-          "Implementar módulo JS que calcule factorial recursivo e iterativo"
+          "Elaborar una comparación visual de alternativas de alojamiento para un proyecto web."
         ],
-        "labDevelopment": "Desarrollé una landing page estática 'Mi Primer Portfolio' aplicando HTML semántico, CSS con custom properties para modo oscuro/claro, y JavaScript modular para navegación suave y animaciones de scroll. Utilicé BEM para nombrar clases CSS.",
-        "labResults": "Página funcional en GitHub Pages. Validación W3C sin errores. Lighthouse: Performance 98, Accessibility 100, Best Practices 96, SEO 100. Repository: https://github.com/usuario/primer-portfolio",
+        "labDevelopment": "La actividad se documenta mediante dos infografías que organizan la información sobre alojamiento web y apoyan la evaluación de alternativas.",
+        "labResults": "Se incorporan dos infografías como evidencias de la actividad.",
         "reflection": {
-          "whatLearned": "La semántica HTML no es opcional: mejora accesibilidad, SEO y mantenibilidad. CSS Custom Properties eliminan duplicación de valores y facilitan theming. Los módulos ES6 organizan código sin bundlers.",
-          "howLearned": "Práctica guiada: seguí tutoriales MDN y freeCodeCamp, luego repliqué sin copiar. Depuré errores de layout con DevTools. Revisé commits de proyectos open source para entender convención semántica."
+          "whatLearned": "",
+          "howLearned": ""
         },
-        "references": [
-          "MDN Web Docs - HTML Semántico: https://developer.mozilla.org/es/docs/Glossary/Semantics",
-          "MDN - CSS Custom Properties: https://developer.mozilla.org/es/docs/Web/CSS/Using_CSS_custom_properties",
-          "JavaScript.info - ES6 Modules: https://javascript.info/modules-intro",
-          "Conventional Commits: https://www.conventionalcommits.org/es/v1.0.0/",
-          "GitHub Guides - Git Handbook: https://guides.github.com/introduction/git-handbook/"
-        ],
+        "references": [],
         "evidence": [
           {
             "type": "image",
-            "title": "Captura Lighthouse Semana 1",
-            "url": "/assets/images/cuaderno/semana-01/lighthouse.png",
-            "description": "Reporte de rendimiento y accesibilidad"
+            "title": "Infografía de alojamiento web — Parte 1",
+            "url": "/assets/cuaderno/Sem1/infografia1.jpg",
+            "alt": "Primera infografía de la actividad sobre alojamiento web",
+            "description": "Evidencia visual de la comparación de alternativas de hosting."
+          },
+          {
+            "type": "image",
+            "title": "Infografía de alojamiento web — Parte 2",
+            "url": "/assets/cuaderno/Sem1/infografia2.jpg",
+            "alt": "Segunda infografía de la actividad sobre alojamiento web",
+            "description": "Material complementario de la actividad."
+          }
+        ]
+      },
+      {
+        "id": "act-01-02",
+        "title": "Entorno de desarrollo y prueba con Live Server",
+        "description": "Reconocimiento de Visual Studio Code y uso de Live Server para visualizar una página durante su desarrollo.",
+        "learnedTopics": [
+          "El editor permite organizar archivos y modificar el código del proyecto.",
+          "Las extensiones añaden funciones que facilitan el trabajo.",
+          "Un servidor local permite probar la página antes de publicarla."
+        ],
+        "procedures": [
+          "Abrir la carpeta del proyecto en Visual Studio Code.",
+          "Reconocer el explorador de archivos, el editor y la terminal.",
+          "Habilitar Live Server y abrir la página en el navegador.",
+          "Guardar los cambios y revisar su efecto en la página."
+        ],
+        "labExercises": [
+          "Visualizar una página HTML mediante Live Server y comprobar los cambios realizados."
+        ],
+        "labDevelopment": "La práctica relaciona la edición del código con su visualización en el navegador. La captura adjunta documenta la prueba local.",
+        "labResults": "Se incorpora una captura de la página visualizada mediante Live Server.",
+        "reflection": {
+          "whatLearned": "",
+          "howLearned": ""
+        },
+        "references": [],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Prueba de la página con Live Server",
+            "url": "/assets/cuaderno/Sem1/webliveserver.jpg",
+            "alt": "Página web visualizada durante la práctica con Live Server",
+            "description": "Evidencia de la ejecución local del proyecto."
+          }
+        ]
+      },
+      {
+        "id": "act-01-03",
+        "title": "Presentación personal y publicación del proyecto",
+        "description": "Desarrollo de una presentación personal y registro del proyecto en GitHub, con acceso público mediante GitHub Pages.",
+        "learnedTopics": [
+          "HTML organiza el contenido, CSS define su presentación y JavaScript permite añadir comportamiento.",
+          "Git registra versiones del código; GitHub permite alojar y compartir el repositorio.",
+          "El repositorio contiene el código y el enlace publicado permite visitar el sitio."
+        ],
+        "procedures": [
+          "Organizar la información de presentación personal.",
+          "Estructurar el contenido y revisar su presentación en el navegador.",
+          "Registrar los cambios del proyecto mediante Git.",
+          "Subir el código al repositorio y configurar su publicación.",
+          "Incorporar las evidencias al cuaderno semanal."
+        ],
+        "labExercises": [
+          "Crear una presentación personal y compartir el código y el sitio publicado."
+        ],
+        "labDevelopment": "El proyecto de presentación personal se vincula con mi portafolio web de la UNCP. Se adjuntan la imagen de presentación, el repositorio, el enlace al sitio y el documento de la práctica.",
+        "labResults": "Código disponible en https://github.com/Favio-coder/portafolio-web-uncp y sitio publicado en https://favio-coder.github.io/portafolio-web-uncp/.",
+        "reflection": {
+          "whatLearned": "",
+          "howLearned": ""
+        },
+        "references": [],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Presentación personal",
+            "url": "/assets/cuaderno/Sem1/cartapresentacion.jpg",
+            "alt": "Presentación personal de Richard Favio Asturimac Medina",
+            "description": "Evidencia visual del trabajo de presentación."
           },
           {
             "type": "link",
-            "title": "Repositorio GitHub",
-            "url": "https://github.com/usuario/primer-portfolio",
-            "description": "Código fuente completo de la landing page"
+            "title": "Repositorio del proyecto",
+            "url": "https://github.com/Favio-coder/portafolio-web-uncp",
+            "description": "Código fuente del portafolio web."
+          },
+          {
+            "type": "link",
+            "title": "Visitar el proyecto publicado",
+            "url": "https://favio-coder.github.io/portafolio-web-uncp/",
+            "description": "Acceso al sitio mediante GitHub Pages."
+          },
+          {
+            "type": "file",
+            "title": "Descargar práctica de la semana 1",
+            "url": "/assets/cuaderno/Sem1/Practica1-RichardFavioAsturimacMedina.pdf",
+            "description": "Documento PDF de la práctica.",
+            "download": true,
+            "fileName": "Practica1-RichardFavioAsturimacMedina.pdf"
           }
         ]
       }
     ],
     "date": "",
-    "status": "pendiente",
-    "summary": "Introducción a las tecnologías base: HTML semántico, CSS moderno y JavaScript ES6+. Configuración del entorno de desarrollo y primeros pasos con control de versiones.",
-    "objectives": [],
-    "topics": [],
+    "status": "completada",
+    "summary": "La semana combina fundamentos de la web con actividades de comparación de hosting, uso del entorno de desarrollo y publicación de una presentación personal.",
+    "objectives": [
+      "Reconocer los componentes principales de un proyecto web.",
+      "Diferenciar frontend, backend, dominio y hosting.",
+      "Utilizar el entorno de desarrollo para realizar pruebas locales.",
+      "Documentar y compartir el trabajo mediante GitHub y GitHub Pages."
+    ],
+    "topics": [
+      "Software nativo y aplicaciones web: diferencias en su ejecución y dependencia del entorno.",
+      "Estándares web: tecnologías comunes que favorecen la interoperabilidad.",
+      "Internet y DNS: comunicación entre equipos y resolución de nombres de dominio.",
+      "Frontend y backend: interfaz del usuario y procesamiento del servidor.",
+      "Página, sitio y aplicación web: conceptos relacionados con alcances diferentes.",
+      "UI y UX: presentación visual y experiencia de uso.",
+      "Control de versiones, alojamiento y publicación web."
+    ],
     "reflection": {
-      "whatLearned": "",
-      "howLearned": "",
+      "whatLearned": "Comprendí mejor cómo se relacionan las tecnologías que intervienen en un proyecto web. También distinguí el trabajo sobre el código, su alojamiento y su publicación. Comparar servicios y preparar una presentación personal me ayudó a conectar los conceptos con decisiones prácticas.",
+      "howLearned": "Relacioné la explicación de los temas con ejercicios concretos: organizar información en infografías, probar una página localmente y compartir el proyecto. Registrar las evidencias en el cuaderno me permitió revisar el proceso y explicar lo realizado.",
       "difficulties": "",
       "solutions": "",
-      "improvements": ""
+      "improvements": "Profundizar en las condiciones de los servicios de alojamiento y revisar la claridad del contenido, la accesibilidad y la adaptación del proyecto a distintos tamaños de pantalla."
     },
-    "bibliography": []
+    "bibliography": [
+      "Duckett, J. HTML y CSS: Diseño y construcción de sitios web. Anaya Multimedia. https://anayamultimedia.es/libro/titulos-especiales/html-y-css-diseno-y-construccion-de-sitios-web-jon-duckett-9788441549593/",
+      "Robbins, J. N. Learning Web Design (6.ª ed.). O’Reilly Media. https://learningwebdesign.com/",
+      "World Wide Web Consortium (W3C). Web Standards. https://www.w3.org/standards/"
+    ]
   },
   {
     "id": "semana-02",

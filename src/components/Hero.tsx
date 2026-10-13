@@ -1,4 +1,6 @@
 "use client";
+import { imageSizes } from "@/lib/image-assets";
+
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -163,7 +165,7 @@ export default function Hero() {
                   alt="Favio Asturimac - Full Stack Developer"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                  sizes={imageSizes.hero}
                   className={`object-cover transition-all duration-1000 ease-out ${
                     isPixel ? "scale-105 opacity-0" : "scale-100 opacity-100"
                   }`}
@@ -173,7 +175,7 @@ export default function Hero() {
                   alt="Favio Asturimac - Pixel Art Version"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                  sizes={imageSizes.hero}
                   className={`object-cover transition-all duration-1000 ease-out ${
                     isPixel ? "scale-100 opacity-100" : "scale-95 opacity-0"
                   }`}
@@ -231,3 +233,4 @@ export default function Hero() {
     </section>
   );
 }
+

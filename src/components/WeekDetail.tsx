@@ -1,5 +1,6 @@
+import { imageSizes } from "@/lib/image-assets";
 import type { ReactNode } from "react";
-import Reveal from "@/components/Reveal";
+import Image from "next/image";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { getWeekBibliography, type Week, type Evidence } from "@/data/cuaderno";
 
@@ -33,6 +34,7 @@ function EvidenceLinks({ items }: { items: Evidence[] }) {
         <a
           key={`${item.type}-${i}-${item.url.slice(0, 20)}`}
           href={item.url}
+          download={item.download ? item.fileName || true : undefined}
           target="_blank"
           rel="noopener noreferrer"
           className="min-w-0 rounded-sm border border-border bg-muted p-4 transition-colors hover:border-primary"
@@ -40,6 +42,7 @@ function EvidenceLinks({ items }: { items: Evidence[] }) {
           <span className="font-mono text-xs uppercase text-primary-ink">
             {item.type} ↗
           </span>
+          {item.type === "image" && <span className="relative my-3 block aspect-[4/3] overflow-hidden border border-border bg-background"><Image src={item.url} alt={item.alt || item.title} fill sizes={imageSizes.evidence} className="object-contain" /></span>}
           <p className="break-words font-medium">{item.title}</p>
           {item.description && (
             <p className="mt-2 font-mono text-xs text-muted-foreground">{item.description}</p>
@@ -61,7 +64,7 @@ export default function WeekDetail({ week }: { week: Week }) {
   ] as const;
 
   return (
-    <Reveal className="space-y-8 border border-border bg-card p-6 md:p-8">
+    <article className="week-detail min-w-0 space-y-8 border border-border bg-card p-6 md:p-8">
       <header key="week-header">
         <p className="mb-2 font-mono text-xs tracking-widest text-primary-ink">
           SEMANA {String(week.number).padStart(2, "0")} / {week.status ?? "pendiente"}
@@ -82,15 +85,15 @@ export default function WeekDetail({ week }: { week: Week }) {
       <Block title="02 / TEMAS">
         {week.topics?.length ? (
           week.topics.map((topic, i) => (
-            <div key={`topic-${i}-${topic.slice(0, 20)}`} className="space-y-3">
-              <h3 className="font-heading font-semibold">{topic}</h3>
-              <p className="font-mono text-xs text-muted-foreground">
-                [ADD_EXPLANATION] · Completar con mi explicación.
+            <div key={`topic-${i}`} className="space-y-3">
+              <h3 className="font-heading font-semibold">{topic.title}</h3>
+              <p className="font-mono text-sm text-muted-foreground">
+                {topic.explanation || "[ADD_EXPLANATION] · Completar con mi explicación."}
               </p>
               <p className="font-mono text-xs text-primary-ink">DEFINICIONES</p>
-              <Lines items={[]} placeholder="[ADD_DEFINITIONS]" />
+              <Lines items={topic.definitions} placeholder="[ADD_DEFINITIONS]" />
               <p className="font-mono text-xs text-primary-ink">PROCEDIMIENTOS</p>
-              <Lines items={[]} placeholder="[ADD_PROCEDURES]" />
+              <Lines items={topic.procedures} placeholder="[ADD_PROCEDURES]" />
             </div>
           ))
         ) : (
@@ -148,7 +151,7 @@ export default function WeekDetail({ week }: { week: Week }) {
                 </pre>
               )}
               <Block title="RESULTADOS">
-                <p key={`activity-results-${activity.id}`} className="whitespace-pre-wrap break-words font-mono text-sm leading-relaxed">
+                <p key={`activity-results-${activity.id}`} className="whitespace-pre-wrap wrap-break- font-mono text-sm leading-relaxed">
                   {activity.labResults || "[ADD_RESULTS]"}
                 </p>
               </Block>
@@ -248,6 +251,7 @@ export default function WeekDetail({ week }: { week: Week }) {
           </article>
         ))}
       </Block>
-    </Reveal>
+    </article>
   );
 }
+

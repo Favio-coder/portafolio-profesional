@@ -1,4 +1,6 @@
 "use client";
+import { imageSizes } from "@/lib/image-assets";
+
 
 import { useRef, useState } from "react";
 import Image from "next/image";
@@ -36,7 +38,7 @@ export default function Gallery() {
             >
               <span className="flex justify-between gap-2 px-2 py-2 font-mono text-[0.6rem] sm:gap-3 sm:p-3 sm:text-xs"><span>{photo.id.toUpperCase()}</span><span aria-hidden="true">↗ OPEN</span></span>
               <span className="gallery-image" style={{ aspectRatio: `${photo.width} / ${photo.height}` }}>
-                <Image src={photo.image} alt={photo.title} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 46vw" className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.02]" />
+                <Image src={photo.image} alt={photo.title} fill sizes={imageSizes.gallery} className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.02]" />
               </span>
               <span className="flex flex-wrap justify-between gap-1 px-2 py-2 text-left text-[0.6rem] text-muted-foreground sm:gap-2 sm:p-3 sm:text-xs"><span>{photo.title}</span><span>{photo.category} / {photo.year}</span></span>
             </button>
@@ -53,7 +55,7 @@ export default function Gallery() {
                 <DialogTitle>{item.title}</DialogTitle>
                 <DialogClose className="lightbox-control" aria-label="Cerrar imagen">Cerrar ×</DialogClose>
               </div>
-              <div className="lightbox-image"><Image src={item.image} alt={item.title} fill sizes="(min-width: 1024px) 960px, 95vw" className="object-contain" /></div>
+              <div className="lightbox-image"><Image src={item.image} alt={item.title} fill sizes={imageSizes.lightbox} className="object-contain" /></div>
               <div className="flex items-center justify-between gap-2">
                 <button type="button" className="lightbox-control" onClick={() => move(-1)} aria-label="Imagen anterior">←</button>
                 <DialogDescription aria-live="polite">{(selected ?? 0) + 1} / {visible.length} · {item.category} · {item.year}</DialogDescription>
@@ -66,3 +68,4 @@ export default function Gallery() {
     </section>
   );
 }
+

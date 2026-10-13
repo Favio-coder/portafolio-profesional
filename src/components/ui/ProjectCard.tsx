@@ -1,4 +1,6 @@
 "use client";
+import { imageSizes } from "@/lib/image-assets";
+
 
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -31,7 +33,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           </div>
           <figure className="min-w-0">
             <div className="project-image">
-              <Image src={project.image} alt={`Imagen asociada a ${project.name}`} fill sizes="(min-width: 1024px) 42vw, 90vw" className="object-contain" />
+              <Image src={project.image} alt={`Imagen asociada a ${project.name}`} fill sizes={imageSizes.project} className="object-contain" />
             </div>
             <figcaption className="mt-2 font-mono text-xs text-muted-foreground">{project.image.split("/").pop()}</figcaption>
           </figure>
@@ -40,3 +42,4 @@ export default function ProjectCard({ project, index }: { project: Project; inde
     </article>
   );
 }
+

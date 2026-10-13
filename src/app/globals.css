@@ -438,3 +438,19 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 24px); }
     font-size: clamp(1.5rem, 6vw, 3rem);
   }
 }
+
+.week-detail {
+  animation: week-enter 180ms ease-out;
+}
+@keyframes week-enter {
+  from { transform: translateY(6px); }
+  to { transform: translateY(0); }
+}
+.boot-progress {
+  background-image: repeating-linear-gradient(90deg, transparent 0 10px, var(--background) 10px 12px);
+  transition: width 160ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .week-detail { animation: none; }
+  .boot-progress { transition: none; }
+}

@@ -6,19 +6,17 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionDivider from "@/components/ui/SectionDivider";
 import WeekDetail from "@/components/WeekDetail";
-import { cuaderno, type WeekStatus } from "@/data/cuaderno";
+import { cuaderno, cuadernoIssues, type WeekStatus } from "@/data/cuaderno";
 
 const weeks = [...cuaderno].sort((a, b) => a.number - b.number);
 const normalize = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const searchIndex = new Map(weeks.map((week) => [week.id, normalize([week.title, week.summary ?? week.description, ...(week.topics ?? []).flatMap((topic) => [topic.title, topic.explanation]), ...week.activities.flatMap((activity) => [activity.title, ...activity.learnedTopics])].join(" "))]));
 
 export default function Cuaderno() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<WeekStatus | "">("");
-const filtered = weeks.filter((week) => (!status || (week.status ?? "pendiente") === status) && normalize([
-    week.title, week.summary ?? week.description, ...(week.topics ?? []),
-    ...week.activities.flatMap((activity) => [activity.title, ...activity.learnedTopics]),
-  ].join(" ")).includes(normalize(query.trim())));
+  const filtered = weeks.filter((week) => (!status || (week.status ?? "pendiente") === status) && searchIndex.get(week.id)!.includes(normalize(query.trim())));
   const index = filtered.findIndex((week) => week.id === selectedId);
   const current = filtered[index];
   const control = "w-full min-w-0 border border-border bg-background p-3 font-mono text-sm text-foreground focus-visible:outline-2 focus-visible:outline-primary";
@@ -28,6 +26,7 @@ const filtered = weeks.filter((week) => (!status || (week.status ?? "pendiente")
       <div className="mx-auto max-w-350">
         <SectionHeading number="04" title="CUADERNO SEMANAL" subtitle="Registro de aprendizaje: temas, laboratorios y reflexiones por semana" />
         <SectionDivider className="my-8 md:my-10" label="WEEKLY_LOG" thick />
+        {cuadernoIssues.length > 0 && <div role="alert" className="mb-6 border border-border bg-card p-4 font-mono text-sm">Revisa src/data/cuaderno.json:<ul>{cuadernoIssues.map((issue) => <li key={issue}>{issue}</li>)}</ul></div>}
         <div className="grid items-start gap-8 lg:grid-cols-[280px_1fr]">
           <Reveal className="min-w-0 lg:sticky lg:top-[calc(var(--nav-height)+32px)]">
             <aside className="overflow-hidden border border-border bg-card" aria-label="Selector de semanas">
