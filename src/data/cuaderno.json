@@ -609,6 +609,219 @@
       "Bootstrap. Validation: documentación de formularios de Bootstrap 5.3. https://getbootstrap.com/docs/5.3/forms/validation/",
       "Haverbeke, M. Eloquent JavaScript (4.ª ed.). https://eloquentjavascript.net/"
     ]
+  },
+  {
+    "id": "semana-04",
+    "number": 4,
+    "title": "Desarrollo frontend con JavaScript y TypeScript",
+    "description": "Aplicación de JavaScript en una práctica grupal de ruleta y sorteo, y de TypeScript en un blog de programación con contenido dinámico, Canvas y animaciones.",
+    "activities": [
+      {
+        "id": "act-04-01",
+        "title": "Práctica calificada grupal 03: ruleta y sorteo",
+        "description": "Desarrollo de una aplicación con acceso a dos ejercicios: ruleta y sorteo. Integrantes: Richard Favio Asturimac Medina, Brittany Gonzales Quiñonez, Jhojan Antezana Villegas y Edilson Roberto Camargo Alvarado.",
+        "learnedTopics": [
+          "Los eventos permiten ejecutar acciones cuando el usuario interactúa con los controles.",
+          "El DOM permite seleccionar elementos y conectar botones con funciones.",
+          "La organización por páginas facilita separar los ejercicios de una aplicación.",
+          "La API Fullscreen permite solicitar y abandonar el modo de pantalla completa."
+        ],
+        "procedures": [
+          "Crear una página principal con accesos a la ruleta y al sorteo.",
+          "Organizar las tarjetas de acceso mediante una distribución adaptable.",
+          "Seleccionar los botones desde JavaScript.",
+          "Registrar eventos de clic para navegar a cada ejercicio.",
+          "Incorporar un control de pantalla completa.",
+          "Integrar el trabajo grupal y publicarlo en GitHub Pages."
+        ],
+        "labExercises": [
+          "Desarrollar una interfaz de acceso a los ejercicios de ruleta y sorteo.",
+          "Vincular los controles de navegación mediante JavaScript.",
+          "Implementar un botón para alternar el modo de pantalla completa.",
+          "Integrar los ejercicios en una aplicación grupal."
+        ],
+        "labDevelopment": "La aplicación presenta dos tarjetas que conducen a las páginas de ruleta y sorteo. Los botones utilizan eventos de clic y funciones de navegación. También incluye un control de pantalla completa y un pie de página con los integrantes y la identificación del curso.",
+        "labResults": "Se publicó la práctica grupal en GitHub Pages y se compartió su código fuente. La página principal incorpora los accesos a ambos ejercicios y el control de pantalla completa.",
+        "reflection": {
+          "whatLearned": "Comprendí cómo conectar una interfaz con acciones de JavaScript y organizar distintos ejercicios dentro de una misma aplicación.",
+          "howLearned": "Relacioné los controles visuales con sus funciones y revisé la integración de las páginas del trabajo grupal."
+        },
+        "references": [
+          "Microsoft. The TypeScript Handbook. https://www.typescriptlang.org/docs/handbook/intro.html"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Práctica grupal — Evidencia 1",
+            "url": "/assets/cuaderno/Sem4/grupal1.jpg",
+            "alt": "Primera captura de la práctica grupal de la semana 4",
+            "description": "Registro visual de la aplicación grupal."
+          },
+          {
+            "type": "image",
+            "title": "Práctica grupal — Evidencia 2",
+            "url": "/assets/cuaderno/Sem4/grupal2.jpg",
+            "alt": "Segunda captura de la práctica grupal de la semana 4",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "Práctica grupal — Evidencia 3",
+            "url": "/assets/cuaderno/Sem4/grupal3.jpg",
+            "alt": "Tercera captura de la práctica grupal de la semana 4",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "link",
+            "title": "Visitar la práctica grupal",
+            "url": "https://favio-coder.github.io/Sem4-PracticaCalificada/",
+            "description": "Aplicación publicada con acceso a la ruleta y al sorteo."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio de la práctica grupal",
+            "url": "https://github.com/Favio-coder/Sem4-PracticaCalificada",
+            "description": "Código fuente del trabajo grupal."
+          }
+        ]
+      },
+      {
+        "id": "act-04-02",
+        "title": "Práctica JavaScript y TypeScript, Manipulación del DOM, Funciones Avanzadas, Canvas API y Animaciones",
+        "description": "Desarrollo individual de DevBlog, una página sobre programación y tecnología con categorías, artículos y una sección de interacción gráfica.",
+        "learnedTopics": [
+          "TypeScript incorpora comprobación estática de tipos antes de ejecutar el programa.",
+          "El código TypeScript se transforma en JavaScript para utilizarlo en el navegador.",
+          "Los selectores y eventos del DOM conectan los datos con los elementos de la interfaz.",
+          "Canvas proporciona una superficie de dibujo controlada mediante JavaScript.",
+          "Las animaciones requieren actualizar su estado y dibujar nuevos fotogramas.",
+          "Separar estructura, estilos y lógica facilita organizar el proyecto."
+        ],
+        "procedures": [
+          "Crear la estructura de archivos y el documento index.html.",
+          "Configurar Tailwind CSS, las fuentes y los estilos del blog.",
+          "Maquetar el encabezado, el hero y la sección de categorías.",
+          "Construir la sección de artículos y el pie de página.",
+          "Desarrollar la lógica del proyecto en TypeScript.",
+          "Revisar los errores de tipos señalados durante el desarrollo.",
+          "Incorporar las animaciones y los elementos interactivos.",
+          "Compilar TypeScript a JavaScript y vincular el archivo generado.",
+          "Documentar el proceso y publicar la página en GitHub Pages."
+        ],
+        "labExercises": [
+          "Construir un blog de programación con HTML y Tailwind CSS.",
+          "Utilizar TypeScript para organizar la lógica de la página.",
+          "Preparar controles de búsqueda y selección de categorías.",
+          "Incorporar una sección de aprendizaje con navegación por diapositivas.",
+          "Integrar lienzos Canvas para representar partículas, estelas y ondas.",
+          "Presentar controles de interacción e indicadores de ejecución."
+        ],
+        "labDevelopment": "DevBlog organiza su contenido mediante un encabezado, un hero, categorías, una ruta de aprendizaje, artículos y un playground. El HTML publicado incluye contenedores para insertar artículos desde el código compilado, controles de búsqueda y dos lienzos Canvas. El PDF documenta la maquetación, los errores detectados durante el trabajo con TypeScript, la compilación y la presentación de la página con animaciones.",
+        "labResults": "Se publicó el blog en GitHub Pages con el archivo JavaScript compilado desde TypeScript. El informe adjunta capturas del código y de la página. La estructura publicada incorpora artículos, controles de categorías, un carrusel de aprendizaje, lienzos interactivos y un panel de indicadores de ejecución.",
+        "reflection": {
+          "whatLearned": "Comprendí que TypeScript ayuda a detectar incompatibilidades durante el desarrollo y que el navegador ejecuta el JavaScript generado. También relacioné la manipulación del DOM y Canvas con distintas formas de presentar e interactuar con la información.",
+          "howLearned": "Aprendí construyendo el blog por secciones, revisando los mensajes del editor y compilando el código. Las capturas del proceso me permitieron comparar la implementación con su presentación en el navegador."
+        },
+        "references": [
+          "Microsoft. The TypeScript Handbook. https://www.typescriptlang.org/docs/handbook/intro.html",
+          "MDN Web Docs. Canvas API. https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Blog de programación — Evidencia 1",
+            "url": "/assets/cuaderno/Sem4/blog1.jpg",
+            "alt": "Primera captura del blog de programación",
+            "description": "Registro visual de la práctica individual."
+          },
+          {
+            "type": "image",
+            "title": "Blog de programación — Evidencia 2",
+            "url": "/assets/cuaderno/Sem4/blog2.jpg",
+            "alt": "Segunda captura del blog de programación",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "Blog de programación — Evidencia 3",
+            "url": "/assets/cuaderno/Sem4/blog3.jpg",
+            "alt": "Tercera captura del blog de programación",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "Blog de programación — Evidencia 4",
+            "url": "/assets/cuaderno/Sem4/blog4.jpg",
+            "alt": "Cuarta captura del blog de programación",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "Blog de programación — Evidencia 5",
+            "url": "/assets/cuaderno/Sem4/blog5.jpg",
+            "alt": "Quinta captura del blog de programación",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "link",
+            "title": "Visitar DevBlog",
+            "url": "https://favio-coder.github.io/Sem4-BlogProgramacion/",
+            "description": "Blog de programación publicado en GitHub Pages."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio del blog",
+            "url": "https://github.com/Favio-coder/Sem4-BlogProgramacion",
+            "description": "Código fuente de la práctica individual."
+          },
+          {
+            "type": "file",
+            "title": "Descargar informe de la semana 4",
+            "url": "/assets/cuaderno/Sem4/Sem4-RichardFavioAsturimacMedina.pdf",
+            "description": "Informe del desarrollo del blog con TypeScript y animaciones.",
+            "download": true,
+            "fileName": "Sem4-RichardFavioAsturimacMedina.pdf"
+          }
+        ]
+      }
+    ],
+    "date": "",
+    "status": "completada",
+    "summary": "Aplicación de JavaScript en una ruleta y un sorteo grupal, y desarrollo de un blog individual con TypeScript, manipulación del DOM y elementos gráficos animados.",
+    "objectives": [
+      "Comprender la relación entre JavaScript y TypeScript.",
+      "Conectar controles de interfaz con eventos y funciones.",
+      "Manipular contenido mediante el DOM.",
+      "Explorar Canvas y la actualización de animaciones.",
+      "Compilar y publicar un proyecto frontend.",
+      "Documentar las actividades individuales y grupales."
+    ],
+    "topics": [
+      "Motores JavaScript: ejecución del código y gestión de memoria.",
+      "Variables: let y const tienen ámbito de bloque; const impide reasignar la referencia.",
+      "Tipos primitivos, objetos y comparación estricta.",
+      "Condicionales y ciclos para controlar la ejecución.",
+      "Funciones declaradas, expresiones, funciones flecha e IIFE.",
+      "Closures: funciones que conservan acceso a su entorno léxico.",
+      "TypeScript: comprobación de tipos y generación de JavaScript.",
+      "DOM: selección de elementos, textContent, classList y eventos.",
+      "textContent inserta texto sin interpretar etiquetas HTML.",
+      "Canvas 2D: dibujo mediante un contexto gráfico.",
+      "requestAnimationFrame: programación de actualizaciones antes del repintado.",
+      "Delta time: cálculo del movimiento según el tiempo transcurrido."
+    ],
+    "reflection": {
+      "whatLearned": "Aprendí a relacionar las acciones del usuario con funciones y cambios en la interfaz. El trabajo grupal reforzó la navegación entre ejercicios y el blog individual me permitió conectar TypeScript, contenido dinámico y animaciones.",
+      "howLearned": "Aprendí mediante la implementación de los proyectos, la revisión del código y la observación de su presentación en el navegador. Documentar las etapas me ayudó a explicar cómo se conectan la estructura HTML, los estilos y la lógica.",
+      "difficulties": "Durante el desarrollo del blog aparecieron errores relacionados con los tipos, como se registra en el informe. Esto exigió revisar las suposiciones del código antes de generar el archivo JavaScript.",
+      "solutions": "Revisé los mensajes de TypeScript y ajusté el código durante el proceso de compilación. Organicé la estructura del proyecto y vinculé el JavaScript generado con la página.",
+      "improvements": "Mejoraré la validación de entradas, el manejo de elementos que pueden no existir y la separación de funciones. También revisaré las animaciones en distintos dispositivos y añadiré opciones para reducir el movimiento."
+    },
+    "bibliography": [
+      "Microsoft. The TypeScript Handbook. https://www.typescriptlang.org/docs/handbook/intro.html",
+      "MDN Web Docs. Canvas API. https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API",
+      "Rauschmayer, A. Exploring JavaScript, ES2025 Edition. Vista previa del libro. https://exploringjs.com/js/downloads/exploring-js-book-preview.pdf"
+    ]
   }
 
 ]
