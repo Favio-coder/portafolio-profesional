@@ -42,8 +42,8 @@ function EvidenceLinks({ items }: { items: Evidence[] }) {
           <span className="font-mono text-xs uppercase text-primary-ink">
             {item.type} ↗
           </span>
-          {item.type === "image" && <span className="relative my-3 block aspect-[4/3] overflow-hidden border border-border bg-background"><Image src={item.url} alt={item.alt || item.title} fill sizes={imageSizes.evidence} className="object-contain" /></span>}
-          <p className="break-words font-medium">{item.title}</p>
+          {item.type === "image" && <span className="relative my-3 block aspect-4/3 overflow-hidden border border-border bg-background"><Image src={item.url} alt={item.alt || item.title} fill sizes={imageSizes.evidence} className="object-contain" /></span>}
+          <p className="wrap-words- font-medium">{item.title}</p>
           {item.description && (
             <p className="mt-2 font-mono text-xs text-muted-foreground">{item.description}</p>
           )}

@@ -358,6 +358,257 @@
       "Marcotte, E. Responsive Web Design. A Book Apart. https://abookapart.com/products/responsive-web-design.html",
       "web.dev. Learn CSS. https://web.dev/learn/css"
     ]
+  },
+  {
+    "id": "semana-03",
+    "number": 3,
+    "title": "Interfaces responsivas con Bootstrap, Tailwind CSS y JavaScript",
+    "description": "Aplicación de frameworks CSS en dos proyectos: una página grupal de gimnasio y una página individual sobre AWS Community Day Perú 2026. Se trabajaron navegación responsive, tarjetas, formularios, accesibilidad e interacciones con JavaScript.",
+    "activities": [
+      {
+        "id": "act-03-01",
+        "title": "Práctica grupal: página web de gimnasio",
+        "description": "Desarrollo de una página de gimnasio combinando componentes de Bootstrap 5.3.3 y utilidades de Tailwind CSS. Integrantes: Richard Favio Asturimac Medina y Brittany Gonzales Quiñonez.",
+        "learnedTopics": [
+          "Bootstrap ofrece componentes y una grilla que facilitan construir interfaces.",
+          "Tailwind permite ajustar la presentación combinando clases utilitarias.",
+          "La navbar colapsable adapta la navegación a pantallas pequeñas.",
+          "El sistema de columnas permite apilar tarjetas en móvil y distribuirlas en escritorio.",
+          "Los formularios necesitan etiquetas, restricciones y mensajes claros.",
+          "La revisión de accesibilidad y rendimiento ayuda a identificar mejoras."
+        ],
+        "procedures": [
+          "Crear index.html con estructura HTML5, idioma español y configuración viewport.",
+          "Agregar metadatos de descripción, autor y robots.",
+          "Integrar Bootstrap 5.3.3 y Tailwind CSS mediante CDN.",
+          "Construir una navbar colapsable con menú desplegable y badge de promociones.",
+          "Diseñar el hero con título, descripción y botones de acción.",
+          "Distribuir tres tarjetas mediante container, row g-4 y col-12 col-md-4.",
+          "Crear un formulario de reserva con nombre, correo, teléfono, plan y mensaje.",
+          "Incorporar estados visuales de validación y elementos de accesibilidad.",
+          "Revisar el proyecto con Lighthouse y WAVE.",
+          "Convertir imágenes a WebP y registrar el trabajo mediante commits y colaboración en GitHub."
+        ],
+        "labExercises": [
+          "Combinar componentes de Bootstrap con utilidades visuales de Tailwind.",
+          "Implementar navegación colapsable para dispositivos móviles.",
+          "Construir tarjetas de equipamiento, entrenadores y clases grupales.",
+          "Diseñar un formulario con campos requeridos y un patrón de nueve dígitos para el teléfono.",
+          "Revisar accesibilidad y optimizar los recursos gráficos."
+        ],
+        "labDevelopment": "La página incluye una navegación con opciones de entrenamiento, un hero promocional, tres tarjetas de servicios y un formulario de reserva. Bootstrap aporta componentes, columnas y estilos de formularios; Tailwind complementa sombras, espaciado y efectos visuales. El informe documenta la división del trabajo entre dos integrantes y su integración mediante GitHub.",
+        "labResults": "Se publicó el proyecto en GitHub Pages. El informe registra la navegación móvil, el formulario y las tarjetas, además de una revisión con Lighthouse y WAVE. Según el documento, WAVE no detectó errores de accesibilidad. También se documenta la conversión de imágenes a WebP y la colaboración de ambos integrantes.",
+        "reflection": {
+          "whatLearned": "Comprendí cómo combinar componentes y utilidades CSS para construir una página con secciones coherentes. También relacioné el diseño responsive con la organización de columnas y la navegación colapsable.",
+          "howLearned": "Aprendí mediante la implementación por etapas y la integración del trabajo grupal. La revisión de la página y las herramientas de auditoría permitieron identificar ajustes en imágenes y accesibilidad."
+        },
+        "references": [
+          "Bootstrap. Documentación de validación de formularios. https://getbootstrap.com/docs/5.3/forms/validation/",
+          "Tailwind CSS. Styling with utility classes. https://tailwindcss.com/docs/styling-with-utility-classes"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Gimnasio — Evidencia 1",
+            "url": "/assets/cuaderno/Sem3/gym1.jpg",
+            "alt": "Primera captura del proyecto web del gimnasio",
+            "description": "Registro visual de la práctica grupal."
+          },
+          {
+            "type": "image",
+            "title": "Gimnasio — Evidencia 2",
+            "url": "/assets/cuaderno/Sem3/gym2.jpg",
+            "alt": "Segunda captura del proyecto web del gimnasio",
+            "description": "Registro visual complementario de la práctica grupal."
+          },
+          {
+            "type": "image",
+            "title": "Gimnasio — Evidencia 3",
+            "url": "/assets/cuaderno/Sem3/gym3.jpg",
+            "alt": "Tercera captura del proyecto web del gimnasio",
+            "description": "Registro visual complementario de la práctica grupal."
+          },
+          {
+            "type": "image",
+            "title": "Colaboración en GitHub",
+            "url": "/assets/cuaderno/Sem3/githubpracitcagrupalsem3.jpg",
+            "alt": "Evidencia de GitHub correspondiente a la práctica grupal",
+            "description": "Registro del trabajo colaborativo."
+          },
+          {
+            "type": "link",
+            "title": "Visitar la página del gimnasio",
+            "url": "https://favio-coder.github.io/Grupo03-Semana3-Gimnasio/",
+            "description": "Proyecto grupal publicado en GitHub Pages."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio del gimnasio",
+            "url": "https://github.com/Favio-coder/Grupo03-Semana3-Gimnasio",
+            "description": "Código fuente de la práctica grupal."
+          },
+          {
+            "type": "file",
+            "title": "Descargar informe de la práctica grupal",
+            "url": "/assets/cuaderno/Sem3/Sem3-Asturimac-Gonzales.pdf",
+            "description": "Informe con el procedimiento, las capturas y los resultados.",
+            "download": true,
+            "fileName": "Sem3-Asturimac-Gonzales.pdf"
+          }
+        ]
+      },
+      {
+        "id": "act-03-02",
+        "title": "Práctica individual: página de AWS con terminal interactiva",
+        "description": "Desarrollo de una página sobre AWS Community Day Perú 2026 utilizando HTML, Tailwind CSS y JavaScript. Como aporte personal, se incorporó una terminal para consultar información mediante comandos.",
+        "learnedTopics": [
+          "Las utilidades de Tailwind permiten componer estilos directamente en el marcado.",
+          "JavaScript permite responder a acciones del usuario y actualizar contenido.",
+          "Una terminal web puede funcionar como una interfaz alternativa de consulta.",
+          "Una colección de pasos permite organizar una navegación progresiva.",
+          "El avance puede representarse visualmente mediante cambios en las secciones y el indicador de progreso."
+        ],
+        "procedures": [
+          "Crear index.html y organizar las secciones de la página.",
+          "Integrar Tailwind CSS mediante CDN.",
+          "Maquetar el contenido del evento y su presentación visual.",
+          "Programar una terminal que procese comandos del usuario en el navegador.",
+          "Definir los pasos de navegación mediante una constante.",
+          "Implementar la función que muestra las secciones acumulativamente y actualiza el progreso.",
+          "Probar la página durante su desarrollo en Visual Studio Code.",
+          "Publicar el proyecto y documentarlo mediante capturas e informe."
+        ],
+        "labExercises": [
+          "Maquetar una página temática con HTML y Tailwind CSS.",
+          "Construir una terminal interactiva para consultar información del evento.",
+          "Implementar una navegación por pasos con actualización del progreso.",
+          "Documentar el código y la presentación final del proyecto."
+        ],
+        "labDevelopment": "La práctica presenta información de AWS Community Day Perú 2026 mediante una interfaz maquetada con Tailwind. Se añadió una terminal ejecutada del lado del cliente y una navegación por pasos. El informe explica que las secciones se muestran acumulativamente mientras se actualiza el progreso, y adjunta capturas del código y de la página.",
+        "labResults": "Se publicó el proyecto Sem3-AWS-ejemplo en GitHub Pages. El documento incluye evidencias de la maquetación, la terminal programada en JavaScript, la gestión de los pasos y la demostración de la página durante el desarrollo.",
+        "reflection": {
+          "whatLearned": "Comprendí cómo complementar una página con una forma distinta de interacción. La terminal y la navegación por pasos me permitieron relacionar el diseño visual con la lógica necesaria para presentar información.",
+          "howLearned": "Aprendí construyendo la página y conectando los controles con funciones de JavaScript. Revisar el código y observar los cambios en el navegador me ayudó a entender la relación entre datos, eventos y contenido visible."
+        },
+        "references": [
+          "Tailwind CSS. Styling with utility classes. https://tailwindcss.com/docs/styling-with-utility-classes",
+          "Haverbeke, M. Eloquent JavaScript (4.ª ed.). https://eloquentjavascript.net/"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "AWS — Evidencia 1",
+            "url": "/assets/cuaderno/Sem3/aws1.jpg",
+            "alt": "Primera captura del proyecto individual sobre AWS",
+            "description": "Registro visual de la práctica individual."
+          },
+          {
+            "type": "image",
+            "title": "AWS — Evidencia 2",
+            "url": "/assets/cuaderno/Sem3/aws2.jpg",
+            "alt": "Segunda captura del proyecto individual sobre AWS",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "AWS — Evidencia 3",
+            "url": "/assets/cuaderno/Sem3/aws3.jpg",
+            "alt": "Tercera captura del proyecto individual sobre AWS",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "AWS — Evidencia 4",
+            "url": "/assets/cuaderno/Sem3/aws4.jpg",
+            "alt": "Cuarta captura del proyecto individual sobre AWS",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "AWS — Evidencia 5",
+            "url": "/assets/cuaderno/Sem3/aws5.jpg",
+            "alt": "Quinta captura del proyecto individual sobre AWS",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "AWS — Evidencia 6",
+            "url": "/assets/cuaderno/Sem3/aws6.jpg",
+            "alt": "Sexta captura del proyecto individual sobre AWS",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "AWS — Evidencia 7",
+            "url": "/assets/cuaderno/Sem3/aws7.jpg",
+            "alt": "Séptima captura del proyecto individual sobre AWS",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "Evidencia adicional de la semana 3",
+            "url": "/assets/cuaderno/Sem3/1.png",
+            "alt": "Imagen adicional adjunta a la semana 3",
+            "description": "Recurso complementario proporcionado para el cuaderno."
+          },
+          {
+            "type": "link",
+            "title": "Visitar la página de AWS",
+            "url": "https://favio-coder.github.io/Sem3-AWS-ejemplo/",
+            "description": "Proyecto individual publicado en GitHub Pages."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio del proyecto individual",
+            "url": "https://github.com/Favio-coder/Sem3-AWS-ejemplo",
+            "description": "Código fuente de la página y sus interacciones."
+          },
+          {
+            "type": "file",
+            "title": "Descargar informe de la práctica individual",
+            "url": "/assets/cuaderno/Sem3/RicahrdFavioAsturimacMedina-Sem3-Tailwind.pdf",
+            "description": "Informe de la práctica con HTML, Tailwind CSS y JavaScript.",
+            "download": true,
+            "fileName": "RicahrdFavioAsturimacMedina-Sem3-Tailwind.pdf"
+          }
+        ]
+      }
+    ],
+    "date": "",
+    "status": "completada",
+    "summary": "Desarrollo de una página grupal de gimnasio y una página individual sobre AWS. Se combinaron componentes, utilidades CSS e interacciones con JavaScript, documentando el proceso y los resultados.",
+    "objectives": [
+      "Diferenciar el diseño basado en componentes y el uso de clases utilitarias.",
+      "Construir interfaces adaptables con Bootstrap y Tailwind CSS.",
+      "Aplicar criterios de accesibilidad en navegación y formularios.",
+      "Incorporar interacciones con JavaScript ejecutadas en el navegador.",
+      "Documentar el trabajo individual y colaborativo mediante repositorios, capturas e informes."
+    ],
+    "topics": [
+      "Frameworks CSS: recursos reutilizables para construir interfaces.",
+      "Bootstrap: componentes predefinidos y distribución mediante columnas.",
+      "Tailwind CSS: composición visual mediante clases de propósito específico.",
+      "Espaciado, tipografía, colores, bordes y sombras.",
+      "Flexbox y Grid para organizar elementos.",
+      "Prefijos responsive para ajustar estilos según el ancho de pantalla.",
+      "Variantes de estado para expresar cambios como hover y focus.",
+      "Formularios con etiquetas, restricciones y mensajes de validación.",
+      "Accesibilidad, metadatos y optimización de imágenes.",
+      "JavaScript: eventos, actualización del contenido y navegación por pasos.",
+      "Git y GitHub para registrar e integrar cambios."
+    ],
+    "reflection": {
+      "whatLearned": "Aprendí a combinar herramientas de diseño según la necesidad de cada interfaz. En el gimnasio relacioné componentes, columnas y formularios; en la página de AWS conecté las utilidades de Tailwind con una terminal y una navegación programada en JavaScript. También comprendí que revisar accesibilidad y recursos gráficos forma parte del desarrollo.",
+      "howLearned": "Aprendí mediante dos formas de trabajo complementarias: la coordinación con una compañera y el desarrollo individual de una propuesta propia. Implementar las páginas por etapas, observarlas en el navegador y documentar el proceso me permitió relacionar la teoría con resultados concretos.",
+      "difficulties": "Los principales retos del trabajo fueron coordinar componentes de dos frameworks, adaptar la navegación y mantener coherencia entre las secciones visibles y el progreso de la página individual.",
+      "solutions": "La práctica grupal se organizó por etapas y se integró mediante GitHub. Se añadieron ajustes de accesibilidad y se convirtieron imágenes a WebP. En la práctica individual, los pasos se organizaron en una constante y su presentación se gestionó mediante una función de JavaScript.",
+      "improvements": "Para próximos trabajos, mejoraré la separación de responsabilidades del código, probaré la navegación con teclado y revisaré más tamaños de pantalla. También documentaré las decisiones de integración entre frameworks y comprobaré las interacciones con entradas inesperadas."
+    },
+    "bibliography": [
+      "Tailwind CSS. Styling with utility classes. https://tailwindcss.com/docs/styling-with-utility-classes",
+      "Bootstrap. Validation: documentación de formularios de Bootstrap 5.3. https://getbootstrap.com/docs/5.3/forms/validation/",
+      "Haverbeke, M. Eloquent JavaScript (4.ª ed.). https://eloquentjavascript.net/"
+    ]
   }
-  
+
 ]
