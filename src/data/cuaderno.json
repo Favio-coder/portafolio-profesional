@@ -148,13 +148,76 @@
       "Documentar y compartir el trabajo mediante GitHub y GitHub Pages."
     ],
     "topics": [
-      "Software nativo y aplicaciones web: diferencias en su ejecución y dependencia del entorno.",
-      "Estándares web: tecnologías comunes que favorecen la interoperabilidad.",
-      "Internet y DNS: comunicación entre equipos y resolución de nombres de dominio.",
-      "Frontend y backend: interfaz del usuario y procesamiento del servidor.",
-      "Página, sitio y aplicación web: conceptos relacionados con alcances diferentes.",
-      "UI y UX: presentación visual y experiencia de uso.",
-      "Control de versiones, alojamiento y publicación web."
+      {
+        "title": "Software nativo y aplicaciones web: diferencias en su ejecución y dependencia del entorno.",
+        "explanation": "Entiendo que una aplicación nativa se ejecuta dentro del entorno para el que fue creada, mientras que una aplicación web se entrega mediante tecnologías web y se utiliza desde un navegador.",
+        "definitions": [
+          "Nativa: software preparado para un sistema operativo o dispositivo. Web: aplicación a la que se accede usando tecnologías como HTML, CSS y JavaScript."
+        ],
+        "procedures": [
+          "Comparar dónde se ejecuta cada aplicación, cómo se distribuye y qué requisitos tiene para el usuario."
+        ]
+      },
+      {
+        "title": "Estándares web: tecnologías comunes que favorecen la interoperabilidad.",
+        "explanation": "Los estándares web permiten que navegadores y herramientas interpreten de manera consistente las tecnologías que forman una página.",
+        "definitions": [
+          "Estándar: especificación pública que define reglas de una tecnología. Interoperabilidad: capacidad de sistemas distintos para intercambiar o interpretar información."
+        ],
+        "procedures": [
+          "Consultar la especificación de la tecnología y emplear sus elementos y atributos con el propósito para el que fueron definidos."
+        ]
+      },
+      {
+        "title": "Internet y DNS: comunicación entre equipos y resolución de nombres de dominio.",
+        "explanation": "Entiendo que Internet conecta redes y que el DNS permite localizar un servicio usando un nombre en vez de memorizar su dirección numérica.",
+        "definitions": [
+          "DNS: sistema distribuido que relaciona nombres de dominio con información de red, como direcciones IP."
+        ],
+        "procedures": [
+          "Escribir el dominio solicitado, consultar su resolución DNS y después establecer la conexión con el servidor correspondiente."
+        ]
+      },
+      {
+        "title": "Frontend y backend: interfaz del usuario y procesamiento del servidor.",
+        "explanation": "Frontend y backend describen responsabilidades diferentes: la interfaz que utiliza la persona y la lógica que atiende operaciones del lado del servidor.",
+        "definitions": [
+          "Frontend: presentación e interacción en el cliente. Backend: procesamiento y servicios ejecutados en el servidor."
+        ],
+        "procedures": [
+          "Identificar dónde se presenta cada dato y dónde se procesa o persiste antes de decidir qué parte de una aplicación lo atiende."
+        ]
+      },
+      {
+        "title": "Página, sitio y aplicación web: conceptos relacionados con alcances diferentes.",
+        "explanation": "Una página es un documento individual; un sitio reúne páginas relacionadas, y una aplicación web ofrece interacciones orientadas a tareas.",
+        "definitions": [
+          "Página web: documento accesible mediante una URL. Sitio: conjunto de recursos relacionados bajo una estructura común. Aplicación web: software interactivo usado desde la web."
+        ],
+        "procedures": [
+          "Observar las rutas, el contenido compartido y las acciones disponibles para clasificar el recurso según su función."
+        ]
+      },
+      {
+        "title": "UI y UX: presentación visual y experiencia de uso.",
+        "explanation": "Entiendo que UI describe los elementos con los que se interactúa y UX considera la experiencia completa al utilizar el producto.",
+        "definitions": [
+          "UI (interfaz de usuario): controles y presentación. UX (experiencia de usuario): percepción y facilidad del recorrido de uso."
+        ],
+        "procedures": [
+          "Recorrer una tarea y registrar tanto los controles necesarios como la claridad, el orden y la respuesta de cada paso."
+        ]
+      },
+      {
+        "title": "Control de versiones, alojamiento y publicación web.",
+        "explanation": "El control de versiones conserva cambios del código; el hosting proporciona un lugar para servirlo y la publicación lo hace accesible.",
+        "definitions": [
+          "Git: sistema distribuido de control de versiones. Repositorio: historial y archivos de un proyecto. Hosting: servicio que entrega recursos a través de una red."
+        ],
+        "procedures": [
+          "Registrar los cambios, subir el repositorio y configurar el servicio de publicación para la ruta y los archivos del proyecto."
+        ]
+      }
     ],
     "reflection": {
       "whatLearned": "Comprendí mejor cómo se relacionan las tecnologías que intervienen en un proyecto web. También distinguí el trabajo sobre el código, su alojamiento y su publicación. Comparar servicios y preparar una presentación personal me ayudó a conectar los conceptos con decisiones prácticas.",
@@ -164,9 +227,34 @@
       "improvements": "Profundizar en las condiciones de los servicios de alojamiento y revisar la claridad del contenido, la accesibilidad y la adaptación del proyecto a distintos tamaños de pantalla."
     },
     "bibliography": [
-      "Duckett, J. HTML y CSS: Diseño y construcción de sitios web. Anaya Multimedia. https://anayamultimedia.es/libro/titulos-especiales/html-y-css-diseno-y-construccion-de-sitios-web-jon-duckett-9788441549593/",
-      "Robbins, J. N. Learning Web Design (6.ª ed.). O’Reilly Media. https://learningwebdesign.com/",
-      "World Wide Web Consortium (W3C). Web Standards. https://www.w3.org/standards/"
+      {
+        "id": "w01-b01",
+        "type": "book",
+        "author": "Jennifer Niederst Robbins",
+        "title": "Learning Web Design, 6th Edition",
+        "url": "https://learningwebdesign.com/"
+      },
+      {
+        "id": "w01-b02",
+        "type": "web",
+        "author": "World Wide Web Consortium (W3C)",
+        "title": "Web Standards",
+        "url": "https://www.w3.org/standards/"
+      },
+      {
+        "id": "w01-b03",
+        "type": "web",
+        "author": "MDN Contributors",
+        "title": "How the web works",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
+      },
+      {
+        "id": "w01-b04",
+        "type": "web",
+        "author": "GitHub",
+        "title": "Quickstart for GitHub Pages",
+        "url": "https://docs.github.com/en/pages/quickstart"
+      }
     ]
   },
   {
@@ -301,12 +389,17 @@
         "id": "act-02-03",
         "title": "Documentación de la guía práctica 02",
         "description": "Incorporación del documento de la guía práctica como evidencia descargable de la semana.",
-        "learnedTopics": [],
+        "learnedTopics": [
+          "La guía reúne ejercicios de HTML y CSS, relacionados con la estructura del contenido y la presentación de interfaces.",
+          "Documentar la práctica permite conservar el procedimiento y consultar el material junto con sus evidencias."
+        ],
         "procedures": [
           "Organizar el documento PDF dentro de los recursos del cuaderno.",
           "Vincular el archivo con la semana correspondiente."
         ],
-        "labExercises": [],
+        "labExercises": [
+          "Resolver y documentar los ejercicios incluidos en la Guía práctica 02 adjunta."
+        ],
         "labDevelopment": "Se adjunta la guía práctica identificada con mi nombre para consultar el trabajo documentado.",
         "labResults": "Documento PDF disponible para su consulta y descarga.",
         "reflection": {
@@ -337,14 +430,86 @@
       "Documentar y compartir los resultados del trabajo grupal."
     ],
     "topics": [
-      "HTML estructura contenido; XML permite representar datos con etiquetas definidas según su propósito.",
-      "El DOM representa el documento como un árbol de nodos.",
-      "El navegador procesa estructura y estilos para calcular la distribución y dibujar la página.",
-      "El modelo de caja comprende contenido, relleno, borde y margen.",
-      "Las unidades relativas dependen de distintas referencias: fuente, contenedor o ventana.",
-      "Flexbox distribuye elementos principalmente en un eje; Grid organiza filas y columnas.",
-      "Las media queries permiten ajustar estilos según las características de la pantalla.",
-      "Semántica, accesibilidad y compatibilidad entre navegadores."
+      {
+        "title": "HTML estructura contenido; XML permite representar datos con etiquetas definidas según su propósito.",
+        "explanation": "HTML marca la estructura y el significado del contenido; XML permite describir datos con vocabularios definidos según su propósito.",
+        "definitions": [
+          "HTML: lenguaje de marcado para documentos web. XML: formato extensible de marcado para estructurar datos."
+        ],
+        "procedures": [
+          "Elegir elementos HTML según la función del contenido y reservar XML para datos cuyo formato lo requiera."
+        ]
+      },
+      {
+        "title": "El DOM representa el documento como un árbol de nodos.",
+        "explanation": "Este concepto significa que el navegador representa el documento como nodos relacionados; los scripts pueden consultar y actualizar ese árbol.",
+        "definitions": [
+          "DOM: modelo de objetos del documento que expone la estructura de una página mediante nodos."
+        ],
+        "procedures": [
+          "Inspeccionar la jerarquía del documento, seleccionar el nodo necesario y modificar solo la propiedad correspondiente."
+        ]
+      },
+      {
+        "title": "El navegador procesa estructura y estilos para calcular la distribución y dibujar la página.",
+        "explanation": "El navegador analiza el marcado y los estilos para calcular la disposición visual y dibujar el contenido en pantalla.",
+        "definitions": [
+          "Renderizado: proceso que transforma documentos y estilos en una representación visual."
+        ],
+        "procedures": [
+          "Revisar estructura y estilos, inspeccionar el elemento en las herramientas del navegador y ajustar la regla responsable del resultado."
+        ]
+      },
+      {
+        "title": "El modelo de caja comprende contenido, relleno, borde y margen.",
+        "explanation": "El modelo de caja explica el espacio que ocupa cada elemento y cómo se suman su contenido, relleno, borde y margen.",
+        "definitions": [
+          "Content: área de contenido; padding: separación interior; border: borde; margin: espacio exterior."
+        ],
+        "procedures": [
+          "Inspeccionar las cuatro áreas en el panel de estilos y ajustar box-sizing y dimensiones según el espacio esperado."
+        ]
+      },
+      {
+        "title": "Las unidades relativas dependen de distintas referencias: fuente, contenedor o ventana.",
+        "explanation": "Las unidades relativas expresan medidas respecto a una referencia, por lo que permiten adaptar tipografía y dimensiones al contexto.",
+        "definitions": [
+          "rem depende del tamaño de fuente raíz; em depende del contexto tipográfico; vw y vh dependen de la ventana gráfica."
+        ],
+        "procedures": [
+          "Seleccionar la referencia que corresponda al elemento y comprobar cómo cambia al modificar el tamaño de fuente o la ventana."
+        ]
+      },
+      {
+        "title": "Flexbox distribuye elementos principalmente en un eje; Grid organiza filas y columnas.",
+        "explanation": "Flexbox organiza elementos en un eje principal; Grid distribuye elementos en filas y columnas cuando se necesita una estructura bidimensional.",
+        "definitions": [
+          "Eje principal: dirección de distribución de Flexbox. Grid: sistema de filas, columnas y áreas de diseño."
+        ],
+        "procedures": [
+          "Definir primero la relación entre elementos; usar Flexbox para alineación en un eje y Grid para relacionar filas y columnas."
+        ]
+      },
+      {
+        "title": "Las media queries permiten ajustar estilos según las características de la pantalla.",
+        "explanation": "Una media query aplica reglas cuando se cumplen condiciones del medio, como el ancho disponible de la pantalla.",
+        "definitions": [
+          "Media query: consulta CSS que condiciona un bloque de estilos a características del dispositivo o la ventana."
+        ],
+        "procedures": [
+          "Empezar por el diseño que funciona con poco espacio y añadir ajustes en el punto donde el contenido ya no se distribuye bien."
+        ]
+      },
+      {
+        "title": "Semántica, accesibilidad y compatibilidad entre navegadores.",
+        "explanation": "La semántica comunica la función de cada parte del documento; la accesibilidad permite que más personas comprendan y operen la interfaz.",
+        "definitions": [
+          "Semántica: significado de la estructura. Accesibilidad: posibilidad de percibir, comprender y utilizar el producto."
+        ],
+        "procedures": [
+          "Usar elementos HTML nativos, nombres descriptivos y controles operables por teclado; revisar estructura y contraste."
+        ]
+      }
     ],
     "reflection": {
       "whatLearned": "Comprendí que una interfaz requiere relacionar estructura, presentación y comportamiento. El portafolio grupal me permitió organizar contenido repetido, mientras que la práctica calificada vinculó formularios y controles con eventos de JavaScript.",
@@ -354,9 +519,34 @@
       "improvements": "Revisar las interfaces en distintos tamaños de pantalla, mejorar las etiquetas accesibles de los controles y comprobar los estados de interacción antes de publicar."
     },
     "bibliography": [
-      "Grant, K. J. CSS in Depth (2.ª ed.). Manning Publications. https://www.manning.com/books/css-in-depth-second-edition",
-      "Marcotte, E. Responsive Web Design. A Book Apart. https://abookapart.com/products/responsive-web-design.html",
-      "web.dev. Learn CSS. https://web.dev/learn/css"
+      {
+        "id": "w02-b01",
+        "type": "book",
+        "author": "Keith J. Grant",
+        "title": "CSS in Depth, Second Edition",
+        "url": "https://www.manning.com/books/css-in-depth-second-edition"
+      },
+      {
+        "id": "w02-b02",
+        "type": "web",
+        "author": "MDN Contributors",
+        "title": "Introduction to the CSS box model",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Box_model/Introduction"
+      },
+      {
+        "id": "w02-b03",
+        "type": "web",
+        "author": "MDN Contributors",
+        "title": "Basic concepts of flexbox",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts"
+      },
+      {
+        "id": "w02-b04",
+        "type": "web",
+        "author": "MDN Contributors",
+        "title": "Basic concepts of grid layout",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout/Basic_concepts"
+      }
     ]
   },
   {
@@ -585,17 +775,116 @@
       "Documentar el trabajo individual y colaborativo mediante repositorios, capturas e informes."
     ],
     "topics": [
-      "Frameworks CSS: recursos reutilizables para construir interfaces.",
-      "Bootstrap: componentes predefinidos y distribución mediante columnas.",
-      "Tailwind CSS: composición visual mediante clases de propósito específico.",
-      "Espaciado, tipografía, colores, bordes y sombras.",
-      "Flexbox y Grid para organizar elementos.",
-      "Prefijos responsive para ajustar estilos según el ancho de pantalla.",
-      "Variantes de estado para expresar cambios como hover y focus.",
-      "Formularios con etiquetas, restricciones y mensajes de validación.",
-      "Accesibilidad, metadatos y optimización de imágenes.",
-      "JavaScript: eventos, actualización del contenido y navegación por pasos.",
-      "Git y GitHub para registrar e integrar cambios."
+      {
+        "title": "Frameworks CSS: recursos reutilizables para construir interfaces.",
+        "explanation": "Un framework CSS ofrece convenciones y recursos reutilizables para organizar estilos; su alcance depende de la herramienta elegida.",
+        "definitions": [
+          "Framework CSS: conjunto de estilos, utilidades o componentes que facilita crear interfaces coherentes."
+        ],
+        "procedures": [
+          "Revisar qué resuelve el framework, importar solo los recursos necesarios y comprobar el resultado en distintos anchos."
+        ]
+      },
+      {
+        "title": "Bootstrap: componentes predefinidos y distribución mediante columnas.",
+        "explanation": "Bootstrap reúne componentes y un sistema de grilla basado en contenedores, filas y columnas para construir distribuciones adaptables.",
+        "definitions": [
+          "Contenedor: limita y alinea el contenido. Fila: organiza columnas. Columna: ocupa una parte de la grilla."
+        ],
+        "procedures": [
+          "Agrupar columnas dentro de una fila, elegir el ancho por breakpoint y probar la distribución en viewport estrecho y amplio."
+        ]
+      },
+      {
+        "title": "Tailwind CSS: composición visual mediante clases de propósito específico.",
+        "explanation": "Tailwind permite componer la presentación directamente con clases que representan utilidades CSS pequeñas y combinables.",
+        "definitions": [
+          "Utility class: clase que aplica una regla de estilo concreta, como margen, color, ancho o tipografía."
+        ],
+        "procedures": [
+          "Aplicar utilidades al elemento, extraer patrones repetidos cuando corresponda y verificar los estilos computados."
+        ]
+      },
+      {
+        "title": "Espaciado, tipografía, colores, bordes y sombras.",
+        "explanation": "El espaciado, la tipografía, el color, los bordes y las sombras organizan la jerarquía visual y la lectura de una interfaz.",
+        "definitions": [
+          "Jerarquía visual: orden de atención creado mediante tamaño, contraste, posición y separación."
+        ],
+        "procedures": [
+          "Establecer primero el contenido prioritario, asignar escala tipográfica y espaciado y comprobar el contraste del resultado."
+        ]
+      },
+      {
+        "title": "Flexbox y Grid para organizar elementos.",
+        "explanation": "Flexbox y Grid resuelven distribuciones distintas: una dimensión principal o una relación simultánea entre filas y columnas.",
+        "definitions": [
+          "Flexbox: modelo de distribución unidimensional. Grid: modelo de distribución bidimensional."
+        ],
+        "procedures": [
+          "Elegir el modelo según la estructura y ajustar alineación, espacios y tamaños sin depender de posiciones manuales."
+        ]
+      },
+      {
+        "title": "Prefijos responsive para ajustar estilos según el ancho de pantalla.",
+        "explanation": "Los prefijos responsive de Tailwind permiten aplicar utilidades desde un breakpoint determinado y adaptar el diseño progresivamente.",
+        "definitions": [
+          "Breakpoint: ancho mínimo a partir del cual se activa una regla responsive."
+        ],
+        "procedures": [
+          "Definir el estilo base para el espacio disponible y agregar prefijos solo cuando el diseño necesite cambiar."
+        ]
+      },
+      {
+        "title": "Variantes de estado para expresar cambios como hover y focus.",
+        "explanation": "Las variantes de estado expresan cómo responde un control al pasar el puntero, recibir foco o entrar en otro estado interactivo.",
+        "definitions": [
+          "Hover: estado asociado al puntero. Focus: estado del elemento que recibe la interacción de teclado u otro método."
+        ],
+        "procedures": [
+          "Proporcionar señales visuales para hover y focus y comprobar que la navegación por teclado conserva un indicador visible."
+        ]
+      },
+      {
+        "title": "Formularios con etiquetas, restricciones y mensajes de validación.",
+        "explanation": "Un formulario combina controles, etiquetas y reglas de validación para recoger datos y explicar errores de manera comprensible.",
+        "definitions": [
+          "Label: nombre asociado a un control. Validación: comprobación de restricciones antes de aceptar un valor."
+        ],
+        "procedures": [
+          "Asociar cada etiqueta a su control, declarar restricciones pertinentes y mostrar mensajes junto al campo que requiere atención."
+        ]
+      },
+      {
+        "title": "Accesibilidad, metadatos y optimización de imágenes.",
+        "explanation": "Accesibilidad, metadatos e imágenes optimizadas mejoran la interpretación del contenido y su uso en distintos dispositivos y tecnologías.",
+        "definitions": [
+          "Metadatos: información que describe el documento. Texto alternativo: equivalente textual de una imagen informativa."
+        ],
+        "procedures": [
+          "Definir idioma y metadatos, describir imágenes con alt adecuado y ajustar dimensiones y formato al uso previsto."
+        ]
+      },
+      {
+        "title": "JavaScript: eventos, actualización del contenido y navegación por pasos.",
+        "explanation": "JavaScript puede responder a eventos y actualizar el contenido para guiar interacciones sin recargar toda la página.",
+        "definitions": [
+          "Evento: señal de una acción o cambio. Listener: función registrada para atender ese evento."
+        ],
+        "procedures": [
+          "Escuchar el evento adecuado, validar el estado necesario y actualizar el contenido de forma clara y limitada."
+        ]
+      },
+      {
+        "title": "Git y GitHub para registrar e integrar cambios.",
+        "explanation": "Git registra cambios del proyecto y GitHub ofrece un servicio para alojar repositorios y colaborar sobre ellos.",
+        "definitions": [
+          "Commit: registro de un conjunto de cambios. Repositorio remoto: copia compartida del historial del proyecto."
+        ],
+        "procedures": [
+          "Revisar los archivos modificados, registrar un commit descriptivo y sincronizarlo con el repositorio remoto."
+        ]
+      }
     ],
     "reflection": {
       "whatLearned": "Aprendí a combinar herramientas de diseño según la necesidad de cada interfaz. En el gimnasio relacioné componentes, columnas y formularios; en la página de AWS conecté las utilidades de Tailwind con una terminal y una navegación programada en JavaScript. También comprendí que revisar accesibilidad y recursos gráficos forma parte del desarrollo.",
@@ -605,9 +894,34 @@
       "improvements": "Para próximos trabajos, mejoraré la separación de responsabilidades del código, probaré la navegación con teclado y revisaré más tamaños de pantalla. También documentaré las decisiones de integración entre frameworks y comprobaré las interacciones con entradas inesperadas."
     },
     "bibliography": [
-      "Tailwind CSS. Styling with utility classes. https://tailwindcss.com/docs/styling-with-utility-classes",
-      "Bootstrap. Validation: documentación de formularios de Bootstrap 5.3. https://getbootstrap.com/docs/5.3/forms/validation/",
-      "Haverbeke, M. Eloquent JavaScript (4.ª ed.). https://eloquentjavascript.net/"
+      {
+        "id": "w03-b01",
+        "type": "book",
+        "author": "Marijn Haverbeke",
+        "title": "Eloquent JavaScript, 4th Edition",
+        "url": "https://eloquentjavascript.net/"
+      },
+      {
+        "id": "w03-b02",
+        "type": "web",
+        "author": "Bootstrap Team",
+        "title": "Grid system",
+        "url": "https://getbootstrap.com/docs/5.3/layout/grid/"
+      },
+      {
+        "id": "w03-b03",
+        "type": "web",
+        "author": "Tailwind Labs",
+        "title": "Responsive design",
+        "url": "https://tailwindcss.com/docs/responsive-design"
+      },
+      {
+        "id": "w03-b04",
+        "type": "web",
+        "author": "Bootstrap Team",
+        "title": "Form validation",
+        "url": "https://getbootstrap.com/docs/5.3/forms/validation/"
+      }
     ]
   },
   {
@@ -797,18 +1111,126 @@
       "Documentar las actividades individuales y grupales."
     ],
     "topics": [
-      "Motores JavaScript: ejecución del código y gestión de memoria.",
-      "Variables: let y const tienen ámbito de bloque; const impide reasignar la referencia.",
-      "Tipos primitivos, objetos y comparación estricta.",
-      "Condicionales y ciclos para controlar la ejecución.",
-      "Funciones declaradas, expresiones, funciones flecha e IIFE.",
-      "Closures: funciones que conservan acceso a su entorno léxico.",
-      "TypeScript: comprobación de tipos y generación de JavaScript.",
-      "DOM: selección de elementos, textContent, classList y eventos.",
-      "textContent inserta texto sin interpretar etiquetas HTML.",
-      "Canvas 2D: dibujo mediante un contexto gráfico.",
-      "requestAnimationFrame: programación de actualizaciones antes del repintado.",
-      "Delta time: cálculo del movimiento según el tiempo transcurrido."
+      {
+        "title": "Motores JavaScript: ejecución del código y gestión de memoria.",
+        "explanation": "El motor JavaScript analiza y ejecuta instrucciones; también administra memoria para los valores y objetos que utiliza el programa.",
+        "definitions": [
+          "Motor JavaScript: implementación que ejecuta el lenguaje y gestiona sus recursos en un entorno."
+        ],
+        "procedures": [
+          "Ejecutar una operación, observar su resultado en las herramientas del entorno y atender errores reportados por el motor."
+        ]
+      },
+      {
+        "title": "Variables: let y const tienen ámbito de bloque; const impide reasignar la referencia.",
+        "explanation": "let y const tienen ámbito de bloque; const evita reasignar el vínculo, aunque no convierte automáticamente un objeto en inmutable.",
+        "definitions": [
+          "Ámbito de bloque: región delimitada por llaves. Reasignación: asignación posterior de otro valor a una variable."
+        ],
+        "procedures": [
+          "Declarar cada variable donde se usa, preferir const si no se reasigna y usar let cuando el flujo requiera cambiar su valor."
+        ]
+      },
+      {
+        "title": "Tipos primitivos, objetos y comparación estricta.",
+        "explanation": "Los valores primitivos representan datos simples y los objetos agrupan propiedades; la comparación estricta no convierte operandos.",
+        "definitions": [
+          "Primitivo: valor como string, number o boolean. Objeto: colección de propiedades. ===: comparación sin coerción de tipos."
+        ],
+        "procedures": [
+          "Identificar el tipo de cada valor y utilizar === cuando se necesite comparar valor y tipo de manera explícita."
+        ]
+      },
+      {
+        "title": "Condicionales y ciclos para controlar la ejecución.",
+        "explanation": "Las condiciones eligen una rama y los ciclos repiten instrucciones; ambos permiten expresar el flujo según datos y límites.",
+        "definitions": [
+          "Condicional: estructura que ejecuta ramas según una expresión. Ciclo: estructura que repite un bloque."
+        ],
+        "procedures": [
+          "Escribir la condición que describe cada caso y definir una condición de término para todo ciclo."
+        ]
+      },
+      {
+        "title": "Funciones declaradas, expresiones, funciones flecha e IIFE.",
+        "explanation": "Las funciones reúnen instrucciones reutilizables; las funciones flecha ofrecen una sintaxis concisa y las IIFE se ejecutan al definirse.",
+        "definitions": [
+          "Declaración: forma nombrada de crear una función. Expresión: función asignada a un valor. IIFE: expresión de función invocada inmediatamente."
+        ],
+        "procedures": [
+          "Elegir una forma de función según el uso, declarar sus entradas y resultado y evitar repetir lógica equivalente."
+        ]
+      },
+      {
+        "title": "Closures: funciones que conservan acceso a su entorno léxico.",
+        "explanation": "Una closure mantiene acceso al entorno léxico donde se creó una función, incluso cuando esa función se utiliza después.",
+        "definitions": [
+          "Entorno léxico: conjunto de variables accesibles en una ubicación del código. Closure: función junto con ese entorno conservado."
+        ],
+        "procedures": [
+          "Crear una función dentro del ámbito que posee el dato y usar la función retornada para leerlo o actualizarlo."
+        ]
+      },
+      {
+        "title": "TypeScript: comprobación de tipos y generación de JavaScript.",
+        "explanation": "TypeScript añade información de tipos y permite detectar incompatibilidades durante el desarrollo; el navegador finalmente ejecuta JavaScript.",
+        "definitions": [
+          "Tipo: descripción de los valores permitidos. Transpilación: transformación del código TypeScript a JavaScript."
+        ],
+        "procedures": [
+          "Describir entradas y salidas con tipos, ejecutar el chequeo y corregir incompatibilidades antes de generar JavaScript."
+        ]
+      },
+      {
+        "title": "DOM: selección de elementos, textContent, classList y eventos.",
+        "explanation": "El DOM expone elementos y eventos del documento para que un script pueda localizar controles y responder a acciones.",
+        "definitions": [
+          "Selector: expresión que identifica nodos. classList: interfaz para consultar y cambiar clases CSS de un elemento."
+        ],
+        "procedures": [
+          "Seleccionar el nodo, registrar el evento necesario y actualizar su contenido o clases sin alterar otras partes."
+        ]
+      },
+      {
+        "title": "textContent inserta texto sin interpretar etiquetas HTML.",
+        "explanation": "textContent inserta o recupera texto sin interpretar el valor como marcado HTML.",
+        "definitions": [
+          "textContent: propiedad del nodo que representa su contenido textual."
+        ],
+        "procedures": [
+          "Usar textContent para mostrar datos como texto y reservar la interpretación de HTML para contenido confiable y explícitamente necesario."
+        ]
+      },
+      {
+        "title": "Canvas 2D: dibujo mediante un contexto gráfico.",
+        "explanation": "Canvas 2D ofrece un contexto de dibujo inmediato para representar formas e imágenes dentro de un área del documento.",
+        "definitions": [
+          "Canvas: superficie de dibujo HTML. Contexto 2D: conjunto de operaciones para pintar sobre esa superficie."
+        ],
+        "procedures": [
+          "Obtener el contexto 2D, configurar estilos y dibujar usando las dimensiones actuales del canvas."
+        ]
+      },
+      {
+        "title": "requestAnimationFrame: programación de actualizaciones antes del repintado.",
+        "explanation": "requestAnimationFrame solicita al navegador ejecutar una actualización cerca del siguiente repintado de pantalla.",
+        "definitions": [
+          "Fotograma: actualización visual individual. requestAnimationFrame: API para programar una función de animación."
+        ],
+        "procedures": [
+          "Actualizar el estado visual dentro del callback y solicitar el siguiente fotograma mientras la animación siga activa."
+        ]
+      },
+      {
+        "title": "Delta time: cálculo del movimiento según el tiempo transcurrido.",
+        "explanation": "Delta time es el tiempo transcurrido entre actualizaciones y permite que el movimiento dependa del tiempo, no de una tasa fija de fotogramas.",
+        "definitions": [
+          "Delta time: diferencia temporal entre dos fotogramas consecutivos."
+        ],
+        "procedures": [
+          "Guardar el instante anterior, calcular la diferencia con el actual y multiplicar la velocidad por ese intervalo."
+        ]
+      }
     ],
     "reflection": {
       "whatLearned": "Aprendí a relacionar las acciones del usuario con funciones y cambios en la interfaz. El trabajo grupal reforzó la navegación entre ejercicios y el blog individual me permitió conectar TypeScript, contenido dinámico y animaciones.",
@@ -818,10 +1240,697 @@
       "improvements": "Mejoraré la validación de entradas, el manejo de elementos que pueden no existir y la separación de funciones. También revisaré las animaciones en distintos dispositivos y añadiré opciones para reducir el movimiento."
     },
     "bibliography": [
-      "Microsoft. The TypeScript Handbook. https://www.typescriptlang.org/docs/handbook/intro.html",
-      "MDN Web Docs. Canvas API. https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API",
-      "Rauschmayer, A. Exploring JavaScript, ES2025 Edition. Vista previa del libro. https://exploringjs.com/js/downloads/exploring-js-book-preview.pdf"
+      {
+        "id": "w04-b01",
+        "type": "book",
+        "author": "Marijn Haverbeke",
+        "title": "Eloquent JavaScript, 4th Edition",
+        "url": "https://eloquentjavascript.net/"
+      },
+      {
+        "id": "w04-b02",
+        "type": "web",
+        "author": "Microsoft",
+        "title": "TypeScript Handbook",
+        "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+      },
+      {
+        "id": "w04-b03",
+        "type": "web",
+        "author": "MDN Contributors",
+        "title": "Canvas API",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"
+      },
+      {
+        "id": "w04-b04",
+        "type": "web",
+        "author": "MDN Contributors",
+        "title": "Functions",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+      }
+    ]
+  },
+  {
+    "id": "semana-05",
+    "number": 5,
+    "title": "Fundamentos de React: componentes, JSX, props y composición",
+    "description": "Introducción al desarrollo frontend basado en componentes mediante React y Vite. La práctica consistió en construir GameStore, un catálogo de videojuegos que utiliza componentes reutilizables, datos enviados mediante props, composición con children y diferentes estrategias de estilado.",
+    "activities": [
+      {
+        "id": "act-05-01",
+        "title": "Práctica individual: catálogo de videojuegos con React",
+        "description": "Construcción de una SPA denominada GameStore para presentar videojuegos, sus características y un resumen de métricas. El proyecto permitió aplicar la organización por componentes y separar los datos, la presentación y las funciones de cálculo.",
+        "learnedTopics": [
+          "React permite describir la interfaz mediante componentes. En GameStore, la página se construye combinando Navbar, Hero, Dashboard, GameCatalog, Section y Footer, en lugar de mantener toda la presentación dentro de un único archivo.",
+          "JSX permite expresar la estructura de la interfaz dentro de JavaScript. Las llaves insertan valores y expresiones, mientras que atributos como className relacionan los elementos con sus estilos.",
+          "Las props son los datos que recibe un componente. GameCatalog recibe el arreglo de videojuegos y cada GameCard recibe un objeto game con la información que debe presentar.",
+          "El flujo de datos sigue una dirección desde el componente padre hacia sus hijos. App proporciona los datos del catálogo y las métricas; los componentes encargados de mostrarlos reciben esos valores sin modificarlos directamente.",
+          "La prop children permite insertar contenido dentro de un componente contenedor. Dashboard muestra las métricas y un texto complementario, mientras que Section organiza contenido bajo un título.",
+          "El método map transforma el arreglo de videojuegos en tarjetas. Cada tarjeta utiliza el identificador del videojuego como key para que React pueda reconocer los elementos de la lista.",
+          "El renderizado condicional permite mostrar Disponible o Agotado según el valor de game.available, además de aplicar una clase visual diferente para cada estado.",
+          "CSS Modules permite utilizar clases con nombres generados por la herramienta de construcción, reduciendo las colisiones entre estilos de componentes. El proyecto los utiliza en tarjetas, navegación y otras secciones.",
+          "Las métricas se calculan desde los datos del catálogo: cantidad de videojuegos, número de plataformas diferentes y precio promedio. Separar este cálculo en una función evita mezclarlo con la estructura visual.",
+          "En el renderizado del lado del cliente, JavaScript construye la interfaz en el navegador a partir del punto de montaje de React. El documento inicial y los elementos visibles después de ejecutar la aplicación representan momentos diferentes del proceso."
+        ],
+        "procedures": [
+          "Preparar el proyecto con React y Vite, instalar las dependencias y ejecutar npm run dev para iniciar el servidor de desarrollo.",
+          "Reconocer la función de index.html, src/main.jsx, App.jsx y package.json dentro del proyecto.",
+          "Organizar carpetas para componentes, datos, estilos y utilidades, manteniendo responsabilidades separadas.",
+          "Definir el arreglo de videojuegos en src/data/games.js con identificadores y propiedades como título, plataforma, género, precio, disponibilidad e imagen.",
+          "Construir GameCard para presentar un videojuego utilizando la información recibida mediante la prop game.",
+          "Crear GameCatalog para recorrer el arreglo con map y generar las tarjetas, asignando game.id como key.",
+          "Implementar calculateCatalogMetrics para contar videojuegos, identificar plataformas distintas mediante Set y calcular el precio promedio.",
+          "Construir Dashboard y MetricCard para presentar las métricas con etiquetas, valores y acentos visuales.",
+          "Utilizar children en Dashboard y Section para insertar contenido adicional sin limitar los contenedores a un único texto.",
+          "Integrar Navbar, Hero, Dashboard, GameCatalog, Section y Footer desde App.jsx.",
+          "Aplicar estilos globales para la presentación general y CSS Modules para los componentes que requieren estilos delimitados.",
+          "Incorporar imágenes con texto alternativo y carga diferida en las tarjetas del catálogo.",
+          "Revisar la página en el navegador y documentar la estructura, el paso de props y la presentación final.",
+          "Configurar la ruta base de Vite como /Sem5-practica/ y publicar los archivos generados en dist mediante GitHub Actions."
+        ],
+        "labExercises": [
+          "Crear una aplicación React con una arquitectura de componentes que represente las diferentes secciones de un catálogo.",
+          "Enviar el arreglo de videojuegos desde App hacia GameCatalog y los datos de cada videojuego hacia GameCard.",
+          "Representar título, plataforma, género, precio, disponibilidad e imagen mediante JSX.",
+          "Utilizar map con claves estables para generar una tarjeta por cada videojuego.",
+          "Construir un resumen con el total de videojuegos, las plataformas diferentes y el precio promedio.",
+          "Componer contenido mediante children en componentes contenedores.",
+          "Aplicar CSS Modules y estilos globales según el alcance de cada regla.",
+          "Relacionar el HTML inicial con la interfaz construida mediante Client-Side Rendering.",
+          "Generar la versión de producción y configurar su publicación en GitHub Pages."
+        ],
+        "labDevelopment": "El desarrollo comenzó con la configuración del entorno y una estructura básica de componentes. Posteriormente se incorporaron los datos del catálogo y se construyó GameCard para representar un videojuego. GameCatalog reutiliza esa tarjeta para cada elemento del arreglo, lo que permite ampliar el contenido modificando los datos en lugar de duplicar bloques de presentación. App funciona como punto de composición de las secciones principales.\n\nEl proyecto también incorpora un Dashboard con tres métricas calculadas a partir del catálogo completo. La función calculateCatalogMetrics determina la cantidad de videojuegos, obtiene el número de plataformas distintas y calcula el precio promedio. Dashboard recibe el resultado mediante props y lo distribuye entre componentes MetricCard. Este flujo permite seguir el recorrido de la información desde su cálculo hasta su presentación.\n\nLa composición con children se utiliza para incluir explicaciones y contenido adicional dentro de contenedores reutilizables. Los estilos combinan reglas generales con archivos .module.css. Las tarjetas muestran su disponibilidad mediante una condición y formatean el precio con dos decimales. El catálogo utiliza datos y precios ficticios con fines académicos.",
+        "labResults": "El informe documenta la creación del proyecto, la organización de carpetas, el paso de props, la relación entre componentes padre e hijo y el uso de map. También presenta capturas de la aplicación antes y después de incorporar los estilos, junto con una revisión mediante las herramientas del navegador.\n\nEl repositorio contiene los componentes del catálogo, los datos de videojuegos y la función de métricas. Se configuró base: '/Sem5-practica/' para que los recursos se generen bajo la subruta del repositorio. El workflow de publicación instala las dependencias, ejecuta npm run build y publica dist en GitHub Pages. La aplicación se encuentra vinculada en las evidencias de esta actividad.",
+        "reflection": {
+          "whatLearned": "Comprendí que reutilizar un componente implica separar su estructura de los datos que recibe. GameCard puede representar distintos videojuegos porque su contenido depende de props, mientras que Dashboard y Section pueden recibir contenido adicional mediante children.",
+          "howLearned": "Aprendí construyendo primero una representación sencilla, identificando los datos que debía recibir cada componente y ampliando después la aplicación con listas, métricas y estilos. Revisar los archivos y las capturas me ayudó a seguir el flujo de información."
+        },
+        "references": [
+          "React. Passing Props to a Component. https://react.dev/learn/passing-props-to-a-component",
+          "Vite. Deploying a Static Site. https://vite.dev/guide/static-deploy.html"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "GameStore — Evidencia 1",
+            "url": "/assets/cuaderno/Sem5/sem5_1.jpg",
+            "alt": "Primera captura de la práctica de React de la semana 5",
+            "description": "Registro visual del catálogo de videojuegos."
+          },
+          {
+            "type": "image",
+            "title": "GameStore — Evidencia 2",
+            "url": "/assets/cuaderno/Sem5/sem5_2.jpg",
+            "alt": "Segunda captura de la práctica de React de la semana 5",
+            "description": "Registro visual complementario de la aplicación."
+          },
+          {
+            "type": "link",
+            "title": "Visitar GameStore",
+            "url": "https://favio-coder.github.io/Sem5-practica/",
+            "description": "Aplicación de la semana 5 publicada en GitHub Pages."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio de la semana 5",
+            "url": "https://github.com/Favio-coder/Sem5-practica",
+            "description": "Código fuente del catálogo, los componentes y la configuración de publicación."
+          },
+          {
+            "type": "file",
+            "title": "Descargar informe de la semana 5",
+            "url": "/assets/cuaderno/Sem5/GuiaPracticaSem5-RichardFavioAsturimacMedina.pdf",
+            "description": "Informe de la práctica con componentes, props, children y estilos.",
+            "download": true,
+            "fileName": "GuiaPracticaSem5-RichardFavioAsturimacMedina.pdf"
+          }
+        ]
+      }
+    ],
+    "date": "",
+    "status": "completada",
+    "summary": "Construcción de GameStore como aplicación React organizada en componentes. Se aplicaron JSX, props, children, renderizado de listas, estilos delimitados y cálculo de métricas, además de configurar el despliegue con Vite y GitHub Pages.",
+    "objectives": [
+      "Comprender la función de React como biblioteca para construir interfaces.",
+      "Reconocer el entorno de desarrollo y las responsabilidades de Node.js, npm y Vite.",
+      "Dividir una interfaz en componentes reutilizables con responsabilidades claras.",
+      "Transmitir datos mediante props y componer contenido con children.",
+      "Representar arreglos de datos mediante map y claves estables.",
+      "Comparar el alcance de estilos globales, CSS Modules y estilos inline.",
+      "Relacionar el HTML inicial con la construcción de la interfaz en el navegador.",
+      "Documentar y publicar una versión de producción del proyecto."
+    ],
+    "topics": [
+      {
+        "title": "React y el desarrollo declarativo: la interfaz se describe a partir de componentes y datos.",
+        "explanation": "En React describo la interfaz a partir de componentes y datos; cuando cambian los datos, React actualiza la representación necesaria.",
+        "definitions": [
+          "Declarativo: enfoque donde se expresa el estado visual esperado en vez de ordenar manualmente cada cambio del DOM."
+        ],
+        "procedures": [
+          "Representar cada parte de la interfaz como componente y derivar su contenido de los datos que recibe."
+        ]
+      },
+      {
+        "title": "Biblioteca y framework: diferencias en el alcance de las herramientas y la organización que proporcionan.",
+        "explanation": "Una biblioteca aporta funciones para resolver tareas concretas; un framework suele proponer una estructura más amplia para organizar una aplicación.",
+        "definitions": [
+          "Biblioteca: código reutilizable invocado por la aplicación. Framework: entorno que organiza una parte mayor del flujo de desarrollo."
+        ],
+        "procedures": [
+          "Revisar el alcance de la herramienta y separar lo que administra de las decisiones que siguen a cargo del proyecto."
+        ]
+      },
+      {
+        "title": "SPA: aplicación que puede actualizar su contenido sin solicitar un documento HTML completo para cada interacción.",
+        "explanation": "Una SPA puede cambiar la vista dentro del navegador sin solicitar un documento completo en cada navegación; no significa que no realice peticiones de datos.",
+        "definitions": [
+          "SPA: aplicación web que actualiza su interfaz en el cliente al navegar entre vistas."
+        ],
+        "procedures": [
+          "Mantener el punto de entrada de la aplicación y actualizar la vista según la ruta o el estado seleccionado."
+        ]
+      },
+      {
+        "title": "CSR y SSR: construcción principal de la interfaz en el navegador o generación de HTML en el servidor.",
+        "explanation": "CSR genera la interfaz principalmente en el navegador; SSR prepara HTML en el servidor antes de enviarlo al cliente.",
+        "definitions": [
+          "CSR: renderizado del lado del cliente. SSR: renderizado del lado del servidor."
+        ],
+        "procedures": [
+          "Identificar qué entorno produce el HTML inicial y comprobar cómo continúa la interacción después de cargar la página."
+        ]
+      },
+      {
+        "title": "Node.js y npm: ejecución de herramientas y administración de dependencias del proyecto.",
+        "explanation": "Node.js ejecuta JavaScript fuera del navegador y npm administra paquetes y scripts usados por el proyecto.",
+        "definitions": [
+          "Node.js: entorno de ejecución de JavaScript. npm: gestor de paquetes y herramienta de scripts del ecosistema Node."
+        ],
+        "procedures": [
+          "Instalar dependencias declaradas, consultar los scripts disponibles y ejecutar el comando apropiado para el proyecto."
+        ]
+      },
+      {
+        "title": "Vite: entorno de desarrollo y generación de archivos para producción.",
+        "explanation": "Vite ofrece un servidor de desarrollo y herramientas para generar los archivos de producción de una aplicación frontend.",
+        "definitions": [
+          "Servidor de desarrollo: entorno local de ejecución. Build: salida optimizada lista para publicar."
+        ],
+        "procedures": [
+          "Iniciar el servidor, revisar los cambios en navegador y generar la versión final mediante el script de build."
+        ]
+      },
+      {
+        "title": "Estructura del proyecto: punto de montaje, archivo de entrada y componente principal.",
+        "explanation": "La entrada del proyecto inicia la aplicación, el punto de montaje conecta React con el documento y el componente raíz organiza la vista.",
+        "definitions": [
+          "Punto de entrada: archivo que arranca el programa. Punto de montaje: nodo DOM donde se crea la raíz de React."
+        ],
+        "procedures": [
+          "Seguir el archivo de entrada hasta el nodo de montaje y luego hasta los componentes que construyen la pantalla."
+        ]
+      },
+      {
+        "title": "JSX: expresiones, atributos, componentes y agrupación mediante Fragment.",
+        "explanation": "JSX permite escribir una representación de la interfaz junto al código JavaScript y componer elementos y componentes.",
+        "definitions": [
+          "Expresión JSX: valor JavaScript insertado entre llaves. Fragment: agrupador que no añade un nodo contenedor al DOM."
+        ],
+        "procedures": [
+          "Devolver un árbol de elementos, usar llaves para expresiones y Fragment cuando no se requiere un contenedor extra."
+        ]
+      },
+      {
+        "title": "Props y children: transmisión de información y composición de contenido.",
+        "explanation": "Props transmiten información desde un componente padre; children permite componer contenido dentro de otro componente.",
+        "definitions": [
+          "Prop: dato de entrada de un componente. children: contenido anidado que React entrega como propiedad."
+        ],
+        "procedures": [
+          "Definir las propiedades necesarias, pasar valores desde el padre y renderizar children en el lugar previsto."
+        ]
+      },
+      {
+        "title": "Estilos globales, CSS Modules e inline: diferentes alcances de aplicación.",
+        "explanation": "Los estilos globales afectan el documento; CSS Modules limitan nombres de clase al módulo y los estilos inline se asignan al elemento.",
+        "definitions": [
+          "CSS global: reglas compartidas. CSS Module: estilos con nombres aislados. Inline: estilos declarados como propiedad del elemento."
+        ],
+        "procedures": [
+          "Elegir el alcance adecuado, evitar colisiones de nombres y mantener separados los estilos compartidos y específicos."
+        ]
+      },
+      {
+        "title": "Construcción de producción y ruta base para alojar el proyecto en una subcarpeta.",
+        "explanation": "La compilación prepara recursos para producción; una base de ruta correcta permite que los archivos se encuentren al publicar el sitio en una subcarpeta.",
+        "definitions": [
+          "Directorio dist: salida habitual de producción en Vite. Base: prefijo que se usa al generar rutas de recursos."
+        ],
+        "procedures": [
+          "Configurar la base según la URL de publicación, generar la compilación y revisar las rutas de los archivos resultantes."
+        ]
+      }
+    ],
+    "reflection": {
+      "whatLearned": "Aprendí a pensar una interfaz como un conjunto de componentes conectados por datos. En lugar de repetir la estructura de cada videojuego, definí una tarjeta reutilizable y utilicé un arreglo para generar el catálogo. También comprendí que las métricas pueden calcularse fuera de la presentación y entregarse a los componentes mediante props.\n\nLa práctica me permitió distinguir props de children. Las primeras configuran un componente con información; children permite que un contenedor reciba contenido estructurado por quien lo utiliza. Además, relacioné la organización del código con el alcance de los estilos y entendí que publicar una aplicación con Vite requiere generar y alojar sus archivos de producción.",
+      "howLearned": "Aprendí mediante una implementación progresiva: configuración del proyecto, creación de componentes, definición de datos, conexión mediante props y aplicación de estilos. Revisé cómo un mismo componente producía distintas tarjetas según el objeto recibido y cómo el resumen del catálogo se calculaba desde los mismos datos.\n\nEl informe y las herramientas del navegador me ayudaron a documentar el proceso. La publicación complementó el trabajo local al exigir una ruta base coherente con GitHub Pages y un flujo que instala dependencias, construye el proyecto y entrega los archivos generados.",
+      "difficulties": "Los puntos que requirieron mayor atención fueron identificar qué datos debía recibir cada componente y separar la presentación de las funciones de cálculo. También fue necesario distinguir los archivos de desarrollo de los que se publican después de ejecutar el build.",
+      "solutions": "Organicé componentes, datos y utilidades en carpetas diferentes. App concentra la composición, GameCatalog organiza las tarjetas y calculateCatalogMetrics concentra los cálculos. Para publicar, configuré la subruta /Sem5-practica/ y un workflow que utiliza dist como carpeta de salida.",
+      "improvements": "En próximos trabajos mejoraré el manejo de imágenes no disponibles y de catálogos vacíos, revisaré la accesibilidad de las tarjetas y comprobaré la presentación en más tamaños de pantalla. También mantendré documentado el contrato de props de cada componente para facilitar su reutilización."
+    },
+    "bibliography": [
+      {
+        "id": "w05-b01",
+        "type": "book",
+        "author": "Robin Wieruch",
+        "title": "The Road to React",
+        "url": "https://www.roadtoreact.com/"
+      },
+      {
+        "id": "w05-b02",
+        "type": "web",
+        "author": "React Team",
+        "title": "Your First Component",
+        "url": "https://react.dev/learn/your-first-component"
+      },
+      {
+        "id": "w05-b03",
+        "type": "web",
+        "author": "React Team",
+        "title": "Passing Props to a Component",
+        "url": "https://react.dev/learn/passing-props-to-a-component"
+      },
+      {
+        "id": "w05-b04",
+        "type": "web",
+        "author": "Vite",
+        "title": "Vite Guide",
+        "url": "https://vite.dev/guide/"
+      }
+    ]
+  },
+  {
+    "id": "semana-06",
+    "number": 6,
+    "title": "React: comunicación entre componentes, eventos, routing y consumo de APIs",
+    "description": "Profundización en React mediante cinco ejercicios de teoría y una práctica de aplicación. Se trabajaron componentes con TypeScript, comunicación entre padre e hijos, estado, listas, navegación SPA, formularios controlados y consumo de una API con Axios.",
+    "activities": [
+      {
+        "id": "act-06-01",
+        "title": "Teoría aplicada: cinco ejercicios de componentes y comunicación",
+        "description": "Resolución de cinco ejercicios en el proyecto TeoriaSem6-DesarrolloWeb. Cada ejercicio permite estudiar un aspecto concreto: composición visual, datos a través de componentes anidados, comunicación del hijo al padre, comunicación entre hermanos y representación de estudiantes.",
+        "learnedTopics": [
+          "Los componentes permiten dividir una página según sus responsabilidades. El primer ejercicio organiza la interfaz mediante Header, Nav, Section, Article, SectionInsideArticle, Aside y Footer.",
+          "Los componentes anidados reciben información mediante props. El segundo ejercicio utiliza una cadena de componentes para estudiar cómo un dato llega a un nivel más profundo del árbol.",
+          "Para que un hijo comunique información al padre, el padre entrega una función como prop. El hijo la ejecuta con el dato y el padre actualiza su estado.",
+          "Dos componentes hermanos pueden compartir información a través de su padre común. El padre conserva el estado, recibe cambios de un hijo y proporciona el valor al otro.",
+          "useState permite conservar un valor entre renderizados y actualizar la interfaz cuando cambia. En los ejercicios se utiliza para un mensaje y para un objeto con nombre y apellido.",
+          "TypeScript permite describir los datos que reciben los componentes. Un estado Persona | null representa tanto la ausencia inicial de información como el objeto recibido después.",
+          "El renderizado condicional permite distinguir entre un dato recibido y el estado inicial sin información.",
+          "Un arreglo de estudiantes puede entregarse como prop a un componente de tabla para separar la fuente de datos de su presentación.",
+          "React Router asocia las rutas ejercicio1 a ejercicio5 con sus componentes y permite mantener los ejercicios dentro de una misma aplicación."
+        ],
+        "procedures": [
+          "Organizar el proyecto con React, Vite y archivos TSX.",
+          "Crear carpetas independientes para los cinco ejercicios y una navegación compartida.",
+          "Implementar el primer ejercicio con componentes para las secciones de la página y estilos propios.",
+          "Construir el segundo ejercicio mediante componentes anidados y tipos para los datos transmitidos.",
+          "Crear un estado mensaje en el padre del tercer ejercicio y entregar setMensaje al hijo mediante la prop onEnviar.",
+          "Mostrar el mensaje recibido o un texto que indique que todavía no se ha enviado información.",
+          "Crear en el cuarto ejercicio un estado compartido de persona y distribuirlo entre Hermano1 y Hermano2.",
+          "Definir los estudiantes del quinto ejercicio y entregar el arreglo al componente TablaEstudiantes.",
+          "Registrar las cinco rutas y una redirección inicial hacia ejercicio1.",
+          "Configurar BrowserRouter con el basename derivado de import.meta.env.BASE_URL.",
+          "Corregir la base de Vite para que coincida con /TeoriaSem6-DesarrolloWeb/.",
+          "Publicar el proyecto y registrar una imagen por ejercicio."
+        ],
+        "labExercises": [
+          "Ejercicio 1: construir una interfaz dividida en siete componentes visuales y organizar sus estilos para distintos tamaños de pantalla.",
+          "Ejercicio 2: transmitir información mediante una cadena de componentes anidados, identificando el recorrido de las props.",
+          "Ejercicio 3: enviar un mensaje del hijo al padre utilizando una función recibida como prop y mostrarlo mediante estado.",
+          "Ejercicio 4: comunicar nombre y apellido entre dos hermanos utilizando el estado de su padre común.",
+          "Ejercicio 5: presentar un arreglo de cuatro estudiantes con sus identificadores, nombres y ciudades mediante un componente de tabla."
+        ],
+        "labDevelopment": "El proyecto agrupa cinco ejercicios accesibles mediante React Router. El primero descompone una página en componentes visuales. El segundo utiliza una cadena de componentes para observar la transmisión de datos a través de distintos niveles. Ambos permiten identificar cómo la estructura del árbol de componentes influye en el recorrido de la información.\n\nLos ejercicios tercero y cuarto incorporan estado y funciones recibidas mediante props. En el tercero, el padre entrega un callback al hijo y muestra el mensaje recibido. En el cuarto, el padre conserva un objeto Persona, recibe los cambios desde Hermano1 y transmite el resultado a Hermano2. Este patrón permite compartir información sin que los hermanos se modifiquen directamente entre sí.\n\nEl quinto ejercicio define cuatro estudiantes y entrega el arreglo a TablaEstudiantes. La aplicación también mantiene una navegación común y rutas independientes para cada ejercicio. BrowserRouter utiliza la base configurada por Vite, de manera que la navegación interna reconoce la subcarpeta del repositorio en GitHub Pages.",
+        "labResults": "El repositorio contiene los cinco ejercicios, sus componentes y sus estilos. Se comprobó en el código la comunicación mediante callbacks y estado, la composición de componentes, el arreglo de estudiantes y la definición de rutas.\n\nDurante el despliegue se identificó que la base /sem6/ no correspondía al nombre real del repositorio. La configuración se ajustó a /TeoriaSem6-DesarrolloWeb/. Esta corrección alinea las rutas de los recursos con la ubicación del proyecto publicado. El enlace proporcionado dirige al primer ejercicio.",
+        "reflection": {
+          "whatLearned": "Comprendí que compartir información en React depende de quién conserva el estado y de cómo se distribuyen los datos y las funciones. Los ejercicios me permitieron distinguir la transmisión de props, el uso de callbacks y el estado compartido entre hermanos.",
+          "howLearned": "Aprendí comparando ejercicios pequeños con objetivos diferentes. Al seguir el recorrido de un mensaje y de un objeto entre componentes, pude observar cómo una acción en un hijo provoca una actualización en otra parte de la interfaz."
+        },
+        "references": [
+          "React. Passing Props to a Component. https://react.dev/learn/passing-props-to-a-component",
+          "Vite. Deploying a Static Site. https://vite.dev/guide/static-deploy.html"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Teoría — Ejercicio 1",
+            "url": "/assets/cuaderno/Sem6/ejercicio1.jpg",
+            "alt": "Captura del primer ejercicio de componentes de React",
+            "description": "Composición de una página mediante componentes visuales."
+          },
+          {
+            "type": "image",
+            "title": "Teoría — Ejercicio 2",
+            "url": "/assets/cuaderno/Sem6/ejercicio2.jpg",
+            "alt": "Captura del segundo ejercicio de componentes de React",
+            "description": "Trabajo con componentes anidados."
+          },
+          {
+            "type": "image",
+            "title": "Teoría — Ejercicio 3",
+            "url": "/assets/cuaderno/Sem6/ejercicio3.jpg",
+            "alt": "Captura del tercer ejercicio de componentes de React",
+            "description": "Comunicación del hijo al padre mediante una función."
+          },
+          {
+            "type": "image",
+            "title": "Teoría — Ejercicio 4",
+            "url": "/assets/cuaderno/Sem6/ejercicio4.jpg",
+            "alt": "Captura del cuarto ejercicio de componentes de React",
+            "description": "Comunicación entre hermanos mediante su padre común."
+          },
+          {
+            "type": "image",
+            "title": "Teoría — Ejercicio 5",
+            "url": "/assets/cuaderno/Sem6/ejercicio5.jpg",
+            "alt": "Captura del quinto ejercicio de componentes de React",
+            "description": "Presentación de los datos de estudiantes."
+          },
+          {
+            "type": "link",
+            "title": "Visitar los ejercicios de teoría",
+            "url": "https://favio-coder.github.io/TeoriaSem6-DesarrolloWeb/",
+            "description": "Acceso al primer ejercicio del proyecto."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio de teoría de la semana 6",
+            "url": "https://github.com/Favio-coder/TeoriaSem6-DesarrolloWeb",
+            "description": "Código fuente de los cinco ejercicios."
+          }
+        ]
+      },
+      {
+        "id": "act-06-02",
+        "title": "Práctica: eventos, formularios, routing y consumo de APIs con Axios",
+        "description": "Desarrollo de una SPA con temática de aprendizaje y comunidad. La aplicación incorpora una portada, un listado de usuarios obtenido desde JSONPlaceholder, un formulario controlado y una página para rutas inexistentes.",
+        "learnedTopics": [
+          "React Router permite asociar una URL con una vista y navegar dentro de la aplicación sin solicitar un documento completo en cada transición.",
+          "Layout conserva la estructura compartida mientras las rutas presentan Home, List, Form o NotFound.",
+          "Axios permite realizar peticiones HTTP basadas en promesas. userService.js concentra la configuración y la consulta a /users.",
+          "async y await permiten expresar la secuencia de una consulta asíncrona; try, catch y finally organizan el resultado, el error y la finalización.",
+          "Una consulta necesita representar al menos datos, carga y error para comunicar su situación al usuario.",
+          "useEffect coordina la consulta con el componente. Su función de limpieza cancela la petición mediante AbortController cuando corresponde.",
+          "map con key genera una tarjeta UserCard por usuario, mientras que las condiciones permiten mostrar mensajes de error o ausencia de resultados.",
+          "Un formulario controlado vincula cada campo con el estado mediante value y onChange.",
+          "La validación del formulario identifica campos vacíos, nombres demasiado cortos y correos con formato incorrecto.",
+          "Los atributos aria-invalid y aria-describedby relacionan el estado del campo con su mensaje de error.",
+          "Una confirmación visual del formulario no implica que exista un registro persistido en un servidor. En esta práctica, el flujo validado muestra una confirmación y limpia los campos.",
+          "La ruta base de Vite y el basename del router deben corresponder a la ubicación real de la aplicación publicada."
+        ],
+        "procedures": [
+          "Preparar el proyecto con React y Vite e instalar las dependencias de navegación y consultas HTTP.",
+          "Organizar páginas, componentes y servicios en carpetas independientes.",
+          "Crear Home, List, Form y NotFound como vistas de la aplicación.",
+          "Construir Layout, Navbar, Loading, ErrorMessage y UserCard como componentes reutilizables.",
+          "Definir las rutas /, /list, /usuarios y /formulario, además de una ruta comodín para NotFound.",
+          "Configurar Axios con la URL base de JSONPlaceholder y una función fetchUsers que consulta /users.",
+          "Implementar en List los estados users, loading, error y retryCount.",
+          "Ejecutar la consulta desde useEffect y utilizar AbortController para cancelar peticiones cuando se limpia el efecto.",
+          "Presentar la carga, los errores, la lista de usuarios y el estado vacío mediante condiciones y map.",
+          "Crear un formulario con nombre y correo vinculados a formData.",
+          "Validar los campos durante los cambios, al perder el foco y al enviar el formulario.",
+          "Mostrar mensajes y alertas de error o confirmación, evitando la recarga mediante preventDefault.",
+          "Aplicar estilos y revisar el flujo de navegación, la consulta y el formulario.",
+          "Configurar base: '/GuiaPracticaSemana6/' y publicar dist mediante GitHub Actions.",
+          "Incorporar en el workflow una copia de index.html como 404.html para servir la entrada de la SPA ante rutas que GitHub Pages no encuentra como archivos."
+        ],
+        "labExercises": [
+          "Construir una navegación SPA con vistas independientes y una estructura visual compartida.",
+          "Consultar usuarios desde https://jsonplaceholder.typicode.com/users utilizando Axios.",
+          "Representar los estados de carga, éxito, error y ausencia de datos.",
+          "Cancelar una petición al limpiar el efecto y permitir un nuevo intento cuando la consulta falla.",
+          "Generar tarjetas de usuarios con map y claves basadas en sus identificadores.",
+          "Implementar un formulario controlado con nombre y correo.",
+          "Validar las entradas y vincular los mensajes de error con sus campos.",
+          "Mostrar una página NotFound para las rutas no definidas.",
+          "Revisar el comportamiento de red y documentar la interfaz mediante capturas.",
+          "Configurar el despliegue de una aplicación React bajo la subruta de su repositorio."
+        ],
+        "labDevelopment": "La aplicación se organizó en páginas y componentes con responsabilidades diferentes. Home presenta la temática de aprendizaje mediante un hero y tarjetas de cursos. Layout mantiene la estructura compartida, mientras que las rutas determinan la vista que se muestra. List representa una comunidad de usuarios obtenida desde JSONPlaceholder y Form desarrolla un flujo de validación de datos en el navegador.\n\nLa consulta HTTP se concentra en userService.js. El servicio configura Axios con una URL base y un tiempo de espera, y devuelve los datos de /users. List administra la espera y el resultado mediante estado. Si la consulta falla, presenta información de error y opciones de reintento. La limpieza del efecto cancela la petición para evitar continuar una operación que ya no corresponde a la vista activa.\n\nEl formulario conserva nombre y correo en formData. Las funciones de cambio y pérdida de foco actualizan los valores, los errores y los campos visitados. Al enviar, se revisan ambos datos: el nombre debe estar presente y tener al menos dos caracteres, y el correo debe cumplir el patrón definido. Cuando hay errores se muestra una alerta; cuando la validación es correcta se presenta una confirmación y se restablecen los campos. El código no realiza una petición de registro ni guarda una cuenta en un backend.\n\nLa práctica también incorpora una vista para rutas inexistentes. El informe documenta la construcción de rutas, los componentes, el consumo de la API, el uso de map y las alertas, junto con capturas de la interfaz y de su revisión en el navegador.",
+        "labResults": "El proyecto integra las vistas de inicio, comunidad, formulario y página no encontrada. El código confirma el uso de Axios, los estados de la consulta, el renderizado de usuarios, el manejo de reintentos y la validación del formulario. El informe aporta capturas del consumo de la API, los mensajes visuales y la presentación final.\n\nDurante la publicación se identificó una diferencia entre el nombre GuiaPracticaSemana06 y el repositorio real GuiaPracticaSemana6. La base se ajustó a /GuiaPracticaSemana6/. El workflow instala dependencias, construye la aplicación y publica dist. También copia index.html a 404.html como mecanismo de entrada para las rutas internas; esto no cambia por sí solo el código HTTP 404 que GitHub Pages puede devolver al abrir directamente una ruta inexistente para el servidor.",
+        "reflection": {
+          "whatLearned": "Comprendí que una SPA debe atender la navegación, el estado de las consultas y las entradas del usuario. También distinguí entre validar un formulario en el navegador y registrar sus datos mediante un servicio real.",
+          "howLearned": "Aprendí implementando cada parte del flujo y relacionando los estados con la información presentada. La revisión de la petición HTTP, los errores de entrada y las rutas me permitió observar problemas que no aparecen al revisar únicamente la apariencia."
+        },
+        "references": [
+          "Axios. First steps. https://axios-http.com/docs/intro",
+          "Vite. Deploying a Static Site. https://vite.dev/guide/static-deploy.html",
+          "React. Passing Props to a Component. https://react.dev/learn/passing-props-to-a-component"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Práctica SPA — Evidencia 1",
+            "url": "/assets/cuaderno/Sem6/sem6_1.jpg",
+            "alt": "Primera captura de la práctica SPA de la semana 6",
+            "description": "Registro visual de la aplicación práctica."
+          },
+          {
+            "type": "image",
+            "title": "Práctica SPA — Evidencia 2",
+            "url": "/assets/cuaderno/Sem6/sem6_2.jpg",
+            "alt": "Segunda captura de la práctica SPA de la semana 6",
+            "description": "Registro visual complementario de la aplicación."
+          },
+          {
+            "type": "image",
+            "title": "Práctica SPA — Evidencia 3",
+            "url": "/assets/cuaderno/Sem6/sem6_3.jpg",
+            "alt": "Tercera captura de la práctica SPA de la semana 6",
+            "description": "Registro visual complementario de la aplicación."
+          },
+          {
+            "type": "link",
+            "title": "Visitar la aplicación práctica",
+            "url": "https://favio-coder.github.io/GuiaPracticaSemana6/",
+            "description": "SPA publicada con navegación, comunidad y formulario."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio de la práctica de la semana 6",
+            "url": "https://github.com/Favio-coder/GuiaPracticaSemana6",
+            "description": "Código de las páginas, componentes, servicio HTTP y despliegue."
+          },
+          {
+            "type": "file",
+            "title": "Descargar informe de la práctica de la semana 6",
+            "url": "/assets/cuaderno/Sem6/PracticaSemana6_RichardFavioAsturimacMedina.pdf",
+            "description": "Informe de routing, consumo de API, renderizado y formulario controlado.",
+            "download": true,
+            "fileName": "PracticaSemana6_RichardFavioAsturimacMedina.pdf"
+          }
+        ]
+      }
+    ],
+    "date": "",
+    "status": "completada",
+    "summary": "La semana reúne cinco ejercicios de teoría y una SPA práctica. Se estudió la comunicación entre componentes, el uso de estado y callbacks, las listas, el routing, las consultas con Axios y la validación de formularios. También se corrigieron las rutas base de los proyectos para GitHub Pages.",
+    "objectives": [
+      "Comprender cómo se organizan y comunican los componentes de React.",
+      "Transmitir datos mediante props y funciones callback.",
+      "Compartir estado entre componentes hermanos mediante su padre común.",
+      "Aplicar tipos en componentes y estados escritos con TypeScript.",
+      "Representar colecciones y estados alternativos de la interfaz.",
+      "Implementar navegación SPA mediante React Router.",
+      "Consumir una API y gestionar carga, errores y reintentos.",
+      "Construir formularios controlados con validación.",
+      "Documentar y publicar los proyectos con una configuración coherente de rutas."
+    ],
+    "topics": [
+      {
+        "title": "Componentes de función, JSX y TSX: estructura y tipos de la interfaz.",
+        "explanation": "Un componente de función retorna la interfaz y TSX permite describir sus tipos al combinar TypeScript con JSX.",
+        "definitions": [
+          "Componente: función reutilizable que devuelve elementos React. TSX: extensión para TypeScript que admite sintaxis JSX."
+        ],
+        "procedures": [
+          "Separar una unidad visual en una función, tipar sus propiedades y usarla desde otro componente."
+        ]
+      },
+      {
+        "title": "Props y composición: información recibida y contenido anidado.",
+        "explanation": "Props permiten pasar datos hacia un componente y la composición permite anidar contenido en estructuras reutilizables.",
+        "definitions": [
+          "Composición: construcción de una interfaz combinando componentes. children: contenido anidado que recibe un componente."
+        ],
+        "procedures": [
+          "Mantener los datos en su origen, pasarlos como props y componer la vista con componentes de responsabilidad acotada."
+        ]
+      },
+      {
+        "title": "Prop drilling: transmisión de datos a través de componentes intermedios.",
+        "explanation": "Prop drilling ocurre cuando un dato atraviesa varios componentes intermedios que solo lo reenvían hacia quien lo necesita.",
+        "definitions": [
+          "Prop drilling: transmisión de props por niveles intermedios sin que esos niveles utilicen el dato."
+        ],
+        "procedures": [
+          "Seguir la ruta del dato y valorar elevar el estado, componer elementos o compartirlo con el mecanismo adecuado."
+        ]
+      },
+      {
+        "title": "Callbacks y elevación del estado: comunicación hacia el padre y entre hermanos.",
+        "explanation": "Un callback permite que un componente hijo solicite una acción al padre; elevar el estado al padre común facilita compartirlo entre hermanos.",
+        "definitions": [
+          "Callback: función pasada como prop para ejecutar una acción. Elevación del estado: mover el estado al ancestro común."
+        ],
+        "procedures": [
+          "Ubicar el estado donde pueda coordinar a sus consumidores y pasar callbacks para comunicar cambios desde los hijos."
+        ]
+      },
+      {
+        "title": "Eventos y useState: actualización de datos a partir de la interacción.",
+        "explanation": "Los eventos describen interacciones y useState conserva un valor entre renderizados, solicitando una nueva representación cuando cambia.",
+        "definitions": [
+          "Estado: dato que participa en la interfaz. useState: Hook para declarar estado local en un componente de función."
+        ],
+        "procedures": [
+          "Declarar el estado inicial, actualizarlo desde el manejador del evento y renderizar la interfaz a partir del nuevo valor."
+        ]
+      },
+      {
+        "title": "Renderizado condicional e iterativo: decisiones de presentación y listas con key.",
+        "explanation": "El renderizado condicional elige qué mostrar; map convierte elementos de una colección en una lista de componentes y key identifica cada elemento.",
+        "definitions": [
+          "Renderizado condicional: selección de contenido según una expresión. key: identificador estable para un elemento de lista."
+        ],
+        "procedures": [
+          "Derivar la vista de la condición, recorrer los datos con map y asignar a cada elemento una key única y estable."
+        ]
+      },
+      {
+        "title": "Formularios controlados: value, onChange, onSubmit y validación.",
+        "explanation": "En un formulario controlado el valor del campo proviene del estado y los eventos actualizan ese estado.",
+        "definitions": [
+          "value: valor mostrado. onChange: evento de cambio. onSubmit: envío del formulario."
+        ],
+        "procedures": [
+          "Mantener value sincronizado con el estado, validar al enviar y comunicar errores junto al control correspondiente."
+        ]
+      },
+      {
+        "title": "React Router: asociación de rutas con vistas y navegación SPA.",
+        "explanation": "React Router relaciona rutas con vistas y permite navegar en una SPA conservando el punto de entrada del cliente.",
+        "definitions": [
+          "Ruta: patrón de URL asociado a una vista. Navegación SPA: cambio de vista sin recargar el documento completo."
+        ],
+        "procedures": [
+          "Definir rutas, enlazar cada una con su vista y configurar la base cuando la aplicación se publique bajo un prefijo."
+        ]
+      },
+      {
+        "title": "Promesas, async y await: organización de operaciones asíncronas.",
+        "explanation": "Una promesa representa el resultado futuro de una operación; async y await permiten escribir su coordinación con una secuencia legible.",
+        "definitions": [
+          "Promise: objeto que representa una operación pendiente, cumplida o rechazada. await: espera su resultado dentro de una función async."
+        ],
+        "procedures": [
+          "Iniciar la operación asíncrona, esperar el resultado dentro de try/catch y actualizar el estado correspondiente."
+        ]
+      },
+      {
+        "title": "Axios y Fetch: herramientas para peticiones HTTP con comportamientos diferentes.",
+        "explanation": "Fetch es una API del navegador para solicitudes HTTP; Axios es una biblioteca cliente que ofrece una interfaz propia para esas solicitudes.",
+        "definitions": [
+          "HTTP: protocolo de transferencia de recursos. Respuesta: estado, cabeceras y cuerpo devueltos por el servidor."
+        ],
+        "procedures": [
+          "Enviar la solicitud, comprobar el estado de la respuesta, convertir o leer el cuerpo y gestionar errores de red y de servidor."
+        ]
+      },
+      {
+        "title": "useEffect y limpieza: coordinación con sistemas externos y cancelación de operaciones.",
+        "explanation": "useEffect sincroniza un componente con sistemas externos; la función de limpieza libera suscripciones o recursos al cambiar dependencias o desmontarse.",
+        "definitions": [
+          "Efecto: sincronización posterior al renderizado. Limpieza: función que deshace recursos establecidos por un efecto."
+        ],
+        "procedures": [
+          "Declarar dependencias reales, cancelar o limpiar la operación anterior y evitar actualizar una vista que ya no la necesita."
+        ]
+      },
+      {
+        "title": "Estados de datos, carga, error y ausencia de resultados.",
+        "explanation": "Una interfaz de datos debe distinguir entre espera, error, resultados y respuesta vacía para comunicar qué está ocurriendo.",
+        "definitions": [
+          "Carga: solicitud pendiente. Error: operación fallida. Estado vacío: solicitud válida sin elementos que mostrar."
+        ],
+        "procedures": [
+          "Representar cada estado de manera diferenciada y mostrar los datos solo cuando la respuesta esté disponible."
+        ]
+      },
+      {
+        "title": "Despliegue: base de Vite, basename del router y publicación de dist.",
+        "explanation": "Para publicar bajo una subruta, los recursos generados y el router deben usar el mismo prefijo que la URL pública.",
+        "definitions": [
+          "Base de Vite: prefijo para recursos de producción. basename: prefijo de rutas que utiliza React Router."
+        ],
+        "procedures": [
+          "Configurar ambos valores para la ruta de publicación, generar dist y verificar enlaces y recursos desde la subruta."
+        ]
+      }
+    ],
+    "reflection": {
+      "whatLearned": "Aprendí que la comunicación entre componentes requiere identificar dónde debe vivir cada dato. Los cinco ejercicios me permitieron distinguir la transmisión de props, la ejecución de callbacks y el uso de un padre común para compartir estado entre hermanos. También comprendí que los tipos ayudan a expresar qué información puede recibir cada componente.\n\nEn la práctica integré estos conceptos con navegación, consultas HTTP y formularios. Entendí que los datos externos no están disponibles inmediatamente y que la interfaz debe representar la espera, los errores y los resultados. Asimismo, distinguí la confirmación de un formulario académico de un registro persistente en un servidor.",
+      "howLearned": "Aprendí primero mediante ejercicios pequeños y después mediante una aplicación que combina sus conceptos. Seguir el recorrido de los datos entre componentes me permitió comprender las actualizaciones de estado. La consulta de usuarios me ayudó a relacionar el código asíncrono con los estados visibles de la interfaz.\n\nLa revisión del formulario y las capturas del informe complementaron el aprendizaje. Finalmente, el despliegue mostró que la navegación local y la publicación bajo una subcarpeta requieren configuraciones coherentes. Revisar los nombres de los repositorios, la base de Vite y la salida dist permitió conectar el desarrollo con la distribución del proyecto.",
+      "difficulties": "Una dificultad concreta fue la configuración de las subrutas en GitHub Pages. En teoría se había utilizado /sem6/ aunque el repositorio se llama TeoriaSem6-DesarrolloWeb; en práctica apareció una diferencia entre GuiaPracticaSemana06 y GuiaPracticaSemana6. También exigió atención coordinar los estados de carga, error y reintento para que los mensajes correspondieran a la situación de la consulta.",
+      "solutions": "Se configuró /TeoriaSem6-DesarrolloWeb/ para el proyecto de teoría y /GuiaPracticaSemana6/ para la práctica. La navegación utiliza la base del proyecto, y el despliegue publica los archivos de dist. En la consulta se separaron los estados, se añadió cancelación mediante AbortController y se incorporaron opciones de reintento. El formulario concentra la validación y muestra mensajes relacionados con sus campos.",
+      "improvements": "En próximos trabajos comprobaré tanto la navegación interna como la apertura y recarga directa de cada ruta publicada. También revisaré respuestas vacías, conexiones lentas y errores de la API. Para el formulario, el siguiente avance será conectar una operación de envío real y distinguir claramente sus estados de validación, procesamiento y respuesta del servidor."
+    },
+    "bibliography": [
+      {
+        "id": "w06-b01",
+        "type": "book",
+        "author": "Robin Wieruch",
+        "title": "The Road to React",
+        "url": "https://www.roadtoreact.com/"
+      },
+      {
+        "id": "w06-b02",
+        "type": "web",
+        "author": "React Team",
+        "title": "Sharing State Between Components",
+        "url": "https://react.dev/learn/sharing-state-between-components"
+      },
+      {
+        "id": "w06-b03",
+        "type": "web",
+        "author": "React Team",
+        "title": "Synchronizing with Effects",
+        "url": "https://react.dev/learn/synchronizing-with-effects"
+      },
+      {
+        "id": "w06-b04",
+        "type": "web",
+        "author": "React Router",
+        "title": "Declarative routing: installation",
+        "url": "https://reactrouter.com/start/declarative/installation"
+      },
+      {
+        "id": "w06-b05",
+        "type": "web",
+        "author": "Axios contributors",
+        "title": "Axios: Promise based HTTP client",
+        "url": "https://github.com/axios/axios#readme"
+      },
+      {
+        "id": "w06-b06",
+        "type": "web",
+        "author": "MDN Contributors",
+        "title": "Using the Fetch API",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+      }
     ]
   }
-
 ]

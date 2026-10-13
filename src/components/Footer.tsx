@@ -88,7 +88,7 @@ export default function Footer() {
           <div className="hidden md:flex items-center gap-6 font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">
             <span>© {currentYear} Favio Asturimac</span>
             <span className="text-border">|</span>
-            <span>HECHO CON NEXT.JS + TAILWIND + MOTION</span>
+            <span>HECHO CON AMOR Y MUCHO CAFÉ :3</span>
           </div>
 
           <div className="md:hidden text-center font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">

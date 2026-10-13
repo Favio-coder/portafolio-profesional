@@ -14,7 +14,7 @@ export const gallery: GalleryItem[] = [
   { id: "album-03", title: "Sesión Fotográfica 03", image: "/assets/album/1231.jpeg", width: 3000, height: 2250, category: "TRABAJO", year: "2026" },
   { id: "album-04", title: "Sesión Fotográfica 04", image: "/assets/album/1234.jpeg", width: 1204, height: 1600, category: "PERSONAL", year: "2026" },
   { id: "album-05", title: "Sesión Fotográfica 05", image: "/assets/album/21.jpeg", width: 2295, height: 4080, category: "OTRO", year: "2026" },
-  { id: "album-06", title: "Sesión Fotográfica 06", image: "/assets/album/231314.jpeg", width: 1600, height: 1200, category: "TRABAJO", year: "2026" },
+  { id: "album-06", title: "Sesión Fotográfica 06", image: "/assets/album/231314.jpg", width: 1600, height: 1200, category: "TRABAJO", year: "2026" },
   { id: "album-07", title: "Sesión Fotográfica 07", image: "/assets/album/12121.jpeg", width: 1600, height: 902, category: "PERSONAL", year: "2026" },
   { id: "album-08", title: "Sesión Fotográfica 08", image: "/assets/album/1231415.jpeg", width: 1600, height: 1200, category: "OTRO", year: "2026" },
   { id: "album-09", title: "Sesión Fotográfica 09", image: "/assets/album/1789416065080.jpeg", width: 1280, height: 720, category: "PERSONAL", year: "2026" },

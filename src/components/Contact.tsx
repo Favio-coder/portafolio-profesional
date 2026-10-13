@@ -209,7 +209,7 @@ export default function Contact() {
               <div className="space-y-3 font-mono text-sm">
                 <div className="flex items-center gap-3 text-foreground">
                   <span className="text-primary-ink">📍</span>
-                  <span>Lima, Perú</span>
+                  <span>Huancayo, Perú</span>
                 </div>
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <span className="text-primary-ink">🕐</span>

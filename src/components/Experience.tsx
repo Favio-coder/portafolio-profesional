@@ -1,106 +1,324 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionDivider from "@/components/ui/SectionDivider";
 import Tag from "@/components/ui/Tag";
 
-const experiences = [
+type ExperienceItem = {
+  id: string;
+  role: string;
+  company: string;
+  companyUrl?: string;
+  period: string;
+  location?: string;
+  type: string;
+  description: string;
+  technologies: string[];
+  achievements: string[];
+};
+
+type Recognition = {
+  id: string;
+  name: string;
+  year?: string;
+  position: string;
+  focus: string;
+};
+
+const experiences: ExperienceItem[] = [
   {
-    role: "Full Stack Developer / Co-Founder",
-    company: "Alzhivida",
-    period: "2023 — Presente",
-    location: "Lima, Perú",
-    type: "Startup / Healthtech",
-    description: "Liderazgo técnico y desarrollo de plataforma de salud mental para cuidadores de Alzheimer. Arquitectura full stack, infraestructura cloud, pipelines de datos y modelos de IA para detección temprana.",
-    technologies: ["React", "Next.js", "TypeScript", "Python", "TensorFlow", "AWS", "Docker", "PostgreSQL"],
+    id: "bst-data-quality",
+    role: "Colaborador en Data Quality",
+    company: "Proyecto vinculado a BST Global",
+    companyUrl: "https://bstglobal.com/",
+    period: "Colaboración de 2 meses",
+    type: "Colaboración independiente",
+    description:
+      "Colaboración en calidad de datos mediante la revisión de pipelines y procedimientos almacenados. Preparé casos de prueba y realicé testing con Azure DevOps para verificar el comportamiento de los procesos.",
+    technologies: ["Apache Airflow", "SQL", "Azure DevOps"],
     achievements: [
-      "Plataforma usada por 500+ cuidadores activos",
-      "Modelo de detección Alzheimer con 92% precisión",
-      "Infraestructura serverless en AWS (Lambda, API Gateway, S3)",
-      "Pipeline CI/CD automatizado con GitHub Actions",
+      "Revisé pipelines de datos en Apache Airflow.",
+      "Analicé procedimientos almacenados y su lógica de procesamiento.",
+      "Realicé testing de procesos de datos con Azure DevOps.",
+      "Creé casos de prueba para verificar pipelines y procedimientos almacenados.",
     ],
   },
   {
-    role: "Software Developer Intern",
-    company: "Empresa Tecnológica",
-    period: "2022 — 2023",
-    location: "Lima, Perú",
-    type: "Prácticas Preprofesionales",
-    description: "Desarrollo y mantenimiento de aplicaciones web empresariales. Migración de legado a stack moderno, testing automatizado y optimización de performance.",
-    technologies: ["Vue.js", "Laravel", "MySQL", "Docker", "Kubernetes", "GitLab CI"],
+    id: "spaceag",
+    role: "Customer Success Intern",
+    company: "SpaceAg",
+    companyUrl: "https://www.spaceag.co/",
+    period: "Set. 2025 — Jul. 2026",
+    location: "Huancayo, Perú",
+    type: "Business Intelligence",
+    description:
+      "Desarrollo de dashboards, indicadores y procesos de consolidación de datos para empresas agroexportadoras. Transformé necesidades de negocio en reportes analíticos, integrando fuentes y validando la consistencia de la información.",
+    technologies: [
+      "Power BI",
+      "DAX",
+      "SQL",
+      "AWS Athena",
+      "Google Sheets",
+      "ETL",
+      "APIs",
+    ],
     achievements: [
-      "Migración exitosa de 3 módulos legacy a Vue 3",
-      "Reducción 40% en tiempo de respuesta API",
-      "Cobertura de tests aumentada del 15% al 85%",
+      "Desarrollé dashboards y marcos de KPI para monitorear la generación de valor.",
+      "Automaticé la consolidación de datos e informes con SQL, Google Sheets y procesos ETL.",
+      "Utilicé AWS Athena, Simba Athena e integraciones de API para consultar y actualizar información.",
+      "Diseñé modelos dimensionales de estrella y copo de nieve.",
+      "Validé datos y reportes mediante pruebas funcionales, de regresión y controles automatizados.",
     ],
   },
   {
-    role: "Research Assistant - IA",
-    company: "Universidad - Laboratorio de IA",
-    period: "2021 — 2022",
-    location: "Lima, Perú",
-    type: "Investigación Académica",
-    description: "Investigación en visión por computadora para diagnóstico médico. Entrenamiento de redes neuronales con TensorFlow/PyTorch, preprocesamiento de datos DICOM, publicación en congreso internacional.",
-    technologies: ["Python", "TensorFlow", "PyTorch", "OpenCV", "DICOM", "Jupyter"],
+    id: "hospital-bi",
+    role: "Desarrollador de solución BI",
+    company: "Hospital Nacional Ramiro Prialé — Red Asistencial Junín",
+    companyUrl: "https://www.essalud.gob.pe/hospital-nacional-ramiro-priale-priale-de-huancayo-celebro-bodas-de-plata/",
+    period: "Set. 2025 — Jul. 2026",
+    location: "Huancayo, Perú",
+    type: "Proyección social",
+    description:
+      "Desarrollo de una solución de Business Intelligence para centralizar información sobre el consumo de recursos en diagnóstico por imágenes. Integré procesamiento de datos, reportes y pruebas de calidad y rendimiento.",
+    technologies: [
+      "Angular",
+      "Python",
+      "Django",
+      "MariaDB",
+      "SQL",
+      "ETL",
+      "Cypress",
+      "JMeter",
+    ],
     achievements: [
-      "Paper aceptado en Congreso Internacional de IA 2022",
-      "Modelo de segmentación tumoral con Dice 0.89",
-      "Dataset curado de 2000+ escáneres médicos",
+      "Implementé la solución con Angular, Django y MariaDB.",
+      "Desarrollé procesos ETL y validaciones automatizadas para controlar la integridad de los datos.",
+      "Ejecuté pruebas end-to-end sobre los flujos críticos del sistema.",
+      "Realicé pruebas de estrés y rendimiento con JMeter para evaluar la respuesta ante concurrencia.",
+    ],
+  },
+  {
+    id: "c34",
+    role: "Desarrollador Full Stack Junior y Soporte de TI",
+    company: "C34",
+    companyUrl: "https://sistemac34.com/",
+    period: "Ene. 2025 — Dic. 2025",
+    location: "Huancayo, Perú",
+    type: "Software empresarial",
+    description:
+      "Desarrollo de módulos para un sistema contable y soporte de infraestructura de TI. Trabajé con lógica de negocio, persistencia de datos, pruebas y documentación técnica para productos de facturación electrónica.",
+    technologies: [
+      "PHP",
+      "Laravel",
+      "Vue.js",
+      "SQL Server",
+      "PHPUnit",
+      "Azure",
+      "AWS",
+      "Astro",
+      "Starlight",
+    ],
+    achievements: [
+      "Desarrollé módulos contables con Laravel, Vue.js y SQL Server.",
+      "Implementé pruebas unitarias e integración para validar funcionalidades.",
+      "Elaboré documentación técnica con Astro y Starlight.",
+      "Integré servicios cloud y brindé soporte de red y dispositivos POS.",
+      "Apliqué prácticas de seguridad tomando como referencia OWASP Top 10 e ISO 27001.",
+    ],
+  },
+  {
+    id: "dev-stream",
+    role: "Full Stack Developer Intern",
+    company: "Dev Stream",
+    companyUrl: "https://www.linkedin.com/company/dev-stream/",
+    period: "Ene. 2024 — Abr. 2024",
+    location: "Lima, Perú",
+    type: "Prácticas",
+    description:
+      "Participación en proyectos web y formación en bases de datos, microservicios y DevOps. Colaboré en equipos Scrum, validando APIs y revisando la calidad del código.",
+    technologies: [
+      "Java",
+      "Spring Boot",
+      "Angular",
+      "PostgreSQL",
+      "Postman",
+      "SonarQube",
+      "AWS EC2",
+      "AWS S3",
+    ],
+    achievements: [
+      "Participé en proyectos con Spring Boot, PostgreSQL y Angular.",
+      "Validé APIs REST y microservicios mediante Postman.",
+      "Analicé mantenibilidad y vulnerabilidades con SonarQube.",
+      "Utilicé AWS EC2 y S3 para despliegue y almacenamiento.",
     ],
   },
 ];
 
-const hackathons = [
-  { name: "Hackathon BCP Datathon", year: "2024", position: "Top 10", focus: "Data Science / Financial" },
-  { name: "NASA Space Apps Challenge", year: "2023", position: "Finalista Local", focus: "Space Tech / Earth Observation" },
-  { name: "Hackathon UNI", year: "2023", position: "1er Puesto", focus: "Healthtech / Social Impact" },
-  { name: "Hackathon Tecsup", year: "2022", position: "2do Puesto", focus: "EdTech / Accessibility" },
+const recognitions: Recognition[] = [
+  {
+    id: "transformagob",
+    name: "Hackathon Transformagob — PCM",
+    position: "2.º lugar",
+    focus: "Innovación y transformación digital",
+  },
+  {
+    id: "concempi",
+    name: "CONCEMPI V — PMI Lima",
+    year: "2025",
+    position: "Ganador",
+    focus: "Competencia nacional de proyectos",
+  },
+  {
+    id: "credicorp",
+    name: "Credicorp Voices Awards",
+    year: "2025",
+    position: "Top 50",
+    focus: "Finalista",
+  },
+  {
+    id: "harvard-upch",
+    name: "Hackathon Harvard con apoyo de UPCH",
+    year: "2025",
+    position: "Ganador",
+    focus: "Innovación",
+  },
+  {
+    id: "nasa-space-apps",
+    name: "NASA Space Apps Challenge — Universidad Continental",
+    year: "2025",
+    position: "3.er lugar",
+    focus: "Tecnología y datos espaciales",
+  },
+  {
+    id: "impact-startup",
+    name: "Impact Start Up Competition",
+    year: "2024",
+    position: "3.er lugar",
+    focus: "Scale Incubator / UNT",
+  },
 ];
+
+function ExternalLinkIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4 shrink-0"
+      aria-hidden="true"
+    >
+      <path d="M15 3h6v6" />
+      <path d="M10 14 21 3" />
+      <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+    </svg>
+  );
+}
 
 export default function Experience() {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <section id="experience" className="relative px-6 py-20 md:px-8 lg:px-12">
+    <section
+      id="experience"
+      aria-labelledby="experience-title"
+      className="relative px-4 py-16 sm:px-6 md:px-8 md:py-20 lg:px-12"
+    >
       <div className="mx-auto max-w-350">
-        <SectionHeading
-          number="02"
-          title="EXPERIENCIA"
-          subtitle="Trayectoria profesional, investigación y competencias"
-        />
+        <div id="experience-title">
+          <SectionHeading
+            number="02"
+            title="EXPERIENCIA"
+            subtitle="Desarrollo, calidad de software, datos y soluciones cloud"
+          />
+        </div>
 
-        <SectionDivider className="my-12" label="TIMELINE" thick />
+        <SectionDivider className="my-10 md:my-12" label="TRAYECTORIA" thick />
 
-        <div className="space-y-12">
-          {experiences.map((exp, expIndex) => (
-            <motion.article
-              key={exp.company}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: expIndex * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
-            >
-              <div className="absolute left-8 top-0 bottom-0 w-px bg-border lg:left-[200px]" />
-              
-              <div className="relative pl-20 lg:pl-[220px]">
-                <div className="absolute left-8 top-1 w-4 h-4 rounded-full bg-primary border-4 border-background lg:left-[200px] -translate-x-1/2" aria-hidden="true" />
-                
-                <div className="mb-2 flex items-center gap-3 font-mono text-xs uppercase tracking-wider">
-                  <span className="badge badge-primary">{exp.type}</span>
-                  <span className="text-muted-foreground">{exp.period}</span>
-                  <span className="text-border">·</span>
-                  <span className="text-muted-foreground">{exp.location}</span>
-                </div>
+        <div className="space-y-10 md:space-y-12">
+          {experiences.map((exp, index) => {
+            // Admite web, LinkedIn u otro enlace HTTP/HTTPS.
+            const url = exp.companyUrl?.trim();
+            const companyUrl =
+              url && /^https?:\/\//i.test(url) ? url : undefined;
+
+            return (
+              <motion.article
+                key={exp.id}
+                initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{
+                  duration: reducedMotion ? 0 : 0.5,
+                  delay: reducedMotion ? 0 : Math.min(index * 0.05, 0.2),
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="relative min-w-0 pl-7 sm:pl-10"
+              >
+                <div
+                  className="absolute bottom-0 left-1.5 top-0 w-px bg-border"
+                  aria-hidden="true"
+                />
+
+                <div
+                  className="absolute left-1.5 top-1 h-3 w-3 -translate-x-1/2 rounded-full bg-primary ring-4 ring-background"
+                  aria-hidden="true"
+                />
 
                 <div className="space-y-4">
-                  <div>
-                    <h3 className="font-heading text-2xl font-semibold text-foreground">
-                      {exp.role}
-                    </h3>
-                    <p className="mt-1 font-medium text-accent-ink">{exp.company}</p>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs uppercase tracking-wider">
+                    <span className="badge badge-primary whitespace-normal">
+                      {exp.type}
+                    </span>
+
+                    <span className="text-muted-foreground">
+                      {exp.period}
+                    </span>
+
+                    {exp.location && (
+                      <span className="text-muted-foreground">
+                        {exp.location}
+                      </span>
+                    )}
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed max-w-2xl">
+                  <div>
+                    <h3 className="font-heading text-xl font-semibold leading-snug text-foreground sm:text-2xl">
+                      {exp.role}
+                    </h3>
+
+                    {companyUrl ? (
+                      <a
+                        href={companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex max-w-full items-start gap-2 rounded-sm font-medium text-accent-ink underline-offset-4 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                      >
+                        <span className="min-w-0 break-words">
+                          {exp.company}
+                        </span>
+
+                        <span className="mt-1">
+                          <ExternalLinkIcon />
+                        </span>
+
+                        <span className="sr-only">
+                          {" "}
+                          — abrir enlace en una nueva pestaña
+                        </span>
+                      </a>
+                    ) : (
+                      <p className="mt-2 break-words font-medium text-accent-ink">
+                        {exp.company}
+                      </p>
+                    )}
+                  </div>
+
+                  <p className="max-w-3xl leading-relaxed text-muted-foreground">
                     {exp.description}
                   </p>
 
@@ -112,44 +330,75 @@ export default function Experience() {
                     ))}
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                      LOGROS DESTACADOS
+                      APORTES DESTACADOS
                     </h4>
-                    <ul className="space-y-1.5 pl-4">
-                      {exp.achievements.map((achievement, i) => (
-                        <li key={i} className="relative flex items-start gap-2 text-sm text-muted-foreground before:content-['→'] before:text-primary-ink before:font-mono before:text-xs">
-                          {achievement}
+
+                    <ul className="max-w-3xl space-y-2">
+                      {exp.achievements.map((achievement) => (
+                        <li
+                          key={achievement}
+                          className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"
+                        >
+                          <span
+                            className="mt-0.5 shrink-0 font-mono text-primary-ink"
+                            aria-hidden="true"
+                          >
+                            →
+                          </span>
+                          <span className="min-w-0">{achievement}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
+              </motion.article>
+            );
+          })}
+        </div>
+
+        <SectionDivider
+          className="my-10 md:my-12"
+          label="HACKATHONS & RECONOCIMIENTOS"
+          thick
+        />
+
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {recognitions.map((recognition, index) => (
+            <motion.article
+              key={recognition.id}
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{
+                duration: reducedMotion ? 0 : 0.45,
+                delay: reducedMotion ? 0 : index * 0.04,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="flex min-w-0 flex-col border border-border bg-card p-5 transition-colors hover:border-accent motion-safe:transition-shadow motion-safe:hover:shadow-lg"
+            >
+              <div className="mb-4 flex flex-wrap items-center gap-2">
+                {recognition.year && (
+                  <span className="badge badge-accent">
+                    {recognition.year}
+                  </span>
+                )}
+
+                <span className="badge badge-primary">
+                  {recognition.position}
+                </span>
               </div>
+
+              <h3 className="mb-2 font-medium leading-snug text-foreground">
+                {recognition.name}
+              </h3>
+
+              <p className="mt-auto font-mono text-xs leading-relaxed text-muted-foreground">
+                {recognition.focus}
+              </p>
             </motion.article>
           ))}
-
-          <SectionDivider className="my-8" label="HACKATHONS & COMPETENCIAS" thick />
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {hackathons.map((hack, i) => (
-              <motion.div
-                key={hack.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: 0.6 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="p-5 border border-border bg-card transition-all hover:border-accent hover:shadow-lg"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="badge badge-accent">{hack.year}</span>
-                  <span className="badge badge-primary">{hack.position}</span>
-                </div>
-                <h4 className="font-medium text-foreground mb-1">{hack.name}</h4>
-                <p className="font-mono text-xs text-muted-foreground">{hack.focus}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

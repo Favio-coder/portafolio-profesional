@@ -1,5 +1,5 @@
 import weekData from "./cuaderno.json";
-import { bibliography, type BibliographyEntry } from "./bibliography";
+import type { BibliographyEntry } from "./bibliography";
 
 export interface Evidence {
   type: "image" | "link" | "file" | "repository";
@@ -98,7 +98,9 @@ export function normalizeWeeks(data: unknown): { weeks: Week[]; issues: string[]
     numbers.add(number);
     const activities = list(source.activities).map((item, activityIndex): Activity => {
       const activity = object(item);
-      return { id: text(activity.id) || `${id}-act-${activityIndex + 1}`, title: text(activity.title) || "[ADD_ACTIVITY_TITLE]", description: text(activity.description), learnedTopics: strings(activity.learnedTopics), procedures: strings(activity.procedures), labExercises: strings(activity.labExercises), labDevelopment: text(activity.labDevelopment), labResults: text(activity.labResults), reflection: reflection(activity.reflection), references: strings(activity.references), evidence: evidence(activity.evidence), tools: strings(activity.tools), code: text(activity.code) };
+      const title = text(activity.title);
+      if (!title) issues.push(`Semana ${number}, actividad ${activityIndex + 1}: falta el título.`);
+      return { id: text(activity.id) || `${id}-act-${activityIndex + 1}`, title: title || `Actividad ${activityIndex + 1}`, description: text(activity.description), learnedTopics: strings(activity.learnedTopics), procedures: strings(activity.procedures), labExercises: strings(activity.labExercises), labDevelopment: text(activity.labDevelopment), labResults: text(activity.labResults), reflection: reflection(activity.reflection), references: strings(activity.references), evidence: evidence(activity.evidence), tools: strings(activity.tools), code: text(activity.code) };
     });
     return [{ id, number, title: text(source.title), description: text(source.description), summary: text(source.summary) || text(source.description), date: text(source.date), status: source.status === "completada" || source.status === "en progreso" ? source.status : "pendiente", objectives: strings(source.objectives), activities, topics: list(source.topics).map((item): Topic => {
       if (typeof item === "string") return { title: item, explanation: "" };
@@ -117,11 +119,13 @@ export const cuaderno = normalized.weeks;
 export const cuadernoIssues = normalized.issues;
 
 export function getWeekBibliography(week: Week): BibliographyEntry[] {
+  if (week.bibliography?.length) return week.bibliography;
+
   const legacy = week.activities.flatMap((activity) => activity.references.flatMap((reference, index) => {
     const entry = citation(reference, `${activity.id}-ref-${index}`);
     return entry ? [entry] : [];
   }));
-  return [...(week.bibliography ?? []), ...bibliography.filter((entry) => entry.weekNumbers?.includes(week.number)), ...legacy].filter(
+  return legacy.filter(
     (entry, index, entries) => entries.findIndex((other) => (other.url ?? other.id) === (entry.url ?? entry.id)) === index,
   );
 }
