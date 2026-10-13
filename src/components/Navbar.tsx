@@ -8,12 +8,12 @@ import { Terminal, Menu, X } from "lucide-react";
 import { navigateToSection, scrollToSection } from "@/lib/section-navigation";
 
 const navegacion = [
-  { numero: "01", label: "SOBRE MÍ", href: "#about", isAnchor: true },
-  { numero: "02", label: "EXPERIENCIA", href: "#experience", isAnchor: true },
-  { numero: "03", label: "PROYECTOS", href: "#projects", isAnchor: true },
+  { numero: "01", label: "SOBRE MÍ", href: "#about", id: "about", isAnchor: true },
+  { numero: "02", label: "EXPERIENCIA", href: "#experience", id: "experience", isAnchor: true },
+  { numero: "03", label: "PROYECTOS", href: "#projects", id: "projects", isAnchor: true },
   { numero: "04", label: "CUADERNO", href: "/cuaderno", isAnchor: false },
-  { numero: "05", label: "GALERÍA", href: "#gallery", isAnchor: true },
-  { numero: "06", label: "CONTACTO", href: "#contact", isAnchor: true },
+  { numero: "05", label: "GALERÍA", href: "#gallery", id: "gallery", isAnchor: true },
+  { numero: "06", label: "CONTACTO", href: "#contact", id: "contact", isAnchor: true },
 ];
 
 export default function Navbar() {
@@ -206,7 +206,7 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 key={item.numero}
-                onClick={(event) => navigateToSection(event, item.id)}
+                onClick={(event) => item.isAnchor && navigateToSection(event, item.id!)}
                 className="group relative font-mono text-sm uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
               >
                 <span className="flex items-center gap-2">
@@ -263,7 +263,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     key={item.numero}
-                    onClick={(event) => navigateToSection(event, item.id, navigateFromMenu)}
+                    onClick={(event) => item.isAnchor && navigateToSection(event, item.id!, navigateFromMenu)}
                     className="flex items-center gap-3 py-3 font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <span className="text-primary-ink">{item.numero}</span>
