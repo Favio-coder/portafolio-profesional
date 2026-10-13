@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Terminal, Menu, X } from "lucide-react";
-import { navigateToSection, scrollToSection } from "@/lib/section-navigation";
+import { useSectionNavigation, scrollToSection } from "@/lib/section-navigation";
 
 const navegacion = [
   { numero: "01", label: "SOBRE MÍ", href: "#about", id: "about", isAnchor: true },
@@ -18,6 +18,8 @@ const navegacion = [
 
 export default function Navbar() {
   const router = useRouter();
+  const pathname = usePathname();
+  const { navigateToSection } = useSectionNavigation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
@@ -72,6 +74,7 @@ export default function Navbar() {
 
   const ejecutarComando = () => {
     const comando = terminalInput.trim().toLowerCase();
+    const isHome = pathname === "/";
 
     if (!comando) return;
 
@@ -114,7 +117,11 @@ export default function Navbar() {
       ]);
       setMenuOpen(false);
       setTerminalOpen(false);
-      scrollToSection("about");
+      if (isHome) {
+        scrollToSection("about");
+      } else {
+        router.push("/#about");
+      }
     } else if (comando === "experience") {
       setTerminalOutput((prev) => [
         ...prev,
@@ -125,7 +132,11 @@ export default function Navbar() {
       ]);
       setMenuOpen(false);
       setTerminalOpen(false);
-      scrollToSection("experience");
+      if (isHome) {
+        scrollToSection("experience");
+      } else {
+        router.push("/#experience");
+      }
     } else if (comando === "projects") {
       setTerminalOutput((prev) => [
         ...prev,
@@ -136,7 +147,11 @@ export default function Navbar() {
       ]);
       setMenuOpen(false);
       setTerminalOpen(false);
-      scrollToSection("projects");
+      if (isHome) {
+        scrollToSection("projects");
+      } else {
+        router.push("/#projects");
+      }
     } else if (comando === "gallery") {
       setTerminalOutput((prev) => [
         ...prev,
@@ -147,7 +162,11 @@ export default function Navbar() {
       ]);
       setMenuOpen(false);
       setTerminalOpen(false);
-      scrollToSection("gallery");
+      if (isHome) {
+        scrollToSection("gallery");
+      } else {
+        router.push("/#gallery");
+      }
     } else if (comando === "cuaderno") {
       setTerminalOutput((prev) => [
         ...prev,
@@ -169,7 +188,11 @@ export default function Navbar() {
       ]);
       setMenuOpen(false);
       setTerminalOpen(false);
-      scrollToSection("contact");
+      if (isHome) {
+        scrollToSection("contact");
+      } else {
+        router.push("/#contact");
+      }
     } else if (comando === "clear") {
       setTerminalOutput([]);
     } else {

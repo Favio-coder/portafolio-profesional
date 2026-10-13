@@ -1,10 +1,11 @@
 "use client";
 
 import SectionDivider from "@/components/ui/SectionDivider";
-import { navigateToSection } from "@/lib/section-navigation";
+import { useSectionNavigation } from "@/lib/section-navigation";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { navigateToSection } = useSectionNavigation();
 
   return (
     <footer className="border-t border-border bg-muted py-12 px-6 md:px-8 lg:px-12">
