@@ -3,33 +3,37 @@ import { imageSizes } from "@/lib/image-assets";
 
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { ArrowRight, Download } from "lucide-react";
 import { scrollToSection } from "@/lib/section-navigation";
+import ScrambleName from "@/components/ScrambleName";
 
 export default function Hero() {
   const [isPixel, setIsPixel] = useState(false);
   const [transitionText, setTransitionText] = useState("");
   const [hasScrolled, setHasScrolled] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const visible = useInView(sectionRef);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (reduced || !visible) return;
     const interval = setInterval(() => {
       setIsPixel((current) => !current);
     }, 8000);
     return () => clearInterval(interval);
-  }, []);
+  }, [reduced, visible]);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (reduced || !visible) return;
     let cleanup: ReturnType<typeof setTimeout>;
     const timer = setTimeout(() => {
       setTransitionText(isPixel ? "SWITCHING_RENDER_MODE..." : "RESTORING_IMAGE...");
       cleanup = setTimeout(() => setTransitionText(""), 1500);
     }, 50);
     return () => { clearTimeout(timer); clearTimeout(cleanup); };
-  }, [isPixel]);
+  }, [isPixel, reduced, visible]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +44,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen px-6  pt-(--nav-height,80px) pb-16 md:px-8 lg:px-12">
+    <section ref={sectionRef} className="relative min-h-screen px-6  pt-(--nav-height,80px) pb-16 md:px-8 lg:px-12">
       <div className="mx-auto max-w-350">
         <div className="mb-12 flex items-center justify-between">
           <div className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
@@ -58,8 +62,8 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] items-start">
-          <div className="relative">
+        <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr] items-start">
+          <div className="relative min-w-0 [container-type:inline-size]">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -74,15 +78,13 @@ export default function Hero() {
               <motion.h1
                 className="font-heading font-black uppercase tracking-tight text-foreground leading-[0.95]"
                 style={{
-                  fontSize: "clamp(3.5rem, 10vw, 8.5rem)",
-                  lineHeight: "clamp(3.5rem, 10vw, 8.5rem)",
+                  fontSize: "min(17cqw, 8.5rem)",
                 }}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                <span className="block">FAVIO</span>
-                <span className="block text-muted-foreground">ASTURIMAC</span>
+                <ScrambleName active={visible} />
               </motion.h1>
 
               <motion.div

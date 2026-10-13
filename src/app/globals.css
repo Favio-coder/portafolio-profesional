@@ -454,3 +454,39 @@ section[id] { scroll-margin-top: calc(var(--nav-height) + 24px); }
   .week-detail { animation: none; }
   .boot-progress { transition: none; }
 }
+
+/* Tracks and statement share the existing editorial type and system palette. */
+.tracks-backdrop { opacity: .055; }
+.track-card { transition: transform 220ms ease-out; }
+.track-card::after { content: ""; position: absolute; inset: 0; border: 1px solid var(--primary); pointer-events: none; opacity: 0; transform: scaleX(.75); transition: transform 300ms ease-out, opacity 300ms ease-out; }
+.track-card:hover { transform: translateY(-4px); }
+.track-card:hover::after { opacity: 1; transform: scaleX(1); }
+.track-number { transition: transform 300ms ease-out; }
+.track-card:hover .track-number { transform: translateX(4px); }
+.statement-title { font-size: clamp(2rem, 6.8vw, 6.6rem); line-height: 1.12; letter-spacing: -.045em; max-width: 21ch; }
+.statement-title > span > span { margin-right: .22em; }
+.statement-orbit { width: clamp(15rem, 48vw, 44rem); aspect-ratio: 1; border: 1px solid var(--primary); opacity: .12; right: -12%; top: 0; transform: rotate(-15deg); }
+.statement-orbit::after { content: ""; position: absolute; inset: 12%; border: 1px solid var(--primary); }
+.statement-orbit { animation: statement-drift 24s ease-in-out infinite alternate; animation-play-state: paused; }
+.statement-section[data-active="true"] .statement-orbit { animation-play-state: running; }
+@keyframes statement-drift { to { transform: translate3d(-4%, 8%, 0) rotate(15deg); } }
+.spotify-dock { height: 56px; margin-top: 32px; display: flex; justify-content: flex-end; }
+.spotify-widget { position: fixed; z-index: 40; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); }
+.spotify-dock[data-docked="true"] .spotify-widget { position: relative; z-index: 40; right: auto; bottom: auto; }
+.spotify-trigger { margin-left: auto; cursor: pointer; transition: transform 180ms ease-out; }
+.spotify-trigger:hover { transform: translateY(-3px); }
+.spotify-control { display: grid; place-items: center; min-width: 44px; min-height: 44px; border: 1px solid var(--border); cursor: pointer; }
+.spotify-control:hover { background: var(--muted); }
+.spotify-panel { position: absolute; right: 0; bottom: calc(100% + 12px); width: min(360px, calc(100vw - 32px - env(safe-area-inset-right) - env(safe-area-inset-left))); max-height: calc(100dvh - var(--nav-height) - 100px - env(safe-area-inset-bottom)); overflow-y: auto; overscroll-behavior: contain; }
+.spotify-panel[hidden] { display: none; }
+/* The docked panel opens in its own row, keeping the contact actions visible. */
+.spotify-dock:has(.spotify-panel:not([hidden]))[data-docked="true"] { height: auto; }
+.spotify-dock[data-docked="true"] .spotify-panel { position: relative; bottom: auto; margin-bottom: 12px; }
+@media (prefers-reduced-motion: reduce) {
+  .track-card:hover, .track-card:hover .track-number, .spotify-trigger:hover { transform: none; }
+  .track-card::after { transform: none; }
+  .statement-orbit { animation: none; }
+}
+.about-cursor { animation: cursor-blink 1.06s step-end infinite; animation-play-state: paused; }
+.about-section[data-active="true"] .about-cursor { animation-play-state: running; }
+@keyframes cursor-blink { 50% { opacity: 0; } }

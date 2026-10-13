@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionDivider from "@/components/ui/SectionDivider";
 import TerminalLabel from "@/components/ui/TerminalLabel";
-import { Mail, GitBranch, Link2, ExternalLink, Copy } from "lucide-react";
-import { useState } from "react";
+import { Mail, GitBranch, Link2, ExternalLink, Copy, MessageCircle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import SpotifyPlayer from "@/components/SpotifyPlayer";
 
 const contacts = [
   {
@@ -36,11 +37,20 @@ const contacts = [
 
 export default function Contact() {
   const [copied, setCopied] = useState<string | null>(null);
+  const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const reduced = useReducedMotion();
 
-  const handleCopy = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(id);
-    setTimeout(() => setCopied(null), 2000);
+  useEffect(() => () => { if (copyTimer.current) clearTimeout(copyTimer.current); }, []);
+
+  const handleCopy = async (text: string, id: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(id);
+      if (copyTimer.current) clearTimeout(copyTimer.current);
+      copyTimer.current = setTimeout(() => setCopied(null), 2000);
+    } catch {
+      setCopied(null);
+    }
   };
 
   return (
@@ -54,7 +64,7 @@ export default function Contact() {
 
         <SectionDivider className="my-12" label="CONNECT.SH" thick />
 
-        <div className="grid gap-12 lg:grid-cols-[2fr_1fr]">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +94,7 @@ export default function Contact() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.4, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className="group flex items-center gap-4 p-4 bg-muted rounded-sm transition-all hover:bg-secondary"
+                    className="group flex min-w-0 items-center gap-2 rounded-sm bg-muted p-2 transition-colors hover:bg-secondary sm:gap-4 sm:p-4"
                   >
                     <div className="shrink-0 w-10 h-10 flex items-center justify-center bg-background border border-border rounded-sm text-primary-ink group-hover:border-primary group-hover:text-accent-ink transition-all">
                       <contact.icon className="size-5" aria-hidden="true" />
@@ -97,7 +107,7 @@ export default function Contact() {
                         href={contact.href}
                         target={contact.external ? "_blank" : undefined}
                         rel={contact.external ? "noopener noreferrer" : undefined}
-                        className="flex items-center gap-2 font-medium text-foreground hover:text-accent-ink transition-colors truncate"
+                        className="flex min-h-11 items-center gap-2 break-all font-medium text-foreground transition-colors hover:text-accent-ink"
                       >
                         {contact.value}
                         {contact.external && (
@@ -108,7 +118,7 @@ export default function Contact() {
                     {contact.copyable && (
                       <button
                         onClick={() => handleCopy(contact.value, contact.id)}
-                        className="shrink-0 p-2 text-muted-foreground hover:text-primary-ink transition-colors"
+                        className="flex size-11 shrink-0 items-center justify-center text-muted-foreground hover:text-primary-ink transition-colors"
                         aria-label={copied === contact.id ? "Copiado" : "Copiar email"}
                       >
                         {copied === contact.id ? (
@@ -156,6 +166,19 @@ export default function Contact() {
                 ¿Tienes un proyecto en mente? ¿Necesitas ayuda con arquitectura cloud, pipelines de datos o desarrollo full stack? Hablemos.
               </p>
 
+              <motion.a
+                href="https://wa.me/51906815008?text=Hola%20Favio%2C%20vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20contigo"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={reduced ? undefined : { y: -3 }}
+                whileTap={reduced ? undefined : { scale: 0.98 }}
+                className="mb-4 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-sm bg-primary px-4 py-3 text-center font-mono text-sm font-semibold text-primary-foreground sm:w-auto sm:px-6"
+              >
+                <MessageCircle className="size-5 shrink-0" aria-hidden="true" />
+                Conversemos por WhatsApp
+                <span className="sr-only"> (abre en otra pestaña)</span>
+              </motion.a>
+
               <a
                 href="mailto:faviusam@gmail.com?subject=Proyecto:%20[Nombre]&body=Hola%20Favio,%0A%0AMe%20gustar%C3%ADa%20conversar%20sobre..."
                 className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider text-accent-foreground bg-accent rounded-sm hover:shadow-[0_8px_30px_rgba(255,99,62,0.4)] hover:-translate-y-0.5 transition-all duration-300"
@@ -188,8 +211,8 @@ export default function Contact() {
                   { label: "Consultoría Técnica", status: "Abierto", color: "var(--primary-ink)" },
                   { label: "Mentorías / Charlas", status: "Consultar", color: "var(--accent-ink)" },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 bg-muted rounded-sm">
-                    <span className="font-mono text-sm text-foreground">{item.label}</span>
+                  <div key={i} className="flex flex-wrap items-center justify-between gap-2 p-3 bg-muted rounded-sm">
+                    <span className="min-w-0 font-mono text-sm text-foreground">{item.label}</span>
                     <span className="badge" style={{ borderColor: item.color, color: item.color }}>
                       {item.status}
                     </span>
@@ -258,6 +281,7 @@ export default function Contact() {
             </div>
           </motion.div>
         </div>
+        <SpotifyPlayer />
       </div>
     </section>
   );

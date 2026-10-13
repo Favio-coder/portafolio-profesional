@@ -59,7 +59,7 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="es" className={`${inter.variable} ${spaceGrotesk.variable} ${ibmPlexMono.variable}`}>
       <body className="min-h-full flex flex-col antialiased">
         <MotionProvider>
-          <AssetBoot assets={getBootAssets()}>
+          <AssetBoot assets={getBootAssets().filter((asset) => asset.group === "hero")}>
           <Navbar />
           <div className="flex-1">{children}</div>
           </AssetBoot>

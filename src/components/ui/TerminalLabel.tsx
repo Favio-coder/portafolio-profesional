@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useInView, useReducedMotion } from "motion/react";
 import { ReactNode } from "react";
 
 interface TerminalLabelProps {
@@ -13,27 +14,30 @@ interface TerminalLabelProps {
 
 function TypewriterText({ text }: { text: string }) {
   const [displayText, setDisplayText] = useState("");
-  const [isComplete, setIsComplete] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  const visible = useInView(ref);
+  const reduced = useReducedMotion();
+  const index = useRef(0);
+  const isComplete = reduced || displayText.length >= text.length;
 
   useEffect(() => {
-    let i = 0;
+    if (!visible || reduced || index.current >= text.length) return;
     const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayText(text.slice(0, i + 1));
-        i++;
-      } else {
-        setIsComplete(true);
-        clearInterval(timer);
-      }
+      index.current += 1;
+      setDisplayText(text.slice(0, index.current));
+      if (index.current >= text.length) clearInterval(timer);
     }, 30);
 
     return () => clearInterval(timer);
-  }, [text]);
+  }, [text, visible, reduced]);
 
   return (
-    <span>
-      {displayText}
-      {!isComplete && <span className="animate-pulse ml-1">█</span>}
+    <span ref={ref} className="relative inline-block">
+      <span className="invisible" aria-hidden="true">{text}</span>
+      <span className="sr-only">{text}</span>
+      <span className="absolute inset-0" aria-hidden="true">{reduced ? text : displayText}
+      {!isComplete && <span className="ml-1">█</span>}
+      </span>
     </span>
   );
 }

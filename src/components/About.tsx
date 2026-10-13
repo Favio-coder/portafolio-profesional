@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionDivider from "@/components/ui/SectionDivider";
 import TerminalLabel from "@/components/ui/TerminalLabel";
@@ -23,53 +23,29 @@ const stats = [
 ];
 
 export default function About() {
-  const [displayText, setDisplayText] = useState("");
-  const [phase, setPhase] = useState<"idle" | "typing" | "complete">("idle");
-  const [cursorVisible, setCursorVisible] = useState(true);
+  const [typed, setTyped] = useState("");
+  const sectionRef = useRef<HTMLElement>(null);
+  const visible = useInView(sectionRef);
+  const reduced = useReducedMotion();
   const indexRef = useRef(0);
-  const timerRef = useRef<ReturnType<typeof setTimeout>[]>([]);
-
-  const runTypewriter = () => {
-    const chars = Array.from(aboutDescription);
-    const addChar = () => {
-      if (indexRef.current < chars.length) {
-        const char = chars[indexRef.current];
-        indexRef.current += 1;
-        setDisplayText((prev) => prev + char);
-        timerRef.current = [
-          ...(timerRef.current || []),
-          setTimeout(addChar, 25),
-        ];
-      } else {
-        setPhase("complete");
-      }
-    };
-    addChar();
-  };
+  const displayText = reduced ? aboutDescription : typed;
+  const phase = displayText.length === aboutDescription.length ? "complete" : "typing";
 
   useEffect(() => {
-    if (phase !== "typing") return;
-    indexRef.current = 0;
-    runTypewriter();
-    return () => {
-      (timerRef.current || []).forEach(clearTimeout);
-      timerRef.current = [];
-    };
-  }, [phase]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setPhase("typing"), 800);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => setCursorVisible((v) => !v), 530);
-    return () => clearInterval(interval);
-  }, []);
+    if (!visible || reduced || indexRef.current >= aboutDescription.length) return;
+    const timer = setInterval(() => {
+      indexRef.current += 1;
+      setTyped(aboutDescription.slice(0, indexRef.current));
+      if (indexRef.current >= aboutDescription.length) clearInterval(timer);
+    }, 25);
+    return () => clearInterval(timer);
+  }, [visible, reduced]);
 
   return (
     <section
       id="about"
+      ref={sectionRef}
+      data-active={visible}
       className="about-section relative px-4 pb-6 pt-10 sm:px-6 md:pb-10 md:pt-14 lg:px-12"
     >
       <div className="mx-auto max-w-350">
@@ -106,26 +82,28 @@ export default function About() {
                 {`print("Descripcion")`}
               </TerminalLabel>
 
-              <div className="mt-3 font-mono text-sm leading-relaxed text-foreground sm:text-base">
-                {displayText}
+              <div className="relative mt-3 font-mono text-sm leading-relaxed text-foreground sm:text-base">
+                <p className="invisible" aria-hidden="true">{aboutDescription}</p>
+                <span className="sr-only">{aboutDescription}</span>
+                <div className="absolute inset-0" aria-hidden="true">{displayText}
                 {phase !== "complete" && (
                   <span
-                    className={`inline-block ml-1 animate-pulse ${
-                      cursorVisible ? "opacity-100" : "opacity-0"
-                    }`}
+                    className="about-cursor ml-1 inline-block"
                     aria-hidden="true"
                   >
                     █
                   </span>
                 )}
+                </div>
               </div>
 
-              {phase === "complete" && (
+              {(
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: phase === "complete" ? 1 : 0, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="mt-4 space-y-3"
+                  aria-hidden={phase !== "complete"}
                 >
                   <SectionDivider label="ADICIONAL" />
                   <p className="font-mono text-sm leading-relaxed text-muted-foreground">
@@ -136,9 +114,7 @@ export default function About() {
 
               <div className="mt-2 flex items-center gap-2">
                 <span
-                  className={`font-mono text-lg text-primary-ink ${
-                    cursorVisible ? "opacity-100 animate-pulse" : "opacity-0"
-                  }`}
+                  className="about-cursor font-mono text-lg text-primary-ink"
                   aria-hidden="true"
                 >
                   _

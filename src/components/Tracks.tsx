@@ -82,9 +82,10 @@ export default function Tracks({
               }}
             >
               <div
-                className={`flex whitespace-nowrap will-change-transform items-center gap-6 ${isVisible ? animationClass : ""}`}
+                className={`flex whitespace-nowrap items-center gap-6 ${animationClass}`}
                 style={{
                   animationDuration: `${speed}s`,
+                  animationPlayState: isVisible ? "running" : "paused",
                 }}
               >
                 {duplicatedWords.map((word, i) => (
