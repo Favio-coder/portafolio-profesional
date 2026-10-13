@@ -1,4 +1,7 @@
+"use client";
+
 import SectionDivider from "@/components/ui/SectionDivider";
+import { navigateToSection } from "@/lib/section-navigation";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -36,6 +39,7 @@ export default function Footer() {
                 <a
                   key={item.label}
                   href={item.href}
+                  onClick={(event) => navigateToSection(event, item.href.slice(1))}
                   className="block font-mono text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {item.label}

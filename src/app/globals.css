@@ -83,7 +83,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
   html, body {
     overflow-x: clip;

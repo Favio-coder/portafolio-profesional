@@ -3,8 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Terminal, Menu, X } from "lucide-react";
+import { navigateToSection, scrollToSection } from "@/lib/section-navigation";
 
 const navegacion = [
   { numero: "01", label: "SOBRE MÍ", href: "#about", isAnchor: true },
@@ -15,17 +16,6 @@ const navegacion = [
   { numero: "06", label: "CONTACTO", href: "#contact", isAnchor: true },
 ];
 
-function scrollToSection(sectionId: string) {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    element.scrollIntoView({
-      behavior: prefersReducedMotion ? "auto" : "smooth",
-      block: "start",
-    });
-  }
-}
-
 export default function Navbar() {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,8 +23,14 @@ export default function Navbar() {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [terminalInput, setTerminalInput] = useState("");
   const [terminalOutput, setTerminalOutput] = useState<string[]>([]);
+  const prefersReducedMotion = useReducedMotion();
 
   const navRef = useRef<HTMLElement>(null);
+
+  const navigateFromMenu = () => {
+    setMenuOpen(false);
+    navRef.current?.querySelector<HTMLButtonElement>('button[aria-expanded]')?.focus({ preventScroll: true });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -210,7 +206,7 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 key={item.numero}
-                onClick={() => setMenuOpen(false)}
+                onClick={(event) => navigateToSection(event, item.id)}
                 className="group relative font-mono text-sm uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
               >
                 <span className="flex items-center gap-2">
@@ -259,7 +255,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden border-t border-border bg-background px-6 py-4 xl:hidden"
             >
               <div className="space-y-1">
@@ -267,7 +263,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     key={item.numero}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(event) => navigateToSection(event, item.id, navigateFromMenu)}
                     className="flex items-center gap-3 py-3 font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
                   >
                     <span className="text-primary-ink">{item.numero}</span>
