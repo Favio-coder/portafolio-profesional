@@ -16,6 +16,15 @@ export default function Cuaderno() {
   const current = weeks[currentIndex];
 
   useEffect(() => {
+    const syncWeek = () => {
+      const id = window.location.hash.slice(1);
+      if (weeks.some((week) => week.id === id)) setSelectedId(id);
+    };
+    syncWeek();
+    window.addEventListener("hashchange", syncWeek);
+    return () => window.removeEventListener("hashchange", syncWeek);
+  }, []);
+  useEffect(() => {
     if (!selectedId) return;
     detailRegion.current?.focus({ preventScroll: true });
     detailRegion.current?.scrollIntoView({
@@ -104,3 +113,4 @@ export default function Cuaderno() {
     </section>
   );
 }
+

@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import PortfolioTerminal from "@/components/PortfolioTerminal";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Terminal, Menu, X } from "lucide-react";
-import { useSectionNavigation, scrollToSection } from "@/lib/section-navigation";
+import { useSectionNavigation } from "@/lib/section-navigation";
 
 const navegacion = [
   { numero: "01", label: "SOBRE MÍ", href: "#about", id: "about", isAnchor: true },
@@ -17,14 +17,12 @@ const navegacion = [
 ];
 
 export default function Navbar() {
-  const router = useRouter();
-  const pathname = usePathname();
+
   const { navigateToSection } = useSectionNavigation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [terminalOpen, setTerminalOpen] = useState(false);
-  const [terminalInput, setTerminalInput] = useState("");
-  const [terminalOutput, setTerminalOutput] = useState<string[]>([]);
+
   const prefersReducedMotion = useReducedMotion();
 
   const navRef = useRef<HTMLElement>(null);
@@ -48,164 +46,17 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (terminalOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [terminalOpen]);
-
-  useEffect(() => {
-    if (!menuOpen && !terminalOpen) return;
+    if (!menuOpen) return;
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setMenuOpen(false);
-        setTerminalOpen(false);
+
         navRef.current?.querySelector<HTMLButtonElement>('[aria-expanded="true"]')?.focus();
       }
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [menuOpen, terminalOpen]);
-
-
-  const ejecutarComando = () => {
-    const comando = terminalInput.trim().toLowerCase();
-    const isHome = pathname === "/";
-
-    if (!comando) return;
-
-    if (comando === "help") {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        "",
-        "COMANDOS DISPONIBLES",
-        "",
-        "help       → Mostrar comandos",
-        "about      → Sobre mí",
-        "experience → Experiencia",
-        "projects   → Proyectos",
-        "cuaderno   → Cuaderno semanal",
-        "gallery    → Galería",
-        "contact    → Contacto",
-        "whoami     → Info personal",
-        "clear      → Limpiar terminal",
-        "",
-      ]);
-    } else if (comando === "whoami") {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        "",
-        "RICHARD FAVIO ASTURIMAC MEDINA",
-        "Full Stack Developer",
-        "IX Ciclo - Ingeniería de Sistemas",
-        "Cloud | Data | AI",
-        "",
-      ]);
-    } else if (comando === "about") {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        "",
-        "Navegando a about...",
-        "",
-      ]);
-      setMenuOpen(false);
-      setTerminalOpen(false);
-      if (isHome) {
-        scrollToSection("about");
-      } else {
-        router.push("/#about");
-      }
-    } else if (comando === "experience") {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        "",
-        "Navegando a experience...",
-        "",
-      ]);
-      setMenuOpen(false);
-      setTerminalOpen(false);
-      if (isHome) {
-        scrollToSection("experience");
-      } else {
-        router.push("/#experience");
-      }
-    } else if (comando === "projects") {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        "",
-        "Navegando a projects...",
-        "",
-      ]);
-      setMenuOpen(false);
-      setTerminalOpen(false);
-      if (isHome) {
-        scrollToSection("projects");
-      } else {
-        router.push("/#projects");
-      }
-    } else if (comando === "gallery") {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        "",
-        "Navegando a gallery...",
-        "",
-      ]);
-      setMenuOpen(false);
-      setTerminalOpen(false);
-      if (isHome) {
-        scrollToSection("gallery");
-      } else {
-        router.push("/#gallery");
-      }
-    } else if (comando === "cuaderno") {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        "",
-        "Abriendo cuaderno semanal...",
-        "",
-      ]);
-      setMenuOpen(false);
-      setTerminalOpen(false);
-      router.push("/cuaderno");
-    } else if (comando === "contact") {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        "",
-        "Navegando a contact...",
-        "",
-      ]);
-      setMenuOpen(false);
-      setTerminalOpen(false);
-      if (isHome) {
-        scrollToSection("contact");
-      } else {
-        router.push("/#contact");
-      }
-    } else if (comando === "clear") {
-      setTerminalOutput([]);
-    } else {
-      setTerminalOutput((prev) => [
-        ...prev,
-        `favio@portfolio:~$ ${terminalInput}`,
-        `command not found: ${comando}`,
-        `Escribe "help" para ver comandos.`,
-      ]);
-    }
-
-    setTerminalInput("");
-  };
+  }, [menuOpen]);
 
   return (
     <>
@@ -315,128 +166,9 @@ export default function Navbar() {
         </AnimatePresence>
       </header>
 
-      <AnimatePresence>
-        {terminalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-100 flex items-center justify-center bg-background/90 backdrop-blur-sm px-4"
-            onClick={() => setTerminalOpen(false)}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Terminal FAVIO.DEV"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative flex h-[75vh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-card shadow-2xl"
-            >
-              <div className="flex h-11 shrink-0 items-center justify-between border-b border-border bg-muted px-4">
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setTerminalOpen(false)}
-                    aria-label="Cerrar terminal"
-                    className="group flex h-3 w-3 items-center justify-center rounded-full bg-red-500/80 hover:bg-red-500 transition-colors"
-                  >
-                    <span className="text-[8px] leading-none text-white/0 group-hover:text-white/70">×</span>
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Minimizar terminal"
-                    className="group flex h-3 w-3 items-center justify-center rounded-full bg-amber-500/80 hover:bg-amber-500 transition-colors"
-                  >
-                    <span className="h-px w-1.5 bg-white/0 group-hover:bg-white/70" />
-                  </button>
-                  <button
-                    type="button"
-                    aria-label="Maximizar terminal"
-                    className="group flex h-3 w-3 items-center justify-center rounded-full bg-green-500/80 hover:bg-green-500 transition-colors"
-                  >
-                    <span className="text-[7px] leading-none text-white/0 group-hover:text-white/70">+</span>
-                  </button>
-                </div>
-                <div className="pointer-events-none absolute left-1/2 -translate-x-1/2">
-                  <span className="font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">
-                    FAVIO TERMINAL v0.1
-                  </span>
-                </div>
-                <div className="w-12" />
-              </div>
-
-              <div className="flex-1 overflow-y-auto p-6">
-                <div className="font-mono text-sm leading-relaxed">
-                  <p className="text-muted-foreground">
-                    FAVIO ASTURIMAC — PORTFOLIO TERMINAL
-                  </p>
-                  <p className="mt-2 text-primary-ink">System online.</p>
-                  <p className="mt-1 text-foreground">
-                    Type <span className="font-bold">help</span> to see available commands.
-                  </p>
-
-                  <div className="mt-6 whitespace-pre-wrap font-mono text-sm">
-                    {terminalOutput.map((line, index) => (
-                      <div
-                        key={index}
-                        className={
-                          line.includes("COMANDOS DISPONIBLES")
-                            ? "text-primary-ink"
-                            : line.includes("command not found")
-                            ? "text-red-400"
-                            : "text-muted-foreground"
-                        }
-                      >
-                        {line || "\u00A0"}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-4 flex items-center">
-                    <span className="shrink-0 font-mono text-sm">
-                      <span className="text-primary-ink">favio@portfolio</span>
-                      <span className="text-muted-foreground">:</span>
-                      <span className="text-sky-500">~</span>
-                      <span className="text-muted-foreground">$</span>
-                    </span>
-                    <input
-                      autoFocus
-                      type="text"
-                      value={terminalInput}
-                      onChange={(e) => setTerminalInput(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          ejecutarComando();
-                        }
-                      }}
-                      className="ml-3 w-full bg-transparent text-foreground outline-none caret-primary font-mono text-sm"
-                      spellCheck={false}
-                      autoComplete="off"
-                      placeholder="Escribe un comando..."
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex h-8 shrink-0 items-center justify-between border-t border-border bg-muted px-4">
-                <span className="font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">
-                  TERMINAL
-                </span>
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-                  <span className="font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">
-                    ONLINE
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <PortfolioTerminal open={terminalOpen} onOpenChange={setTerminalOpen} />
     </>
   );
 }
+
+

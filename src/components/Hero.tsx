@@ -44,7 +44,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen px-6  pt-(--nav-height,80px) pb-16 md:px-8 lg:px-12">
+    <section id="home" ref={sectionRef} className="relative min-h-screen px-6  pt-(--nav-height,80px) pb-16 md:px-8 lg:px-12">
       <div className="mx-auto max-w-350">
         <div className="mb-12 flex items-center justify-between">
           <div className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
@@ -235,4 +235,5 @@ export default function Hero() {
     </section>
   );
 }
+
 
