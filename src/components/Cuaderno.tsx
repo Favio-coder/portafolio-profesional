@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Code2 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -16,6 +16,12 @@ export default function Cuaderno() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<WeekStatus | "">("");
+  const detailRegion = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!selectedId) return;
+    detailRegion.current?.focus({ preventScroll: true });
+    detailRegion.current?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }, [selectedId]);
   const filtered = weeks.filter((week) => (!status || (week.status ?? "pendiente") === status) && searchIndex.get(week.id)!.includes(normalize(query.trim())));
   const index = filtered.findIndex((week) => week.id === selectedId);
   const current = filtered[index];
@@ -41,7 +47,7 @@ export default function Cuaderno() {
               </div>
             </aside>
           </Reveal>
-          <div className="min-w-0 space-y-6">
+          <div ref={detailRegion} tabIndex={-1} className="min-w-0 scroll-mt-[calc(var(--nav-height)+24px)] space-y-6 outline-none">
             {current ? <>
               <nav aria-label="Navegación entre semanas" className="flex flex-wrap items-center justify-between gap-3 font-mono text-sm">
                 <button type="button" disabled={index <= 0} onClick={() => setSelectedId(filtered[index - 1].id)} className="border border-border bg-muted px-4 py-2 transition-colors hover:border-primary disabled:opacity-40">← Anterior</button>

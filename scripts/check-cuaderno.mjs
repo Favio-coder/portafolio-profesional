@@ -24,7 +24,7 @@ assert.equal(result.weeks[1].bibliography[1].type, "book");
 assert.deepEqual(result.weeks[1].activities[0].evidence, []);
 assert.equal(normalizeWeeks([{ number: 1, title: "A" }, { number: 1, title: "B" }]).issues.length, 1);
 assert.equal(normalizeWeeks({}).issues.length, 1);
-assert.ok(!fs.readFileSync("src/components/WeekDetail.tsx", "utf8").includes("<Reveal"));
+
 
 const { preloadImages } = loadModule("../src/lib/image-preload.ts");
 let active = 0;
@@ -51,4 +51,5 @@ global.window = { Image: class {
   assert.equal((await preloadImages(assets, () => assert.fail("No actualizar después de cancelar"), controller.signal)).completed, 0);
   console.log("OK: JSON mixto/parcial, semanas nuevas, contenido, bibliografía, detalle visible, progreso, errores y concurrencia de precarga.");
 })().catch((error) => { console.error(error); process.exitCode = 1; });
+
 

@@ -172,41 +172,192 @@
   {
     "id": "semana-02",
     "number": 2,
-    "title": "React Fundamentals & TypeScript",
-    "description": "Componentes funcionales, hooks básicos, gestión de estado, props, TypeScript estricto y herramienta de build Vite.",
-    "activities": [],
+    "title": "Diseño de páginas web con HTML y CSS",
+    "description": "Estudio de la estructura semántica de HTML, la representación del documento en el navegador y la organización visual con CSS. Aplicación en un portafolio grupal y una práctica de interfaces web.",
+    "activities": [
+      {
+        "id": "act-02-01",
+        "title": "Portafolio grupal: Asturimac–Gonzales",
+        "description": "Maquetación de una página de presentación de proyectos con navegación, tarjetas, imágenes y una sección de contacto.",
+        "learnedTopics": [
+          "HTML semántico permite expresar la función de las secciones del documento.",
+          "Las clases CSS facilitan aplicar una presentación consistente a componentes repetidos.",
+          "Las tarjetas permiten organizar imágenes, descripciones y etiquetas de cada proyecto."
+        ],
+        "procedures": [
+          "Definir las secciones de navegación, proyectos y contacto.",
+          "Organizar cada proyecto en una tarjeta con título, imagen y descripción.",
+          "Vincular el documento HTML con su hoja de estilos.",
+          "Publicar el trabajo y compartir el repositorio."
+        ],
+        "labExercises": [
+          "Construir una página grupal de proyectos utilizando HTML y CSS."
+        ],
+        "labDevelopment": "El trabajo presenta seis tarjetas de proyectos con información visual, etiquetas tecnológicas y estados. La estructura incluye encabezado, navegación, contenido principal y pie de página.",
+        "labResults": "Se publicó el portafolio grupal en GitHub Pages y se compartió su código fuente en el repositorio Asturimac-Gonzales-Sem02.",
+        "reflection": {
+          "whatLearned": "",
+          "howLearned": ""
+        },
+        "references": [],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Evidencia del trabajo grupal de la semana 2",
+            "url": "/assets/cuaderno/Sem2/1.jpg",
+            "alt": "Evidencia del trabajo grupal Asturimac–Gonzales",
+            "description": "Imagen correspondiente al trabajo grupal de la semana."
+          },
+          {
+            "type": "link",
+            "title": "Visitar el portafolio grupal",
+            "url": "https://favio-coder.github.io/Asturimac-Gonzales-Sem02/",
+            "description": "Página publicada del trabajo grupal."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio Asturimac–Gonzales",
+            "url": "https://github.com/Favio-coder/Asturimac-Gonzales-Sem02",
+            "description": "Código fuente del proyecto."
+          }
+        ]
+      },
+      {
+        "id": "act-02-02",
+        "title": "Práctica calificada grupal 01: interfaces web",
+        "description": "Construcción de interfaces con formularios, controles de selección y tarjetas de productos. Integrantes: Asturimac Medina Richard Favio; Brittany Gonzales Quiñonez; Torres Ambrosio Katherine Medally; Ramos Tacza Camilda.",
+        "learnedTopics": [
+          "Los formularios combinan campos, etiquetas y botones para recopilar información.",
+          "Los controles de rango y los campos numéricos pueden sincronizarse mediante JavaScript.",
+          "Los eventos del navegador permiten responder a cambios de valores y archivos arrastrados.",
+          "Los atributos de datos permiten identificar categorías para filtrar elementos."
+        ],
+        "procedures": [
+          "Organizar una página principal con enlaces a los ejercicios.",
+          "Construir un formulario con campos etiquetados y una zona para arrastrar imágenes.",
+          "Diseñar una interfaz de selección de envío.",
+          "Sincronizar controles RGB con una vista previa del color.",
+          "Crear un catálogo de productos con filtros por categoría.",
+          "Integrar los ejercicios y publicar el trabajo grupal."
+        ],
+        "labExercises": [
+          "Diseñar un formulario con campos de nombre, correo e ítem, además de controles de envío y limpieza.",
+          "Reconocer una imagen arrastrada y mostrar su nombre.",
+          "Construir una interfaz visual de selección de envío.",
+          "Implementar un selector RGB con controles deslizantes y entradas numéricas.",
+          "Presentar tarjetas de productos y filtrarlas por categoría."
+        ],
+        "labDevelopment": "El proyecto integra una página inicial y tres páginas de ejercicios. Incluye un formulario con reconocimiento de archivos de imagen, una interfaz de envío, un selector RGB y un catálogo de calzado con filtros. HTML estructura el contenido, CSS define su presentación y JavaScript atiende las interacciones implementadas.",
+        "labResults": "Los ejercicios están disponibles mediante una página principal publicada en GitHub Pages. El código fuente se encuentra en el repositorio PracticaCalificada01-DesarrolloWeb.",
+        "reflection": {
+          "whatLearned": "",
+          "howLearned": ""
+        },
+        "references": [],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Práctica calificada — Evidencia 1",
+            "url": "/assets/cuaderno/Sem2/2.jpg",
+            "alt": "Primera evidencia adjunta de la práctica calificada grupal",
+            "description": "Registro visual del trabajo realizado."
+          },
+          {
+            "type": "image",
+            "title": "Práctica calificada — Evidencia 2",
+            "url": "/assets/cuaderno/Sem2/3.jpg",
+            "alt": "Segunda evidencia adjunta de la práctica calificada grupal",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "Práctica calificada — Evidencia 3",
+            "url": "/assets/cuaderno/Sem2/4.jpg",
+            "alt": "Tercera evidencia adjunta de la práctica calificada grupal",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "image",
+            "title": "Práctica calificada — Evidencia 4",
+            "url": "/assets/cuaderno/Sem2/5.jpg",
+            "alt": "Cuarta evidencia adjunta de la práctica calificada grupal",
+            "description": "Registro visual complementario."
+          },
+          {
+            "type": "link",
+            "title": "Visitar la práctica calificada grupal",
+            "url": "https://favio-coder.github.io/PracticaCalificada01-DesarrolloWeb/",
+            "description": "Página principal con acceso a los ejercicios."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio de la práctica calificada",
+            "url": "https://github.com/Favio-coder/PracticaCalificada01-DesarrolloWeb",
+            "description": "Código fuente del trabajo desarrollado por los cuatro integrantes."
+          }
+        ]
+      },
+      {
+        "id": "act-02-03",
+        "title": "Documentación de la guía práctica 02",
+        "description": "Incorporación del documento de la guía práctica como evidencia descargable de la semana.",
+        "learnedTopics": [],
+        "procedures": [
+          "Organizar el documento PDF dentro de los recursos del cuaderno.",
+          "Vincular el archivo con la semana correspondiente."
+        ],
+        "labExercises": [],
+        "labDevelopment": "Se adjunta la guía práctica identificada con mi nombre para consultar el trabajo documentado.",
+        "labResults": "Documento PDF disponible para su consulta y descarga.",
+        "reflection": {
+          "whatLearned": "",
+          "howLearned": ""
+        },
+        "references": [],
+        "evidence": [
+          {
+            "type": "file",
+            "title": "Descargar guía práctica de la semana 2",
+            "url": "/assets/cuaderno/Sem2/Guia_practica_02_RichardFavioAsturimacMedina.pdf",
+            "description": "Documento PDF de la guía práctica 02.",
+            "download": true,
+            "fileName": "Guia_practica_02_RichardFavioAsturimacMedina.pdf"
+          }
+        ]
+      }
+    ],
     "date": "",
-    "status": "pendiente",
-    "summary": "Componentes funcionales, hooks básicos, gestión de estado, props, TypeScript estricto y herramienta de build Vite.",
-    "objectives": [],
-    "topics": [],
+    "status": "completada",
+    "summary": "Aplicación de HTML y CSS en un portafolio grupal y ejercicios de interfaces. Se incorporan enlaces a los proyectos, cinco imágenes y la guía práctica descargable.",
+    "objectives": [
+      "Organizar contenido mediante una estructura HTML clara.",
+      "Comprender cómo el navegador representa y presenta una página.",
+      "Aplicar CSS para distribuir y dar estilo a los elementos.",
+      "Integrar controles e interacciones básicas en interfaces web.",
+      "Documentar y compartir los resultados del trabajo grupal."
+    ],
+    "topics": [
+      "HTML estructura contenido; XML permite representar datos con etiquetas definidas según su propósito.",
+      "El DOM representa el documento como un árbol de nodos.",
+      "El navegador procesa estructura y estilos para calcular la distribución y dibujar la página.",
+      "El modelo de caja comprende contenido, relleno, borde y margen.",
+      "Las unidades relativas dependen de distintas referencias: fuente, contenedor o ventana.",
+      "Flexbox distribuye elementos principalmente en un eje; Grid organiza filas y columnas.",
+      "Las media queries permiten ajustar estilos según las características de la pantalla.",
+      "Semántica, accesibilidad y compatibilidad entre navegadores."
+    ],
     "reflection": {
-      "whatLearned": "",
-      "howLearned": "",
+      "whatLearned": "Comprendí que una interfaz requiere relacionar estructura, presentación y comportamiento. El portafolio grupal me permitió organizar contenido repetido, mientras que la práctica calificada vinculó formularios y controles con eventos de JavaScript.",
+      "howLearned": "Aprendí mediante la construcción de páginas y la integración de ejercicios en equipo. Relacionar los conceptos de clase con el código y registrar las evidencias me ayudó a explicar el propósito de cada parte.",
       "difficulties": "",
       "solutions": "",
-      "improvements": ""
+      "improvements": "Revisar las interfaces en distintos tamaños de pantalla, mejorar las etiquetas accesibles de los controles y comprobar los estados de interacción antes de publicar."
     },
-    "bibliography": []
-  },
-  {
-    "id": "semana-03",
-    "number": 3,
-    "title": "Next.js App Router & Tailwind CSS",
-    "description": "Server Components, Server Actions, routing anidado, layouts, streaming, Tailwind CSS utility-first y shadcn/ui.",
-    "activities": [],
-    "date": "",
-    "status": "pendiente",
-    "summary": "Server Components, Server Actions, routing anidado, layouts, streaming, Tailwind CSS utility-first y shadcn/ui.",
-    "objectives": [],
-    "topics": [],
-    "reflection": {
-      "whatLearned": "",
-      "howLearned": "",
-      "difficulties": "",
-      "solutions": "",
-      "improvements": ""
-    },
-    "bibliography": []
+    "bibliography": [
+      "Grant, K. J. CSS in Depth (2.ª ed.). Manning Publications. https://www.manning.com/books/css-in-depth-second-edition",
+      "Marcotte, E. Responsive Web Design. A Book Apart. https://abookapart.com/products/responsive-web-design.html",
+      "web.dev. Learn CSS. https://web.dev/learn/css"
+    ]
   }
+  
 ]

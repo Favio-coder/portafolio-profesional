@@ -39,7 +39,7 @@ export default function AssetBoot({ assets, children }: { assets: BootAsset[]; c
   }, [visible]);
 
   return <>
-    <div className="asset-boot-content" inert={hydrated && visible ? true : undefined}>{children}</div>
+    <div className="asset-boot-content flex min-h-full flex-1 flex-col" inert={hydrated && visible ? true : undefined}>{children}</div>
     {visible && <div className="asset-boot-screen fixed inset-0 z-[200] grid place-items-center bg-background p-6" role="dialog" aria-modal="true" aria-label="Cargando el portafolio" onKeyDown={(event) => { if (event.key === "Escape") setVisible(false); }}>
       <div className="w-full max-w-lg overflow-hidden border border-border bg-card font-mono">
         <div className="flex items-center justify-between border-b border-border bg-muted/50 px-5 py-3 text-xs tracking-widest"><span className="text-primary-ink">FAVIO_OS</span><span className="text-muted-foreground">BOOT / 01</span></div>

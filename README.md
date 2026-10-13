@@ -82,3 +82,22 @@ crear otra semana; el selector ordena por `number`, sin cambios de componentes.
   semana correspondiente cuando conozcas esa asociación.
 - Buscar incluye títulos de semanas, resúmenes, títulos de actividades y temas.
   Anterior/siguiente recorre las semanas que coinciden con los filtros activos.
+
+### Carga y compatibilidad del Cuaderno
+
+- `topics` admite textos antiguos y objetos con `title`, `explanation`,
+  `definitions` y `procedures`. `bibliography` admite citas en texto y objetos
+  `book`/`web`. Las actividades incompletas reciben arrays vacíos seguros.
+- Números/IDs duplicados y semanas sin título muestran un aviso; las demás
+  semanas siguen disponibles. Usa `src/data/cuaderno.json` para añadir semanas.
+- El detalle se muestra inmediatamente, incluso cuando mide más que la pantalla.
+  Seleccionar una semana lleva el foco y el scroll al contenido.
+- `AssetBoot` precarga las variantes responsive usadas por Hero, Projects,
+  Gallery, lightbox y evidencias, con tres solicitudes simultáneas. El porcentaje
+  cuenta recursos procesados; informa por separado los cargados y los fallidos.
+  “Entrar ahora” y Escape permiten continuar; tras 12 segundos la pantalla de
+  carga se retira automáticamente y la cola continúa en segundo plano.
+- Se reutiliza la caché HTTP del navegador y la optimización de Next.js. No se
+  promete disponibilidad offline. Los assets tienen caché de un día: al
+  reemplazar una imagen usa un nombre nuevo para que el cambio sea inmediato.
+- Regresión de datos y precarga: `node scripts/check-cuaderno.mjs`.
