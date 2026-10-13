@@ -11,8 +11,8 @@ const contacts = [
   {
     id: "email",
     label: "EMAIL",
-    value: "faviusam@gmail.com",
-    href: "mailto:faviusam@gmail.com",
+    value: "asturimac.favio@gmail.com",
+    href: "mailto:asturimac.favio@gmail.com",
     icon: Mail,
     copyable: true,
   },
