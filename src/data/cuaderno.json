@@ -1932,5 +1932,217 @@
         "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
       }
     ]
+  },
+  {
+    "id": "semana-07",
+    "number": 7,
+    "title": "Hooks de React: efectos, contexto, rendimiento y estado complejo",
+    "description": "Aplicación de Hooks de React en dos proyectos: un explorador de productos y un dashboard de gestión de tareas. Se trabajaron consultas asíncronas, limpieza de efectos, contexto, referencias, memoización, reducers y extracción de lógica reutilizable.",
+    "activities": [
+      {
+        "id": "act-07-01",
+        "title": "Práctica 1: explorador de productos con Hooks",
+        "description": "Desarrollo de una aplicación para consultar, buscar y ordenar productos, administrar favoritos y comparar diferentes formas de gestionar el estado y calcular resultados.",
+        "learnedTopics": [
+          "useState permite conservar los valores que controlan la interfaz, como la búsqueda, el orden seleccionado y la visibilidad de las secciones.",
+          "useEffect permite sincronizar el componente con una consulta externa. Su limpieza cancela la petición cuando cambia la URL o se desmonta el componente.",
+          "AbortController permite solicitar la cancelación de una petición. El hook también comprueba si la operación fue cancelada antes de actualizar el estado.",
+          "El hook personalizado useFetch concentra la consulta y devuelve data, loading y error para que los componentes decidan cómo presentar cada situación.",
+          "Context permite compartir el tema entre componentes sin enviarlo manualmente por cada nivel del árbol.",
+          "useReducer organiza los cambios de favoritos mediante acciones, mientras que useState permite implementar una alternativa para comparar ambas estrategias.",
+          "useMemo permite reutilizar el resultado del filtrado y ordenamiento cuando sus dependencias no cambian.",
+          "useCallback conserva referencias de funciones entre renderizados, lo que puede ayudar a componentes memoizados cuando sus otras props también permanecen estables.",
+          "useRef permite acceder al buscador y enfocarlo sin utilizar un estado para almacenar el nodo del DOM.",
+          "Profiler permite recopilar información sobre el trabajo de renderizado. Incorporarlo no demuestra por sí solo una mejora: los resultados deben medirse e interpretarse."
+        ],
+        "procedures": [
+          "Organizar el proyecto con React y Vite, separando componentes, contexto, datos, hooks y reducers.",
+          "Implementar useFetch para consultar https://dummyjson.com/products?limit=20.",
+          "Controlar el inicio, éxito y error de la consulta mediante estados independientes.",
+          "Comprobar response.ok antes de interpretar la respuesta como JSON.",
+          "Añadir AbortController y una función de limpieza para cancelar consultas que dejan de ser necesarias.",
+          "Crear un proveedor de tema y sincronizar la preferencia con localStorage.",
+          "Implementar la búsqueda por nombre y el ordenamiento por precio o nombre.",
+          "Comparar el cálculo directo de los productos visibles con una versión que utiliza useMemo.",
+          "Administrar los favoritos con useState y useReducer, permitiendo alternar la implementación visible.",
+          "Estabilizar las funciones de agregar, quitar y vaciar favoritos mediante useCallback.",
+          "Utilizar useRef para enfocar el campo de búsqueda desde un botón.",
+          "Incorporar datos locales de prueba, un contador independiente y un Profiler para explorar el comportamiento de los renderizados.",
+          "Añadir un control para montar y desmontar la consulta de detalle y observar el papel de la limpieza.",
+          "Publicar el proyecto mediante GitHub Pages."
+        ],
+        "labExercises": [
+          "Consultar productos y presentar estados de carga, error y lista vacía.",
+          "Filtrar productos por su nombre y ordenarlos por precio ascendente, precio descendente o nombre.",
+          "Agregar, eliminar y vaciar favoritos, comparando useState con useReducer.",
+          "Alternar entre el catálogo de la API y un conjunto local de 1000 elementos.",
+          "Comparar el cálculo directo con el cálculo memoizado durante interacciones equivalentes.",
+          "Enfocar el buscador mediante una referencia al nodo del DOM.",
+          "Montar y desmontar una consulta para revisar su cancelación.",
+          "Observar el trabajo de renderizado sin atribuir mejoras que no hayan sido medidas."
+        ],
+        "labDevelopment": "La aplicación organiza la interfaz alrededor de un catálogo interactivo. useFetch realiza la consulta HTTP y concentra el manejo de datos, carga y error. Cuando la consulta deja de corresponder al componente, la limpieza activa la cancelación y evita que esa operación actualice sus estados.\n\nEl catálogo permite buscar y ordenar productos. Una opción alterna entre el cálculo directo y useMemo, mientras que otra permite trabajar con datos de la API o con un conjunto local de 1000 elementos. El contador independiente proporciona una interacción adicional para estudiar qué trabajo se repite cuando cambia un estado que no modifica los criterios del catálogo.\n\nLos favoritos tienen dos implementaciones que reciben las mismas acciones: una con useState y otra con useReducer. Esto permite comparar la organización de las transiciones sin cambiar el objetivo funcional. Las tarjetas reciben funciones estabilizadas con useCallback y el estado de favorito correspondiente a cada producto.\n\nEl proyecto incorpora un tema compartido mediante Context, un botón para enfocar la búsqueda con useRef y una consulta de detalle que puede montarse y desmontarse. También incluye un panel de código y un Profiler para apoyar la explicación del funcionamiento.",
+        "labResults": "El código implementa consulta de productos, búsqueda, ordenamiento, favoritos, cambio de tema y manejo de estados de la petición. Se verificó la presencia de useFetch con cancelación, cálculo memoizado, callbacks, referencias y componentes de producto memoizados.\n\nLa aplicación incluye controles para comparar estrategias y recopilar información de renderizado. No se presentan porcentajes de mejora ni tiempos porque no se proporcionaron mediciones comparativas. Se adjuntan el enlace publicado, el repositorio y la ejecución de GitHub Actions indicada.",
+        "reflection": {
+          "whatLearned": "Comprendí que cada Hook responde a una responsabilidad distinta. El estado controla lo visible, los efectos coordinan operaciones externas, las referencias permiten acciones sobre elementos y los hooks personalizados reúnen lógica que puede reutilizarse.",
+          "howLearned": "Aprendí relacionando cada concepto con una función del explorador. La comparación entre implementaciones y el control de montaje de la consulta me ayudaron a identificar qué cambia durante una interacción y qué debe limpiarse."
+        },
+        "references": [
+          "React. Referencia de React y Hooks. https://react.dev/reference/react",
+          "React. Reusing Logic with Custom Hooks. https://react.dev/learn/reusing-logic-with-custom-hooks"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Práctica 1 — Explorador de productos",
+            "url": "/assets/cuaderno/Sem7/prac1_1.png",
+            "alt": "Captura de la primera práctica de Hooks de React de la semana 7",
+            "description": "Evidencia visual del explorador de productos."
+          },
+          {
+            "type": "link",
+            "title": "Visitar la primera práctica",
+            "url": "https://favio-coder.github.io/PracticaSem7/",
+            "description": "Aplicación publicada del explorador de productos."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio de la primera práctica",
+            "url": "https://github.com/Favio-coder/PracticaSem7",
+            "description": "Código fuente de los componentes, hooks, contexto y reducer."
+          },
+          {
+            "type": "link",
+            "title": "GitHub Actions — Práctica 1",
+            "url": "https://github.com/Favio-coder/PracticaSem7/actions/runs/38624387302",
+            "description": "Ejecución del workflow proporcionada como evidencia."
+          }
+        ]
+      },
+      {
+        "id": "act-07-02",
+        "title": "Práctica 2: dashboard de gestión con estado complejo",
+        "description": "Construcción y refactorización de un dashboard de tareas utilizando un reducer, contexto de tema, memoización, referencias y un hook personalizado para almacenamiento local.",
+        "learnedTopics": [
+          "useReducer permite reunir las transiciones relacionadas en una función que recibe el estado actual y una acción, y devuelve el siguiente estado.",
+          "El estado de tareas reúne items, filter y sort. Las acciones ADD, REMOVE, TOGGLE, FILTER y SORT describen las operaciones disponibles.",
+          "La inmutabilidad exige construir nuevos arreglos y objetos en lugar de modificar el estado existente. El reducer utiliza spread, map y filter.",
+          "Los identificadores se generan antes de enviar la acción, manteniendo esa operación fuera del reducer.",
+          "useState conserva el texto del formulario, que tiene una responsabilidad diferente del estado de la colección de tareas.",
+          "useMemo obtiene una lista filtrada y ordenada a partir del estado. El ordenamiento se realiza sobre una copia para conservar el arreglo original.",
+          "TaskList utiliza React.memo y recibe callbacks estables. Puede omitir renderizados cuando sus props no cambian; esto no garantiza que cada fila se optimice individualmente.",
+          "useLocalStorage encapsula la lectura inicial y la escritura del valor, e incluye manejo de errores de acceso o de interpretación del contenido.",
+          "ThemeContext utiliza useLocalStorage para conservar el tema y un efecto para aplicarlo al documento.",
+          "Un listener global necesita una limpieza que elimine el mismo manejador registrado. El dashboard aplica este principio al atajo de teclado."
+        ],
+        "procedures": [
+          "Organizar App.jsx, TaskList.jsx, useLocalStorage.js, useTasksReducer.js y los archivos del contexto de tema.",
+          "Definir el estado inicial con una colección vacía, filtro all y orden asc.",
+          "Implementar un reducer puro para agregar, eliminar, completar, filtrar y ordenar tareas.",
+          "Generar el identificador de cada tarea fuera del reducer y enviarlo en la acción ADD.",
+          "Crear un formulario controlado y rechazar títulos vacíos o compuestos solo por espacios.",
+          "Derivar la lista visible mediante useMemo según tareas, filtro y orden.",
+          "Crear callbacks para las acciones y entregarlos a TaskList.",
+          "Aplicar React.memo a TaskList y mostrar un mensaje cuando la lista visible está vacía.",
+          "Calcular los contadores de tareas totales, pendientes y completadas desde la colección.",
+          "Implementar useLocalStorage con inicialización perezosa y manejo de errores.",
+          "Compartir tema y función de alternancia mediante ThemeContext.",
+          "Utilizar useRef para enfocar el campo al montar y después de agregar una tarea.",
+          "Registrar el atajo Ctrl o Cmd más K y eliminar el listener al desmontar.",
+          "Publicar el dashboard y adjuntar la evidencia visual y el enlace de GitHub Actions."
+        ],
+        "labExercises": [
+          "Agregar tareas con un título válido y mostrar un estado vacío cuando corresponda.",
+          "Marcar y desmarcar tareas completadas.",
+          "Eliminar tareas mediante acciones del reducer.",
+          "Filtrar todas las tareas, solo las pendientes o solo las completadas.",
+          "Ordenar los títulos de forma ascendente y descendente.",
+          "Mostrar contadores derivados de la colección completa.",
+          "Alternar el tema claro y oscuro y conservar esa preferencia en localStorage.",
+          "Enfocar el campo mediante useRef y un atajo de teclado con limpieza.",
+          "Separar la lógica de actualización, persistencia y presentación en archivos con responsabilidades claras."
+        ],
+        "labDevelopment": "El dashboard distingue el estado local del formulario del estado relacionado con las tareas. El texto del campo se administra con useState, mientras que useReducer concentra la colección, el filtro y el criterio de orden. Cada interacción se expresa mediante una acción, lo que facilita seguir cómo se produce la siguiente versión del estado.\n\nLa lista visible se deriva mediante useMemo. Primero se copia la colección, después se aplica el filtro y finalmente se ordena por título. TaskList recibe esa lista y las funciones necesarias para completar o eliminar elementos. La memoización del componente puede evitar trabajo cuando sus props permanecen iguales, aunque un cambio real en las tareas requiere actualizar la presentación.\n\nEl contexto de tema utiliza useLocalStorage para conservar la preferencia entre recargas. Este hook lee el valor inicial, interpreta el JSON y sincroniza los cambios con el almacenamiento del navegador. En la implementación revisada, las tareas se inicializan en memoria mediante useReducer; su persistencia no está conectada al hook de almacenamiento.\n\nLa experiencia de entrada se complementa con foco al montar, foco después de agregar y un atajo Ctrl o Cmd más K. El listener del atajo se registra en un efecto y se elimina en su limpieza.",
+        "labResults": "El código incorpora agregar, completar, eliminar, filtrar y ordenar tareas, junto con contadores y estados vacíos. Se verificaron el reducer inmutable, la lista derivada, los callbacks, el componente TaskList memoizado y el foco mediante referencia.\n\nEl tema se guarda en localStorage y se aplica al documento mediante data-theme. Las tareas se conservan durante la sesión del componente y se reinician al recargar según el código revisado. Se adjuntan el dashboard publicado, el repositorio y la ejecución de GitHub Actions proporcionada. No se atribuyen mediciones de rendimiento ni resultados de pruebas que no fueron ejecutadas en esta revisión.",
+        "reflection": {
+          "whatLearned": "Comprendí que centralizar las transiciones con un reducer permite describir mejor un estado con varias operaciones relacionadas. También distinguí entre extraer una utilidad, crear un hook reutilizable y conectar realmente ese hook con la información que se desea persistir.",
+          "howLearned": "Aprendí organizando las responsabilidades del dashboard y siguiendo cada acción desde el formulario o los controles hasta el reducer y la lista visible. Revisar el almacenamiento y la limpieza del atajo me ayudó a entender los efectos fuera del renderizado."
+        },
+        "references": [
+          "React. Referencia de React y Hooks. https://react.dev/reference/react",
+          "React. Reusing Logic with Custom Hooks. https://react.dev/learn/reusing-logic-with-custom-hooks",
+          "Hallie, L., y Osmani, A. Learning Patterns. https://www.patterns.dev/"
+        ],
+        "evidence": [
+          {
+            "type": "image",
+            "title": "Práctica 2 — Dashboard de gestión de tareas",
+            "url": "/assets/cuaderno/Sem7/pract2_2.png",
+            "alt": "Captura de la segunda práctica de Hooks de React de la semana 7",
+            "description": "Evidencia visual del dashboard con estado complejo."
+          },
+          {
+            "type": "link",
+            "title": "Visitar el dashboard",
+            "url": "https://favio-coder.github.io/PracticaSem7--Dashboard-de-Gesti-n-con-Estado-Complejo/",
+            "description": "Aplicación publicada de gestión de tareas."
+          },
+          {
+            "type": "link",
+            "title": "Repositorio del dashboard",
+            "url": "https://github.com/Favio-coder/PracticaSem7--Dashboard-de-Gesti-n-con-Estado-Complejo",
+            "description": "Código fuente del reducer, los hooks, el contexto y los componentes."
+          },
+          {
+            "type": "link",
+            "title": "GitHub Actions — Práctica 2",
+            "url": "https://github.com/Favio-coder/PracticaSem7--Dashboard-de-Gesti-n-con-Estado-Complejo/actions/runs/38762285671",
+            "description": "Ejecución del workflow proporcionada como evidencia."
+          }
+        ]
+      }
+    ],
+    "date": "",
+    "status": "completada",
+    "summary": "Desarrollo de dos aplicaciones para estudiar Hooks: un explorador de productos con consultas, favoritos y comparación de estrategias, y un dashboard de tareas con reducer, contexto, referencias y persistencia del tema.",
+    "objectives": [
+      "Distinguir las responsabilidades de estado, efectos, contexto y referencias.",
+      "Implementar efectos con dependencias y limpieza según la operación externa.",
+      "Extraer consultas y almacenamiento en hooks personalizados.",
+      "Gestionar transiciones complejas mediante reducers puros e inmutables.",
+      "Compartir preferencias mediante Context.",
+      "Aplicar memoización cuando exista una razón concreta para evitar trabajo repetido.",
+      "Relacionar la estabilidad de props y callbacks con componentes memoizados.",
+      "Interpretar las mediciones de renderizado sin confundir implementación con mejora comprobada.",
+      "Documentar los resultados y publicar ambas prácticas."
+    ],
+    "topics": [
+      "Hooks: funciones que permiten utilizar características de React desde componentes de función y hooks personalizados.",
+      "Reglas de los Hooks: los hooks utilizados en estas prácticas se llaman en el nivel superior, sin introducirlos en condicionales o bucles.",
+      "Estado como captura del renderizado: una actualización prepara un valor para un renderizado posterior.",
+      "Actualización funcional: cálculo del siguiente estado a partir del valor anterior.",
+      "Inmutabilidad: construcción de nuevas referencias para actualizar objetos y arreglos.",
+      "useEffect: sincronización con sistemas externos y limpieza antes de repetir la sincronización o al desmontar.",
+      "StrictMode: comprobaciones adicionales en desarrollo, incluido un ciclo extra de preparación y limpieza de efectos.",
+      "Context: lectura de información desde el proveedor más cercano y actualización de sus consumidores.",
+      "useRef: conservación de referencias mutables sin programar por sí misma un renderizado.",
+      "useReducer: transiciones de estado organizadas mediante acciones.",
+      "useMemo y useCallback: reutilización de valores y funciones según sus dependencias.",
+      "React.memo: posibilidad de omitir renderizados cuando las props no cambian.",
+      "Hooks personalizados: reutilización de lógica, sin compartir automáticamente el estado de cada invocación.",
+      "Profiler: observación del trabajo de renderizado para evaluar optimizaciones."
+    ],
+    "reflection": {
+      "whatLearned": "Aprendí a elegir los Hooks según el problema que resuelven. En el explorador relacioné la consulta externa con useEffect y useFetch, el tema con Context y la comparación de estrategias con memoización y Profiler. En el dashboard comprendí cómo un reducer organiza operaciones relacionadas sin mezclar toda la lógica con el formulario.\n\nTambién entendí que conservar una referencia no equivale a actualizar la interfaz y que extraer un hook no implica que todos sus consumidores compartan estado. Otro aprendizaje fue revisar el comportamiento real del código: el dashboard persiste el tema, pero no conserva las tareas después de una recarga.",
+      "howLearned": "Aprendí aplicando los conceptos en dos escenarios distintos y siguiendo el recorrido de los datos. En el catálogo observé la relación entre consulta, búsqueda, favoritos y presentación. En el dashboard seguí las acciones desde los controles hasta el reducer y la lista derivada.\n\nLa separación en componentes, contexto y hooks me ayudó a explicar cada responsabilidad. Además, disponer de alternativas de cálculo y controles de montaje permite plantear comparaciones concretas en lugar de asumir que una técnica mejora el rendimiento en todos los casos.",
+      "difficulties": "Los aspectos que requieren mayor cuidado son definir las dependencias de los efectos, cancelar consultas que dejan de ser necesarias y conservar la inmutabilidad al filtrar u ordenar. También resulta importante distinguir entre lo que documenta un README y lo que realmente implementa el código.",
+      "solutions": "Las consultas se encapsularon en useFetch con cancelación y comprobaciones antes de actualizar estados. El dashboard concentra las transiciones en un reducer y ordena una copia del arreglo. Los efectos con listeners incluyen limpieza y la persistencia del tema se encapsula en useLocalStorage. La revisión del código permitió describir los resultados sin atribuir persistencia de tareas ni mejoras de rendimiento no verificadas.",
+      "improvements": "Como siguientes pasos, conectaré la persistencia de las tareas si se requiere conservarlas entre sesiones y añadiré verificaciones para datos almacenados inválidos. También registraré comparaciones reproducibles con Profiler, revisaré el comportamiento ante consultas fallidas y comprobaré la navegación por teclado y la presentación móvil de ambas aplicaciones."
+    },
+    "bibliography": [
+      "React. React Reference Overview. https://react.dev/reference/react",
+      "React. Reusing Logic with Custom Hooks. https://react.dev/learn/reusing-logic-with-custom-hooks",
+      "Hallie, L., y Osmani, A. Learning Patterns. https://www.patterns.dev/"
+    ]
   }
 ]
