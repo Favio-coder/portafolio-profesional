@@ -79,5 +79,24 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/Favio-coder/KoEduko",
     demo: "https://ko-eduko.vercel.app/"
-  }
+  },
+  {
+    id: "project-06",
+    name: "KoEduko - HackAndes",
+    description:
+      "Plataforma educativa que facilita el aprendizaje entre pares mediante el emparejamiento de estudiantes según sus atributos. Integra sesiones, materiales y seguimiento del desempeño para apoyar la colaboración y la evaluación del aprendizaje creado para la Hackathon Hack The Andes organizado por el Peru Tech Week.",
+    year: "2026",
+    image: "/assets/proyectos/koeduko2.png",
+    technologies: [
+      "Javascript",
+      "React",
+      "Firebase",
+      "Elevenlabs",
+      "Gemini",
+      "Vercel"
+    ],
+    github: "https://github.com/Favio-coder/Koeduko-hackandes.gito",
+    demo: "https://koeduko-hackandes.vercel.app"
+  },
+
 ];
