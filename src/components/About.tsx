@@ -2,27 +2,23 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
+import { useLanguage } from "@/lib/i18n";
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionDivider from "@/components/ui/SectionDivider";
 import TerminalLabel from "@/components/ui/TerminalLabel";
 import Tag from "@/components/ui/Tag";
 
-const aboutDescription = `Estudiante de IX Ciclo de Ingeniería de Sistemas.
-Desarrollador Full Stack con interés en Cloud, Data Engineering e IA.
-Experiencia en hackathons, startups y productos reales.`;
-
-const additionalInfo = `Especializado en QA, data engineering, cloud computing y desarrollo full stack.
-Dominio: React, Next.js, TypeScript, Python, Spring Boot, Laravel, AWS, Google Cloud, Azure.
-Actualmente desarrollando Healthtech con Alzhivida y proyectos de IA con aprendizaje no supervisado.`;
-
-const stats = [
-  { label: "AÑOS EXPERIENCIA", value: "3+" },
-  { label: "PROYECTOS ENTREGADOS", value: "15+" },
-  { label: "TECNOLOGÍAS DOMINADAS", value: "20+" },
-  { label: "HACKATHONS", value: "8+" },
-];
-
 export default function About() {
+  const { t } = useLanguage();
+  const aboutDescription = t("about.description");
+  const additionalInfo = t("about.additionalInfo");
+  const stats = [
+    { label: t("about.statsYears"), value: "3+" },
+    { label: t("about.statsProjects"), value: "15+" },
+    { label: t("about.statsTech"), value: "20+" },
+    { label: t("about.statsHackathons"), value: "8+" },
+  ];
+
   const [typed, setTyped] = useState("");
   const sectionRef = useRef<HTMLElement>(null);
   const visible = useInView(sectionRef);
@@ -51,11 +47,11 @@ export default function About() {
       <div className="mx-auto max-w-350">
         <SectionHeading
           number="01"
-          title="SOBRE MÍ"
-          subtitle="Perfil técnico y trayectoria profesional"
+          title={t("about.title")}
+          subtitle={t("about.subtitle")}
         />
 
-        <SectionDivider className="my-6 md:my-8" label="MANIFIESTO" thick />
+        <SectionDivider className="my-6 md:my-8" label={t("about.manifesto")} thick />
 
         <div className="about-layout grid gap-4 md:grid-cols-[1.1fr_.9fr] lg:gap-8">
           <div className="space-y-4">
@@ -69,7 +65,7 @@ export default function About() {
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-primary" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  FAVIO_ASTURIMAC / ABOUT.MD
+                  {t("about.aboutFile")}
                 </span>
               </div>
 
@@ -79,7 +75,7 @@ export default function About() {
                 variant="default"
                 className="text-sm"
               >
-                {`print("Descripcion")`}
+                {t("about.printDescription")}
               </TerminalLabel>
 
               <div className="relative mt-3 font-mono text-sm leading-relaxed text-foreground sm:text-base">
@@ -105,7 +101,7 @@ export default function About() {
                   className="mt-4 space-y-3"
                   aria-hidden={phase !== "complete"}
                 >
-                  <SectionDivider label="ADICIONAL" />
+                  <SectionDivider label={t("about.additional")} />
                   <p className="font-mono text-sm leading-relaxed text-muted-foreground">
                     {additionalInfo}
                   </p>
@@ -164,7 +160,7 @@ export default function About() {
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-accent" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  STACK_TECNOLÓGICO
+                  {t("about.techStack")}
                 </span>
               </div>
 
@@ -246,7 +242,7 @@ export default function About() {
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-sky-500" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  ENFOQUE ACTUAL
+                  {t("about.currentFocus")}
                 </span>
               </div>
 
@@ -285,7 +281,7 @@ export default function About() {
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  CERTIFICACIONES
+                  {t("about.certifications")}
                 </span>
               </div>
 
@@ -321,7 +317,7 @@ export default function About() {
                             href: url,
                             target: "_blank",
                             rel: "noopener noreferrer",
-                            "aria-label": `Ver certificación ${cert.name} (abre en otra pestaña)`,
+                            "aria-label": t("about.viewCert", { name: cert.name }),
                           }
                         : {})}
                       className={`flex min-w-0 flex-col items-start gap-1 rounded-sm bg-muted p-2 sm:flex-row sm:items-center sm:justify-between ${

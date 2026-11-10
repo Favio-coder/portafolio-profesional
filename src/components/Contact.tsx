@@ -6,6 +6,7 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import TerminalLabel from "@/components/ui/TerminalLabel";
 import { Mail, GitBranch, Link2, ExternalLink, Copy, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/lib/i18n";
 import SpotifyPlayer from "@/components/SpotifyPlayer";
 
 const contacts = [
@@ -36,6 +37,7 @@ const contacts = [
 ];
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState<string | null>(null);
   const copyTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const reduced = useReducedMotion();
@@ -58,8 +60,8 @@ export default function Contact() {
       <div className="mx-auto max-w-350">
         <SectionHeading
           number="05"
-          title="CONTACTO"
-          subtitle="Conectemos y construyamos algo juntos"
+          title={t("contact.title")}
+          subtitle={t("contact.subtitle")}
         />
 
         <SectionDivider className="my-12" label="CONNECT.SH" thick />
@@ -119,7 +121,7 @@ export default function Contact() {
                       <button
                         onClick={() => handleCopy(contact.value, contact.id)}
                         className="flex size-11 shrink-0 items-center justify-center text-muted-foreground hover:text-primary-ink transition-colors"
-                        aria-label={copied === contact.id ? "Copiado" : "Copiar email"}
+                        aria-label={copied === contact.id ? t("common.copied") : t("common.copyEmail")}
                       >
                         {copied === contact.id ? (
                           <Copy className="size-5 text-primary-ink" aria-hidden="true" />
@@ -159,11 +161,11 @@ export default function Contact() {
               </div>
 
               <h3 className="font-heading font-black uppercase tracking-tight text-foreground mb-4" style={{ fontSize: "clamp(1.75rem, 5vw, 3rem)" }}>
-                CONSTRUYAMOS<br />ALGO JUNTOS.
+                {t("contact.ctaHeadline1")} <br /> {t("contact.ctaHeadline2")}
               </h3>
 
               <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
-                ¿Tienes un proyecto en mente? ¿Necesitas ayuda con arquitectura cloud, pipelines de datos o desarrollo full stack? Hablemos.
+                {t("contact.ctaBody")}
               </p>
 
               <motion.a
@@ -175,15 +177,15 @@ export default function Contact() {
                 className="mb-4 inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-sm bg-primary px-4 py-3 text-center font-mono text-sm font-semibold text-primary-foreground sm:w-auto sm:px-6"
               >
                 <MessageCircle className="size-5 shrink-0" aria-hidden="true" />
-                Conversemos por WhatsApp
-                <span className="sr-only"> (abre en otra pestaña)</span>
+                {t("contact.whatsapp")}
+                <span className="sr-only">{t("common.openNewTab")}</span>
               </motion.a>
 
               <a
                 href="mailto:faviusam@gmail.com?subject=Proyecto:%20[Nombre]&body=Hola%20Favio,%0A%0AMe%20gustar%C3%ADa%20conversar%20sobre..."
                 className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider text-accent-foreground bg-accent rounded-sm hover:shadow-[0_8px_30px_rgba(255,99,62,0.4)] hover:-translate-y-0.5 transition-all duration-300"
               >
-                Enviar Email
+                {t("contact.sendEmail")}
                 <ExternalLink className="size-4" aria-hidden="true" />
               </a>
             </motion.div>
@@ -200,16 +202,16 @@ export default function Contact() {
               <div className="mb-6 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-sky-500" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  DISPONIBILIDAD
+                  {t("contact.availability")}
                 </span>
               </div>
 
               <div className="space-y-4">
                 {[
-                  { label: "Freelance / Contract", status: "Abierto", color: "var(--primary-ink)" },
-                  { label: "Full-time Remote", status: "Abierto", color: "var(--primary-ink)" },
-                  { label: "Consultoría Técnica", status: "Abierto", color: "var(--primary-ink)" },
-                  { label: "Mentorías / Charlas", status: "Consultar", color: "var(--accent-ink)" },
+                  { label: t("availability.freelance"), status: t("status.open"), color: "var(--primary-ink)" },
+                  { label: t("availability.fulltime"), status: t("status.open"), color: "var(--primary-ink)" },
+                  { label: t("availability.consulting"), status: t("status.open"), color: "var(--primary-ink)" },
+                  { label: t("availability.mentoring"), status: t("status.consult"), color: "var(--accent-ink)" },
                 ].map((item, i) => (
                   <div key={i} className="flex flex-wrap items-center justify-between gap-2 p-3 bg-muted rounded-sm">
                     <span className="min-w-0 font-mono text-sm text-foreground">{item.label}</span>
@@ -225,22 +227,22 @@ export default function Contact() {
               <div className="mb-6 flex items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
                 <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  UBICACIÓN / ZONA HORARIA
+                  {t("contact.location")}
                 </span>
               </div>
 
               <div className="space-y-3 font-mono text-sm">
                 <div className="flex items-center gap-3 text-foreground">
                   <span className="text-primary-ink">📍</span>
-                  <span>Huancayo, Perú</span>
+                  <span>{t("contact.locationValue")}</span>
                 </div>
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <span className="text-primary-ink">🕐</span>
-                  <span>GMT-5 (America/Lima)</span>
+                  <span>{t("contact.timezone")}</span>
                 </div>
                 <div className="flex items-center gap-3 text-muted-foreground">
                   <span className="text-primary-ink">🌐</span>
-                  <span>Remoto global — Inglés/ Español</span>
+                  <span>{t("contact.remote")}</span>
                 </div>
               </div>
             </div>
@@ -275,7 +277,7 @@ export default function Contact() {
                   title="Pendiente: añadir public/cv.pdf"
                   className="px-4 py-2 font-mono text-sm uppercase tracking-wider text-muted-foreground border border-border rounded-sm hover:border-primary hover:text-primary-ink transition-all"
                 >
-                  CV · próximamente
+                  {t("contact.cvComingSoon")}
                 </span>
               </div>
             </div>

@@ -2,9 +2,11 @@
 
 import SectionDivider from "@/components/ui/SectionDivider";
 import { useSectionNavigation } from "@/lib/section-navigation";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
   const { navigateToSection } = useSectionNavigation();
 
   return (
@@ -18,24 +20,24 @@ export default function Footer() {
               FAVIO.DEV
             </p>
             <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
-              Full Stack Developer
+              {t("footer.role")}
             </p>
             <p className="text-muted-foreground leading-relaxed max-w-xs">
-              Construyendo productos digitales en la intersección de software, cloud, datos e IA.
+              {t("footer.bio")}
             </p>
           </div>
 
           <div className="space-y-4">
             <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              NAVEGACIÓN
+              {t("footer.navigation")}
             </h4>
-            <nav className="space-y-2" aria-label="Navegación del footer">
+            <nav className="space-y-2" aria-label={t("footer.navigation")}>
               {[
-                { label: "Sobre mí", href: "#about" },
-                { label: "Experiencia", href: "#experience" },
-                { label: "Proyectos", href: "#projects" },
-                { label: "Galería", href: "#gallery" },
-                { label: "Contacto", href: "#contact" },
+                { label: t("footer.navAbout"), href: "#about" },
+                { label: t("footer.navExperience"), href: "#experience" },
+                { label: t("footer.navProjects"), href: "#projects" },
+                { label: t("footer.navGallery"), href: "#gallery" },
+                { label: t("footer.navContact"), href: "#contact" },
               ].map((item) => (
                 <a
                   key={item.label}
@@ -51,7 +53,7 @@ export default function Footer() {
 
           <div className="space-y-4">
             <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              CONECTAR
+              {t("footer.connect")}
             </h4>
             <div className="space-y-2">
               {[
@@ -77,18 +79,18 @@ export default function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center gap-4 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-            <span>BUILD: {currentYear}</span>
+            <span>{t("footer.build", { year: String(currentYear) })}</span>
             <span className="text-border">|</span>
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
-              STATUS: ONLINE
+              {t("footer.statusOnline")}
             </span>
           </div>
 
           <div className="hidden md:flex items-center gap-6 font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">
             <span>© {currentYear} Favio Asturimac</span>
             <span className="text-border">|</span>
-            <span>HECHO CON AMOR Y MUCHO CAFÉ :3</span>
+            <span>{t("footer.madeWith")}</span>
           </div>
 
           <div className="md:hidden text-center font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">

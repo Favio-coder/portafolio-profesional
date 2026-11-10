@@ -8,8 +8,10 @@ import { motion, useInView, useReducedMotion } from "motion/react";
 import { ArrowRight, Download } from "lucide-react";
 import { scrollToSection } from "@/lib/section-navigation";
 import ScrambleName from "@/components/ScrambleName";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Hero() {
+  const { t } = useLanguage();
   const [isPixel, setIsPixel] = useState(false);
   const [transitionText, setTransitionText] = useState("");
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -29,7 +31,7 @@ export default function Hero() {
     if (reduced || !visible) return;
     let cleanup: ReturnType<typeof setTimeout>;
     const timer = setTimeout(() => {
-      setTransitionText(isPixel ? "SWITCHING_RENDER_MODE..." : "RESTORING_IMAGE...");
+      setTransitionText(isPixel ? t("hero.switchingRenderMode") : t("hero.restoringImage"));
       cleanup = setTimeout(() => setTransitionText(""), 1500);
     }, 50);
     return () => { clearTimeout(timer); clearTimeout(cleanup); };
@@ -50,14 +52,14 @@ export default function Hero() {
           <div className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
             <span className="text-primary">FAVIO.DEV</span>
             <span className="mx-2">/</span>
-            <span>HOME</span>
+            <span>{t("hero.home")}</span>
           </div>
           <div className="flex items-center gap-4 font-mono text-sm">
             <span className="relative flex h-2 w-2 items-center">
               <span className={`absolute h-2 w-2 rounded-full bg-primary ${hasScrolled ? "animate-pulse" : ""}`} />
             </span>
             <span className="text-muted-foreground uppercase tracking-wider">
-              {hasScrolled ? "SCROLLING" : "READY"}
+              {hasScrolled ? t("hero.scrolling") : t("hero.ready")}
             </span>
           </div>
         </div>
@@ -105,8 +107,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
               >
-                Desarrollo soluciones digitales integrando software, cloud, datos e inteligencia artificial.
-                Enfoque en productos funcionales, escalables y orientados a resolver problemas reales.
+                {t("hero.description")}
               </motion.p>
 
               <motion.div
@@ -120,7 +121,7 @@ export default function Hero() {
                   onClick={() => scrollToSection("projects")}
                   className="group inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider text-accent-foreground bg-accent rounded-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(255,99,62,0.4)] hover:-translate-y-0.5"
                 >
-                  Ver Proyectos
+                  {t("hero.viewProjects")}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                 </button>
                 <button
@@ -129,7 +130,7 @@ export default function Hero() {
                   className="inline-flex items-center gap-2 px-6 py-3 font-mono text-sm uppercase tracking-wider text-foreground border border-border rounded-sm hover:bg-muted transition-all duration-300"
                 >
                   <Download className="size-4" aria-hidden="true" />
-                  Contacto
+                  {t("hero.contact")}
                 </button>
               </motion.div>
 
@@ -143,11 +144,11 @@ export default function Hero() {
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="absolute h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                   </span>
-                  <span>DISPONIBLE PARA PROYECTOS</span>
+                  <span>{t("hero.available")}</span>
                 </div>
                 <div className="hidden md:flex items-center gap-1 px-3 py-1 bg-muted rounded-full">
                   <span className="text-primary-ink">●</span>
-                  <span>ONLINE</span>
+                  <span>{t("hero.online")}</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -186,7 +187,7 @@ export default function Hero() {
                 
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                   <div className="font-mono text-[0.625rem] uppercase tracking-widest text-foreground/60">
-                    IMG_001 / FAVIO_ASTURIMAC
+                    {t("hero.imageLabel")}
                   </div>
                   <div className="font-mono text-[0.625rem] uppercase tracking-widest text-primary-ink">
                     {isPixel ? "PIXEL_MODE" : "PORTRAIT_MODE"}
@@ -203,7 +204,7 @@ export default function Hero() {
               >
                 {transitionText || (
                   <>
-                    <span className="inline-block animate-pulse">PROCESSING_IMAGE...</span>
+                    <span className="inline-block animate-pulse">{t("hero.processingImage")}</span>
                   </>
                 )}
               </div>
@@ -211,7 +212,7 @@ export default function Hero() {
               <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-6 font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground">
                 <span>{isPixel ? "8BIT_RENDER" : "HIGH_RES"}</span>
                 <span className="text-border">|</span>
-                <span>FRAME_{isPixel ? "001" : "002"}</span>
+                <span>{t("hero.frame", { frame: isPixel ? "001" : "002" })}</span>
               </div>
             </motion.div>
           </div>
@@ -223,7 +224,7 @@ export default function Hero() {
           transition={{ delay: 2, duration: 1 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 font-mono text-[0.625rem] uppercase tracking-widest text-muted-foreground"
         >
-          <span>SCROLL TO EXPLORE</span>
+          <span>{t("hero.scrollToExplore")}</span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

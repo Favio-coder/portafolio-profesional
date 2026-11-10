@@ -3,21 +3,25 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import PortfolioTerminal from "@/components/PortfolioTerminal";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { Terminal, Menu, X } from "lucide-react";
 import { useSectionNavigation } from "@/lib/section-navigation";
+import { useLanguage } from "@/lib/i18n";
 
-const navegacion = [
-  { numero: "01", label: "SOBRE MÍ", href: "#about", id: "about", isAnchor: true },
-  { numero: "02", label: "EXPERIENCIA", href: "#experience", id: "experience", isAnchor: true },
-  { numero: "03", label: "PROYECTOS", href: "#projects", id: "projects", isAnchor: true },
-  { numero: "04", label: "CUADERNO", href: "/cuaderno", isAnchor: false },
-  { numero: "05", label: "GALERÍA", href: "#gallery", id: "gallery", isAnchor: true },
-  { numero: "06", label: "CONTACTO", href: "#contact", id: "contact", isAnchor: true },
+const numeros = ["01", "02", "03", "04", "05", "06"];
+
+const navigationKeys = [
+  { key: "nav.about", href: "#about", id: "about", isAnchor: true },
+  { key: "nav.experience", href: "#experience", id: "experience", isAnchor: true },
+  { key: "nav.projects", href: "#projects", id: "projects", isAnchor: true },
+  { key: "nav.cuaderno", href: "/cuaderno", id: "cuaderno", isAnchor: false },
+  { key: "nav.gallery", href: "#gallery", id: "gallery", isAnchor: true },
+  { key: "nav.contact", href: "#contact", id: "contact", isAnchor: true },
 ];
 
 export default function Navbar() {
-
+  const { t } = useLanguage();
   const { navigateToSection } = useSectionNavigation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,6 +30,14 @@ export default function Navbar() {
   const prefersReducedMotion = useReducedMotion();
 
   const navRef = useRef<HTMLElement>(null);
+
+  const navegacion = navigationKeys.map((item, index) => ({
+    numero: numeros[index],
+    label: t(item.key),
+    href: item.href,
+    id: item.id,
+    isAnchor: item.isAnchor,
+  }));
 
   const navigateFromMenu = () => {
     setMenuOpen(false);
@@ -104,14 +116,16 @@ export default function Navbar() {
               className="group hidden xl:inline-flex items-center gap-2 px-4 py-2 font-mono text-sm uppercase tracking-wider text-foreground bg-muted border border-border rounded-sm hover:bg-secondary hover:border-primary transition-all"
             >
               <Terminal className="size-4" aria-hidden="true" />
-              <span>TERMINAL</span>
+              <span>{t("nav.terminal")}</span>
             </button>
+
+            <LanguageSwitcher />
 
             <button
               type="button"
               className="xl:hidden p-2"
               onClick={() => setMenuOpen(!menuOpen)}
-              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
               aria-expanded={menuOpen}
             >
               {menuOpen ? (
@@ -152,13 +166,13 @@ export default function Navbar() {
                 >
                   <span className="text-primary-ink">07</span>
                   <span className="text-border">/</span>
-                  <span>TERMINAL</span>
+                  <span>{t("nav.terminal")}</span>
                 </button>
               </div>
               <div className="mt-4 pt-4 border-t border-border flex items-center gap-3">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                 <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                  SYSTEM ONLINE
+                  {t("nav.systemOnline")}
                 </span>
               </div>
             </motion.div>
@@ -170,5 +184,4 @@ export default function Navbar() {
     </>
   );
 }
-
 
