@@ -26,12 +26,12 @@ export const metadata: Metadata = {
   },
 };
 
-import { localFont } from "next/font/local";
+import localFont from "next/font/local";
 
 const inter = localFont({
   src: [
     {
-      path: "../../assets/fonts/Inter-Regular.woff2",
+      path: "../assets/fonts/Inter-Regular.woff2",
       weight: "400",
       style: "normal",
     },
@@ -43,10 +43,10 @@ const inter = localFont({
 
 const spaceGrotesk = localFont({
   src: [
-    { path: "../../assets/fonts/SpaceGrotesk-400.woff2", weight: "400", style: "normal" },
-    { path: "../../assets/fonts/SpaceGrotesk-500.woff2", weight: "500", style: "normal" },
-    { path: "../../assets/fonts/SpaceGrotesk-600.woff2", weight: "600", style: "normal" },
-    { path: "../../assets/fonts/SpaceGrotesk-700.woff2", weight: "700", style: "normal" },
+    { path: "../assets/fonts/SpaceGrotesk-400.woff2", weight: "400", style: "normal" },
+    { path: "../assets/fonts/SpaceGrotesk-500.woff2", weight: "500", style: "normal" },
+    { path: "../assets/fonts/SpaceGrotesk-600.woff2", weight: "600", style: "normal" },
+    { path: "../assets/fonts/SpaceGrotesk-700.woff2", weight: "700", style: "normal" },
   ],
   variable: "--font-heading",
   display: "swap",
@@ -55,9 +55,9 @@ const spaceGrotesk = localFont({
 
 const ibmPlexMono = localFont({
   src: [
-    { path: "../../assets/fonts/IBMPlexMono-400.woff2", weight: "400", style: "normal" },
-    { path: "../../assets/fonts/IBMPlexMono-500.woff2", weight: "500", style: "normal" },
-    { path: "../../assets/fonts/IBMPlexMono-600.woff2", weight: "600", style: "normal" },
+    { path: "../assets/fonts/IBMPlexMono-400.woff2", weight: "400", style: "normal" },
+    { path: "../assets/fonts/IBMPlexMono-500.woff2", weight: "500", style: "normal" },
+    { path: "../assets/fonts/IBMPlexMono-600.woff2", weight: "600", style: "normal" },
   ],
   variable: "--font-mono",
   display: "swap",
