@@ -1,0 +1,6 @@
+# Coloca aquí los archivos .woff2 de las fuentes.
+# Descarga desde https://fonts.google.com las familias:
+# - Inter (peso 400)
+# - Space Grotesk (pesos 400, 500, 600, 700)
+# - IBM Plex Mono (pesos 400, 500, 600)
+# Renombra los archivos para que coincidan con src/app/layout.tsx.

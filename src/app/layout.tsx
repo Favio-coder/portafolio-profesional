@@ -26,26 +26,39 @@ export const metadata: Metadata = {
   },
 };
 
-import { Inter, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { localFont } from "next/font/local";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: [
+    {
+      path: "../../assets/fonts/Inter-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   variable: "--font-sans",
   display: "swap",
   preload: true,
 });
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const spaceGrotesk = localFont({
+  src: [
+    { path: "../../assets/fonts/SpaceGrotesk-400.woff2", weight: "400", style: "normal" },
+    { path: "../../assets/fonts/SpaceGrotesk-500.woff2", weight: "500", style: "normal" },
+    { path: "../../assets/fonts/SpaceGrotesk-600.woff2", weight: "600", style: "normal" },
+    { path: "../../assets/fonts/SpaceGrotesk-700.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-heading",
   display: "swap",
   preload: true,
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const ibmPlexMono = localFont({
+  src: [
+    { path: "../../assets/fonts/IBMPlexMono-400.woff2", weight: "400", style: "normal" },
+    { path: "../../assets/fonts/IBMPlexMono-500.woff2", weight: "500", style: "normal" },
+    { path: "../../assets/fonts/IBMPlexMono-600.woff2", weight: "600", style: "normal" },
+  ],
   variable: "--font-mono",
   display: "swap",
   preload: true,
